@@ -23,6 +23,7 @@ This seed repo serves as an MEAN starter for anyone looking to get a MEAN fullst
 - Best practices in file and application organization for Angular 2.
 - Ready to go build system using Webpack for working with TypeScript.
 - Hot module reloading for the front-end à la Webpack.
+- Server code transpiled via Babel and bundled with Webpack
 - Angular 2 examples that are ready to go when experimenting with Angular 2.
 - A great MEAN seed repo for anyone who wants to start their project.
 - Testing Angular 2 code with Jasmine and Karma.
@@ -82,6 +83,9 @@ $ npm start
 
 # in a separate terminal:
 # start `Express` server
+# this command is responsible for:
+# bundling/transpiling code when change is detected with `webpack`
+# restarting the server on change with `nodemon`
 $ gulp serve
 ```
 
@@ -306,7 +310,7 @@ Once you have those, you should install these globals with `npm install --global
 - `$ typings install` to install necessary typings
 - `$ npm run build` to build necessary front-end code with Webpack
 - `$ npm start` to enable hot module reloading and build on file change
-- In a new terminal, `node server` to start the server for the first time
+- In a new terminal, `gulp serve` to transpile, bundle, and serve our backend on file change
 
 ## config.json
 
@@ -339,7 +343,7 @@ This object is not absolutely required. You can pass these values in however you
 
 ## Running the app
 
-After you have installed all dependencies and modified your `config.json` file, you can now run the app. First, you must start up the back-end server in a separate terminal using the `gulp serve` command. This will fire up our Express app using `nodemon`, which will watch for file changes and restart our backend when necessary. Next use the `npm start` command in the original terminal which runs two `npm` scripts in parallel: `npm run server` to start `webpack-dev-server` for building our front-end in the computer's memory, enabling hot module reloading; `npm run watch` to watch all of the front-end files and build them upon changes. You can now fire up your favorite web browser and visit the running application at `localhost:8080`!
+After you have installed all dependencies and modified your `config.json` file, you can now run the app. First, you must start up the back-end server in a separate terminal using the `gulp serve` command. This will use `Babel` to transpile our server code, bundle it, and recompile on any changes. This is all courtesy of `webpack`. In addition, `nodemon` is hooked into to restart the server whenever file changes are detected. Next use the `npm start` command in the original terminal which runs two `npm` scripts in parallel: `npm run server` to start `webpack-dev-server` for building our front-end in the computer's memory, enabling hot module reloading; `npm run watch` to watch all of the front-end files and build them upon changes. You can now fire up your favorite web browser and visit the running application at `localhost:8080`!
 
 ### server
 
@@ -362,7 +366,9 @@ $ npm run server:prod
 
 ## Other commands
 
-### start `Express` back-end
+### transpile/bundle/recompile server code
+
+### restart server on file change
 
 ```bash
 $ gulp serve
@@ -593,7 +599,8 @@ You can include your type definitions in this file until you create one for the 
 
 enjoy -- **Da5id**
 
-<br><br>
+<br>
+<br>
 
 > Looking for corporate Angular/MEAN training, want to host us, or Angular/MEAN consulting? david.r.niciforovic@gmail.com
 

@@ -7,16 +7,99 @@
 
 // *gulpfile.js*
 
+//# Helpers
+let helpers = require('./helpers');
+
 // Import gulp packages
 import gulp from 'gulp';
 import gutil from 'gulp-util';
 import rename from 'gulp-rename';
-import nodemon from 'gulp-nodemon';
+import nodemon from 'nodemon';
 import docco from 'gulp-docco';
 import scsslint from 'gulp-scss-lint';
 import path from 'path';
+import fs from 'fs';
 import del from 'del';
 import globby from 'globby';
+import webpack from 'webpack';
+import DeepMerge from 'deep-merge';
+
+// Create a deep merging function for recursively merging objects, which
+// allows us to override the default config.
+let deepmerge = DeepMerge((target, source, key) => {
+  if(target instanceof Array)
+    return [].concat(target, source);
+  return source;
+});
+
+// Define `webpack` default configuration object
+let defaultConfig = {
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loaders: ['babel']
+      },
+      // Json loader support for *.json files.
+      //
+      // See: https://github.com/webpack/json-loader
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      }
+    ]
+  }
+};
+
+if(process.env.NODE_ENV !== 'production') {
+  // Tell `webpack` to process `sourcemaps` individually for each module,
+  // this avoids a potential performance hit. It achieves this by `eval`ing
+  // each module at runtime with its own `sourcemap`
+  // The `#` prefix tells it you use the `//#` comment instead of the older
+  // `//@` style
+  defaultConfig.devtool = '#eval-source-map';
+  defaultConfig.debug = true;
+}
+
+// Provide a function `config` for generating configurations
+// based on the default config
+function config(overrides) {
+  return deepmerge(defaultConfig, overrides || {});
+}
+
+// Backend Webpack configuration
+let nodeModules = {};
+fs.readdirSync('node_modules')
+  .filter((x) => {
+    return ['.bin'].indexOf(x) === -1;
+  })
+  .forEach((mod) => {
+    nodeModules[mod] = 'commonjs ' + mod;
+  });
+
+let backendConfig = config({
+  entry: [
+    './server.js'
+  ],
+  target: 'node',
+  output: {
+    path: helpers.root('dist/back-end'),
+    filename: 'server.bundle.js'
+  },
+  // Tell `webpack` that you want to preserve the values of `__dirname` and
+  // `__filename`
+  node: {
+    __dirname: true,
+    __filename: true
+  },
+  externals: nodeModules,
+  plugins: [
+    new webpack.IgnorePlugin(/\.(css|scss|less)$/),
+    new webpack.BannerPlugin('require("source-map-support").install();',
+                             { raw: true, entryOnly: false })
+  ]
+});
 
 // Define `JavaScript` files to watch/ignore
 let jsGlob = ['**/*.js', '!{node_modules,node_modules/**}', '!{docs,doc/**}',
@@ -37,6 +120,58 @@ let scssGlob = ['**/*.scss', '!{node_modules,node_modules/**}',
 gulp.task('default', ['clean:docs',
                       'watch:docs',
                       'watch:sass']);
+
+// Webpack Tasks
+
+function onBuild(done) {
+  return function(error, stats) {
+    if(error)
+      console.log('Error: ', error);
+    else {
+      console.log(stats.toString());
+    if(done)
+      done();
+    }
+  }
+}
+
+gulp.task('build:backend', (done) => {
+  // You can pass a `config` object to `webpack` and get
+  // back a compiler. From there, you can call `run` or
+  // `watch` on the compiler.
+  webpack(backendConfig).run(onBuild(done));
+});
+
+gulp.task('watch:backend', () => {
+  // The first `argument` is a `delay`
+  webpack(backendConfig).watch(100, (err, stats) => {
+    onBuild()(err, stats);
+    nodemon.restart();
+  });
+})
+
+// Configure nodemon
+// This watches the files belonging to the app for changes
+// When a change is detected the `watch:backend` task will be
+// automatically fired, which will allow `webpack` to recompile
+// the server code. After this is complete `nodemon` will restart
+// the server.
+gulp.task('serve', ['watch:backend'], () => {
+  nodemon({
+    execMap: {
+      js: 'node'
+    },
+    script: path.join(helpers.root('dist/back-end'), 'server.bundle'),
+    // We don't actually want `nodemon`'s watcher to watch anything.
+    // That is why we pass `ignore` `*` and give `watch` a non-existant
+    // directory.
+    ignore: ['*'],
+    watch: ['foo/'],
+    ext: 'noop'
+  }).on('restart', () => {
+    console.log('Changes detected; restarting server...')
+  });
+});
 
 // Watch `Sass` files for changes and lint
 gulp.task('watch:sass', () => {
@@ -162,20 +297,6 @@ gulp.task('watch:docs', () => {
   generateDocs(tsGlob);
 
   generateDocs(scssGlob);
-});
-
-// Sugar for `gulp serve:watch`
-gulp.task('serve', ['serve:watch']);
-
-// Configure gulp-nodemon
-// This watches the files belonging to the app for changes
-// and restarts the server whenever a change is detected
-gulp.task('serve:watch', () => {
-
-  nodemon({
-    script : 'server.js',
-    ext : 'js'
-  });
 });
 
 // Use the 'del' module to clear all traces of documentation

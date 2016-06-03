@@ -79,6 +79,6 @@ export default (app, router, passport) => {
 
     // Load our src/app.html file
     //** Note that the root is set to the parent of this folder, ie the app root **
-    res.sendFile('/dist/index.html', { root: __dirname + "/../"});
+    res.sendFile('/dist/front-end/index.html', { root: __dirname + "/../"});
   });
 };
