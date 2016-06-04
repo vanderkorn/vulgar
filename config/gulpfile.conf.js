@@ -70,6 +70,7 @@ function config(overrides) {
 
 // Backend Webpack configuration
 let nodeModules = {};
+
 fs.readdirSync('node_modules')
   .filter((x) => {
     return ['.bin'].indexOf(x) === -1;
@@ -114,11 +115,9 @@ let tsGlob = ['**/*.ts', '!{node_modules,node_modules/**}', '!{docs,doc/**}',
 let scssGlob = ['**/*.scss', '!{node_modules,node_modules/**}',
   '!{dist,dist/**}', '!{docs,doc/**}', '!{coverage,coverage/**}', '!src/{res,res/**}'];
 
-// Create the default task and have it clear out all existing
-// documentation; watch all neccessary files for automatic
-// documentation generation as well as linting all `sass` styles.
-gulp.task('default', ['clean:docs',
-                      'watch:docs',
+// Create the default task and watch all neccessary files for automatic
+// documentation generation as well as lint all `sass` styles.
+gulp.task('default', ['watch:docs',
                       'watch:sass']);
 
 // Webpack Tasks
@@ -182,7 +181,7 @@ gulp.task('watch:sass', () => {
   });
 });
 
-gulp.task('build:docs', () => {
+gulp.task('build:docs', ['clean:docs'], () => {
 
   // Take a file `glob` pattern and a file extension matching
   // the extension of the files you are trying to generate
@@ -210,7 +209,7 @@ gulp.task('build:docs', () => {
 
 // Create documentation for Javascript, Typescript, and Sass files
 // on the fly
-gulp.task('watch:docs', () => {
+gulp.task('watch:docs', ['clean:docs'], () => {
 
   // For `gulp-docco` if the need arises
   //  Default configuration options. All of these may be extended by user-specified options.
@@ -301,10 +300,8 @@ gulp.task('watch:docs', () => {
 
 // Use the 'del' module to clear all traces of documentation
 // Useful before regenerating documentation
-// Not currently working due to a globbing issue
-// See: https://github.com/sindresorhus/del/issues/50
 gulp.task('clean:docs', (callback) => {
-  del(['./docs/**/*']).then(function (paths) {
+  del(['./docs']).then(function (paths) {
     callback(); // ok
   }, function (reason) {
     callback('Failed to delete files: ' + reason); // fail
