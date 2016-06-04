@@ -121,7 +121,7 @@ let router = express.Router();
 import routes from './app/routes';
 
 // Pass in instances of the express app, router, and passport
-routes(app, router, passport);
+routes(app, router, passport, express);
 
 // ### Ignition Phase
 

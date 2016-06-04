@@ -20,7 +20,7 @@ import todoRoutes from './routes/_todo.router.js';
 // Load our API routes for the `recipe` component
 import recipeRoutes from './routes/_recipe.router.js';
 
-export default (app, router, passport) => {
+export default (app, router, passport, express) => {
 
   // ### Express Middlware to use for all requests
   router.use((req, res, next) => {
@@ -73,6 +73,9 @@ export default (app, router, passport) => {
 	app.use('/api', router);
 
   // ### Frontend Routes
+
+  // Serve static front-end assets
+  app.use(express.static('dist/front-end'));
 
   // Route to handle all Angular requests
   app.get('*', (req, res) => {
