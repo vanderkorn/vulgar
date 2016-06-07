@@ -75,13 +75,13 @@ export default (app, router, passport, express) => {
   // ### Frontend Routes
 
   // Serve static front-end assets
-  app.use(express.static('dist/front-end'));
+  app.use(express.static('dist/client'));
 
   // Route to handle all Angular requests
   app.get('*', (req, res) => {
 
     // Load our src/app.html file
     //** Note that the root is set to the parent of this folder, ie the app root **
-    res.sendFile('/dist/front-end/index.html', { root: __dirname + "/../"});
+    res.sendFile('/dist/client/index.html', { root: __dirname + "/../"});
   });
 };
