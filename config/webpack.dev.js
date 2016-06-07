@@ -52,7 +52,7 @@ module.exports = webpackMerge(commonConfig, {
     // The output directory as absolute path (required).
     //
     // See: http://webpack.github.io/docs/configuration.html#output-path
-    path: helpers.root('dist/front-end'),
+    path: helpers.root('dist/client'),
     // Specifies the name of each output file on disk.
     // IMPORTANT: You must not specify an absolute path here!
     //
@@ -131,7 +131,7 @@ module.exports = webpackMerge(commonConfig, {
       aggregateTimeout: 300,
       poll: 1000
     },
-    outputPath: helpers.root('dist/front-end')
+    outputPath: helpers.root('dist/client')
   },
 
   node: {

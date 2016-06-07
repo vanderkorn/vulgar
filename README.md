@@ -374,6 +374,18 @@ $ npm run server:prod
 $ gulp serve
 ```
 
+### build server code with `webpack`
+
+```bash
+$ gulp build:server
+```
+
+### build server code and restart node server on change
+
+```bash
+$ gulp watch:server
+```
+
 ### build documentation
 
 ```bash
@@ -599,8 +611,7 @@ You can include your type definitions in this file until you create one for the 
 
 enjoy -- **Da5id**
 
-<br>
-<br>
+<br><br>
 
 > Looking for corporate Angular/MEAN training, want to host us, or Angular/MEAN consulting? david.r.niciforovic@gmail.com
 

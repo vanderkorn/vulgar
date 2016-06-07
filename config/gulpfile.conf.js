@@ -85,7 +85,7 @@ let backendConfig = config({
   ],
   target: 'node',
   output: {
-    path: helpers.root('dist/back-end'),
+    path: helpers.root('dist/server'),
     filename: 'server.bundle.js'
   },
   // Tell `webpack` that you want to preserve the values of `__dirname` and
@@ -134,14 +134,14 @@ function onBuild(done) {
   }
 }
 
-gulp.task('build:backend', (done) => {
+gulp.task('build:server', (done) => {
   // You can pass a `config` object to `webpack` and get
   // back a compiler. From there, you can call `run` or
   // `watch` on the compiler.
   webpack(backendConfig).run(onBuild(done));
 });
 
-gulp.task('watch:backend', () => {
+gulp.task('watch:server', () => {
   // The first `argument` is a `delay`
   webpack(backendConfig).watch(100, (err, stats) => {
     onBuild()(err, stats);
@@ -155,12 +155,12 @@ gulp.task('watch:backend', () => {
 // automatically fired, which will allow `webpack` to recompile
 // the server code. After this is complete `nodemon` will restart
 // the server.
-gulp.task('serve', ['watch:backend'], () => {
+gulp.task('serve', ['watch:server'], () => {
   nodemon({
     execMap: {
       js: 'node'
     },
-    script: path.join(helpers.root('dist/back-end'), 'server.bundle'),
+    script: path.join(helpers.root('dist/server'), 'server.bundle'),
     // We don't actually want `nodemon`'s watcher to watch anything.
     // That is why we pass `ignore` `*` and give `watch` a non-existant
     // directory.
