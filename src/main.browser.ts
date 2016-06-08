@@ -1,11 +1,6 @@
 //# Providers provided by Angular
 import {bootstrap} from '@angular/platform-browser-dynamic';
 
-//# Required Angular providers to enable PathLocationStrategy
-import {provide} from '@angular/core';
-import {APP_BASE_HREF} from '@angular/common';
-import {ROUTER_PROVIDERS} from '@angular/router';
-
 //## Platform and Environment
 //
 //** our providers/directives/pipes **
@@ -19,7 +14,6 @@ import {App, APP_PROVIDERS, APP_STORES} from './app';
 
 // Bootstrap our Angular app with a top level component `App` and inject
 // our Services and Providers into Angular's dependency injection
-// NOTE: ROUTER_PROVIDERS and provide lines for PathLocationStrategy
 
 export function main(initialHmrState?: any): Promise<any> {
 
@@ -31,8 +25,6 @@ export function main(initialHmrState?: any): Promise<any> {
     ...PIPES,
     ...APP_PROVIDERS,
     ...APP_STORES,
-    ROUTER_PROVIDERS,
-    provide(APP_BASE_HREF, {useValue: '/'})
   ])
   .catch(err => console.error(err));
 }
