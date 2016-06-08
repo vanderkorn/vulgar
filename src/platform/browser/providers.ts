@@ -3,8 +3,7 @@
 //** These `providers` are available in any template **
 
 // Angular 2
-import {APP_BASE_HREF,
-        FORM_PROVIDERS,
+import {FORM_PROVIDERS,
         LocationStrategy,
         HashLocationStrategy,
         PathLocationStrategy} from '@angular/common';
