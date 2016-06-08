@@ -3,9 +3,11 @@
 //** These `providers` are available in any template **
 
 // Angular 2
-import {FORM_PROVIDERS,
+import {APP_BASE_HREF,
+        FORM_PROVIDERS,
         LocationStrategy,
-        HashLocationStrategy} from '@angular/common';
+        HashLocationStrategy,
+        PathLocationStrategy} from '@angular/common';
 
 // Angular 2 Http
 import {HTTP_PROVIDERS} from '@angular/http';
@@ -25,7 +27,7 @@ export const APPLICATION_PROVIDERS = [
   ...HTTP_PROVIDERS,
   ...MATERIAL_PROVIDERS,
   ...ROUTER_PROVIDERS,
-  {provide: LocationStrategy, useClass: HashLocationStrategy }
+  {provide: LocationStrategy, useClass: PathLocationStrategy }
 ];
 
 export const PROVIDERS = [
