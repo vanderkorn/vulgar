@@ -24,7 +24,7 @@ const HEADER = {
 @Injectable()
 export class RecipeService {
 
-  recipes: Observable<Array<Recipe>>;
+  recipes: Observable<Object>;
 
   // Inject the `AppStore` into the constructor with a type of `AppStore`
   constructor(private http: Http, private store: Store<AppStore>) {
