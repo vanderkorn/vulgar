@@ -459,7 +459,11 @@ Configuration files live in `config/`. We are currently using `mongooose`, `pass
 
 # Contributing
 
-Contibutors are welcome. If you are interested in collaborating with us or contributing to this project, please join our chat on [Slack](http://www.davidniciforovic.com/wp-login.php?action=slack-invitation). You can also view our `Trello` board which is where the roadmap and task backlog live here <https://trello.com/b/Kk4qnt2T/vulgar>
+Contibutors are welcome. If you are interested in collaborating with us or contributing to this project, please join our chat on [Slack](http://www.davidniciforovic.com/wp-login.php?action=slack-invitation). You can also view our `Trello` board which is where the roadmap and task backlog live <https://trello.com/b/Kk4qnt2T/vulgar>
+
+## Read and Contribute to the Wiki
+
+Make sure you read the [Wiki](https://github.com/AngularClass/angular2-webpack-starter/wiki).
 
 # TypeScript
 
@@ -611,7 +615,8 @@ You can include your type definitions in this file until you create one for the 
 
 enjoy -- **Da5id**
 
-<br><br>
+<br>
+<br>
 
 > Looking for corporate Angular/MEAN training, want to host us, or Angular/MEAN consulting? david.r.niciforovic@gmail.com
 
