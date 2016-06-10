@@ -22,6 +22,15 @@ import {RecipeService} from './recipe.service';
 import {RecipeDetails} from './recipe-details.component';
 import {RecipeList} from './recipe-list.component';
 
+import { Router,
+         RouteConfig,
+         RouteParams,
+         RouteData,
+         ComponentInstruction,
+         CanActivate } from '@angular/router-deprecated';
+
+import { authUser } from '../shared/auth-user.util';
+
 @Component({
   selector: 'recipes',
   providers: [],
@@ -29,7 +38,10 @@ import {RecipeList} from './recipe-list.component';
   directives: [RecipeList, RecipeDetails],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-
+@CanActivate((next: ComponentInstruction, prev: ComponentInstruction) => {
+  // Check whether the user is logged in or not
+  return authUser(next, prev);
+})
 export class Recipes {
 
   recipes: Observable<Object>;
