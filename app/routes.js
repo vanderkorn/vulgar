@@ -14,6 +14,9 @@
 // Load our API routes for user authentication
 import authRoutes from './routes/_authentication.router.js';
 
+// Load our API routes for validating `user` registration data
+import validationRoutes from './routes/_validation.router.js';
+
 // Load our API routes for the `todo` component
 import todoRoutes from './routes/_todo.router.js';
 
@@ -65,6 +68,8 @@ export default (app, router, passport, express) => {
   // #### RESTful API Routes
 
   // Pass in our Express app and Router
+  validationRoutes(app, router)
+
   todoRoutes(app, router);
 
 	recipeRoutes(app, router);
