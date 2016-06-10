@@ -32,9 +32,9 @@ import {RecipeList} from './recipe-list.component';
 
 export class Recipes {
 
-  recipes: Observable<Array<Recipe>>;
+  recipes: Observable<Object>;
 
-  selectedRecipe: Observable<Recipe>;
+  selectedRecipe: Observable<Object>;
 
   constructor(private recipeService: RecipeService,
               private store: Store<AppStore>) {
