@@ -15,7 +15,13 @@ import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
 // Angular 2 Material 2
 //
 // TODO:(datatypevoid): replace with @angular2-material/all
-import {MATERIAL_PROVIDERS} from './angular2-material2'
+import { MATERIAL_PROVIDERS } from './angular2-material2'
+
+// Import any custom validators
+import { UsernameValidator,
+         DebouncingUsernameValidator } from '../../app/shared/validators/username.validator';
+import { ValidationService } from '../../app/shared/services/validation.service';
+import { AuthService } from '../../app/shared/services/auth.service';
 
 //# Application Providers/Directives/Pipes
 //
@@ -25,7 +31,11 @@ export const APPLICATION_PROVIDERS = [
   ...HTTP_PROVIDERS,
   ...MATERIAL_PROVIDERS,
   ...ROUTER_PROVIDERS,
-  {provide: LocationStrategy, useClass: HashLocationStrategy }
+  {provide: LocationStrategy, useClass: HashLocationStrategy },
+  AuthService,
+  ValidationService,
+  UsernameValidator,
+  DebouncingUsernameValidator
 ];
 
 export const PROVIDERS = [
