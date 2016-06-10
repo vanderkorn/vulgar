@@ -141,7 +141,7 @@ export class RegisterComponent implements CanDeactivate {
   // interacted with, query the user as to whether they intended to
   // navigate away from the registration form before submission.
   routerCanDeactivate(next: ComponentInstruction, prev: ComponentInstruction) {
-    if(!this.userForm.pristine) {
+    if(!this.userForm.pristine && !this.accepted) {
       return confirm('You haven\'t submitted your registration. Are you sure '
                      + 'you want to navigate away from this page?'); }
   }

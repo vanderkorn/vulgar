@@ -31,6 +31,10 @@ import {Todo} from './todo/todo.component';
 // Import Recipes component
 import {Recipes} from './recipes/recipes.component';
 
+import { RegisterComponent } from './register/register.component';
+
+import { LoginComponent } from './login/login.component';
+
 /*
  * App Component
  * Top Level Component
@@ -40,7 +44,7 @@ import {Recipes} from './recipes/recipes.component';
   providers: [  ],
   directives: [ Todo,
                 NgFor,
-                RouterActive],
+                RouterActive ],
   encapsulation: ViewEncapsulation.None,
   pipes: [],
   // Load our main `Sass` file into our `app` `component`
@@ -50,9 +54,6 @@ import {Recipes} from './recipes/recipes.component';
       <md-toolbar color="primary">
           <span>{{ name }}</span>
           <span class="fill"></span>
-          <button md-button router-active [routerLink]=" ['Index'] ">
-            Index
-          </button>
           <button md-button router-active [routerLink]=" ['Home'] ">
             Home
           </button>
@@ -61,6 +62,12 @@ import {Recipes} from './recipes/recipes.component';
           </button>
           <button md-button router-active [routerLink]=" ['Recipes'] ">
             Recipes
+          </button>
+          <button md-button router-active [routerLink]=" ['Register'] ">
+            Register
+          </button>
+          <button md-button router-active [routerLink]=" ['Login'] ">
+            Login
           </button>
           <button md-button router-active [routerLink]=" ['About'] ">
             About
@@ -86,6 +93,8 @@ import {Recipes} from './recipes/recipes.component';
   { path: '/home',  name: 'Home',  component: Home },
   { path: '/todo', component: Todo, name: 'Todo' },
   { path: '/redux', component: Recipes, name: 'Recipes' },
+  { path: '/register', component: RegisterComponent, name: 'Register' },
+  { path: '/login', component: LoginComponent, name: 'Login' },
   // Async load a component using Webpack's require with
   // es6-promise-loader and webpack `require`
   { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
