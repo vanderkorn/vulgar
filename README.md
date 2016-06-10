@@ -463,7 +463,7 @@ Contibutors are welcome. If you are interested in collaborating with us or contr
 
 ## Read and Contribute to the Wiki
 
-Make sure you read the [Wiki](https://github.com/AngularClass/angular2-webpack-starter/wiki).
+Make sure you read the [Wiki](https://github.com/datatypevoid/vulgar/wiki).
 
 # TypeScript
 
