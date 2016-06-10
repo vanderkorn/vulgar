@@ -39,7 +39,7 @@ export default (passport) => {
 
       minLength : 5,
 
-      maxLength : 256
+      maxLength : 254
     }
   };
 
