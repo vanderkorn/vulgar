@@ -121,7 +121,7 @@ export class RegisterComponent implements CanDeactivate {
         // Toggle our `accepted` flag...
         this.accepted = true;
         // Proceed to the `Login` component
-        router.navigate(['Login']);
+        this.router.navigate(['Login']);
       }, (error) => {
         // DEBUG
         // TODO: Remove this DEBUG statement
@@ -136,7 +136,6 @@ export class RegisterComponent implements CanDeactivate {
         this.submitted = false;
       });
   }
-
   // Function invoked by the `CanDeactive` router lifecycle hook when
   // a user tries to leave this component view. If the form has been
   // interacted with, query the user as to whether they intended to
