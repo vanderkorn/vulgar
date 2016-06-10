@@ -136,7 +136,7 @@ export class RegisterComponent implements CanDeactivate {
         this.submitted = false;
       });
   }
-  // Function invoked by the `CanDeactive` router lifecycle hook when
+  // Function invoked by the `CanDeactivate` router lifecycle hook when
   // a user tries to leave this component view. If the form has been
   // interacted with, query the user as to whether they intended to
   // navigate away from the registration form before submission.
