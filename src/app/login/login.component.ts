@@ -90,7 +90,7 @@ export class LoginComponent {
         // TODO: Remove this DEBUG statement
         console.log(res);
         this.newUser();
-        this.router.navigate(['Home']);
+        this.router.navigate(['Recipes']);
       }, (error) => {
         // DEBUG
         // TODO: Remove this DEBUG statement
