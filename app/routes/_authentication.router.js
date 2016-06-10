@@ -98,8 +98,8 @@ export default (app, router, passport, auth, admin) => {
       // If no user is returned...
       if (!user) {
 
-        // Set HTTP status code `401 Unauthorized`
-        res.status(401);
+        // Set HTTP status code `409 Conflict`
+        res.status(409);
 
         // Return the info message
         return next(info.signupMessage);
