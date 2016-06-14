@@ -35,6 +35,8 @@ import { RegisterComponent } from './register/register.component';
 
 import { LoginComponent } from './login/login.component';
 
+import { ChatComponent } from './chat';
+
 /*
  * App Component
  * Top Level Component
@@ -44,7 +46,8 @@ import { LoginComponent } from './login/login.component';
   providers: [  ],
   directives: [ Todo,
                 NgFor,
-                RouterActive ],
+                RouterActive,
+                ChatComponent ],
   encapsulation: ViewEncapsulation.None,
   pipes: [],
   // Load our main `Sass` file into our `app` `component`
@@ -78,6 +81,8 @@ import { LoginComponent } from './login/login.component';
       </md-progress-bar>
 
       <router-outlet></router-outlet>
+
+      <vu-chat></vu-chat>
 
       <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
 
