@@ -48,10 +48,10 @@ module.exports = {
   // See: http://webpack.github.io/docs/configuration.html#entry
   entry: {
 
-    'polyfills': './src/polyfills.ts',
-    'vendor': './src/vendor.ts',
+    'polyfills': './src/client/polyfills.ts',
+    'vendor': './src/client/vendor.ts',
     // Our primary Angular 2 application
-    'main': './src/main.browser.ts',
+    'main': './src/client/main.browser.ts',
 
   },
 
@@ -66,7 +66,7 @@ module.exports = {
     extensions: ['', '.ts', '.js', '.scss'],
 
     // Ensure that root is `src`
-    root: helpers.root('src'),
+    root: helpers.root('src/client'),
 
     // Remove other default values
     modulesDirectories: ['node_modules'],
@@ -150,7 +150,7 @@ module.exports = {
       {
         test: /\.html$/,
         loader: 'raw-loader',
-        exclude: [helpers.root('src/index.html')]
+        exclude: [helpers.root('src/client/index.html')]
       },
 
       // Support for sass imports
@@ -202,7 +202,7 @@ module.exports = {
     //
     // See: https://www.npmjs.com/package/copy-webpack-plugin
     new CopyWebpackPlugin([{
-      from: 'src/assets',
+      from: 'src/client/assets',
       to: 'assets'
     }]),
 
@@ -213,7 +213,7 @@ module.exports = {
     //
     // See: https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'src/client/index.html',
       chunksSortMode: 'dependency'
     })
 
