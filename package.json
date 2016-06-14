@@ -43,9 +43,8 @@
       "build:prod": "webpack --config config/webpack.prod.config.js --progress --profile --colors --display-error-details --display-cached --bail",
 
     "server": "npm run server:dev",
-      "server:dev": "webpack-dev-server --inline --progress --profile --colors --watch --display-error-details --display-cached  --content-base src/",
+      "server:dev": "webpack-dev-server --inline --progress --profile --colors --watch --display-error-details --display-cached  --content-base src/client/",
       "server:dev:hmr": "npm run server:dev -- --hot",
-      "server:prod": "./node_modules/.bin/http-server dist --cors",
 
     "webdriver:update": "npm run webdriver-manager update",
     "webdriver:start": "npm run webdriver-manager start",
