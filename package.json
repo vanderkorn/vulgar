@@ -10,7 +10,7 @@
     "express",
     "mongodb"
   ],
-  "author": "David Newman <blackshuriken@hotmail.com>",
+  "author": "David Newman <david.r.niciforovic@gmail.com>",
   "homepage": "https://github.com/datatypevoid/vulgar",
   "license": "MIT",
   "scripts": {
