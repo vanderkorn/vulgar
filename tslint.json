@@ -132,7 +132,6 @@
       "check-operator",
       "check-separator",
       "check-type"
-    ],
-    "import-destructuring-spacing": true
+    ]
   }
 }

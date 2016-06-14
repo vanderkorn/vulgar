@@ -10,7 +10,7 @@
     "express",
     "mongodb"
   ],
-  "author": "David Newman <blackshuriken@hotmail.com>",
+  "author": "David Newman <david.r.niciforovic@gmail.com>",
   "homepage": "https://github.com/datatypevoid/vulgar",
   "license": "MIT",
   "scripts": {
@@ -43,9 +43,8 @@
       "build:prod": "webpack --config config/webpack.prod.config.js --progress --profile --colors --display-error-details --display-cached --bail",
 
     "server": "npm run server:dev",
-      "server:dev": "webpack-dev-server --inline --progress --profile --colors --watch --display-error-details --display-cached  --content-base src/",
+      "server:dev": "webpack-dev-server --inline --progress --profile --colors --watch --display-error-details --display-cached  --content-base src/client/",
       "server:dev:hmr": "npm run server:dev -- --hot",
-      "server:prod": "./node_modules/.bin/http-server dist --cors",
 
     "webdriver:update": "npm run webdriver-manager update",
     "webdriver:start": "npm run webdriver-manager start",
@@ -53,6 +52,8 @@
     "fix:line-endings": "find . \\( -type f -and -not -path '*/node_modules/*' \\) -exec dos2unix {} \\;",
 
     "lint": "npm run tslint src/**/*.ts",
+    "lint:client": "npm run tslint src/client/**/*.ts",
+    "lint:server": "npm run tslint src/server/**/*.ts",
 
       "pree2e": "npm run webdriver:update -- --standalone",
     "e2e": "npm run protractor",
@@ -115,6 +116,8 @@
     "rxjs": "5.0.0-beta.6",
     "socket.io": "^1.4.6",
     "source-map-support": "^0.4.0",
+    "typescript": "~1.8.9",
+    "typings": "~1.0.3",
     "zone.js": "~0.6.12"
   },
   "devDependencies": {
@@ -179,8 +182,6 @@
     "tslint": "^3.7.1",
     "tslint-loader": "^2.1.3",
     "typedoc": "^0.3.12",
-    "typescript": "~1.8.9",
-    "typings": "~1.0.3",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
