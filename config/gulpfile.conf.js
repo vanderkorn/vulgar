@@ -32,10 +32,58 @@ let deepmerge = DeepMerge((target, source, key) => {
   return source;
 });
 
+// Webpack Plugins
+const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+
 // Define `webpack` default configuration object
 let defaultConfig = {
+  resolve: {
+
+    // Remove other default values
+    modulesDirectories: ['node_modules'],
+
+    // An array of extensions that should be used to resolve modules.
+    //
+    // See: http://webpack.github.io/docs/configuration.html#resolve-extensions
+    extensions: ['', '.ts', '.js', '.json']
+  },
   module: {
+
+    // An array of applied pre and post loaders.
+    //
+    // See: http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
+    preLoaders: [
+
+      // Tslint loader support for *.ts files
+      //
+      // See: https://github.com/wbuchwalter/tslint-loader
+      // { test: /\.ts$/, loader: 'tslint-loader', exclude: [ helpers.root('node_modules') ] },
+
+      // Source map loader support for *.js files
+      // Extracts SourceMaps for source files that as added as sourceMappingURL comment.
+      //
+      // See: https://github.com/webpack/source-map-loader
+      {
+        test: /\.js$/,
+        loader: 'source-map-loader',
+        exclude: [
+          // these packages have problems with their sourcemaps
+          helpers.root('node_modules/rxjs')
+        ]
+      }
+
+    ],
     loaders: [
+
+      // Typescript loader support for .ts and Angular 2 async routes via .async.ts
+      //
+      // See: https://github.com/s-panferov/awesome-typescript-loader
+      {
+        test: /\.ts$/,
+        loader: 'awesome-typescript-loader',
+        exclude: [/\.(spec|e2e)\.ts$/]
+      },
+
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -49,7 +97,26 @@ let defaultConfig = {
         loader: 'json-loader'
       }
     ]
-  }
+  },
+  // Add additional plugins to the compiler.
+  //
+  // See: http://webpack.github.io/docs/configuration.html#plugins
+  plugins: [
+
+    // Plugin: ForkCheckerPlugin
+    // Description: Do type checking in a separate process, so webpack don't need to wait.
+    //
+    // See: https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
+    new ForkCheckerPlugin(),
+
+    // Plugin: OccurenceOrderPlugin
+    // Description: Varies the distribution of the ids to get the smallest id length
+    // for often used ids.
+    //
+    // See: https://webpack.github.io/docs/list-of-plugins.html#occurrenceorderplugin
+    // See: https://github.com/webpack/docs/wiki/optimization#minimize
+    new webpack.optimize.OccurenceOrderPlugin(true)
+  ],
 };
 
 if(process.env.NODE_ENV !== 'production') {
@@ -81,7 +148,7 @@ fs.readdirSync('node_modules')
 
 let backendConfig = config({
   entry: [
-    './server.js'
+    './src/server/server.conf.ts'
   ],
   target: 'node',
   output: {
