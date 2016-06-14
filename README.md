@@ -6,7 +6,7 @@
 
 ## MEAN Stack Development Starter
 
-> A MEAN stack development kit featuring [Angular 2](https://angular.io) ([Router](https://angular.io/docs/js/latest/api/router/), [Forms](https://angular.io/docs/js/latest/api/forms/), [Http](https://angular.io/docs/js/latest/api/http/), [Services](https://gist.github.com/gdi2290/634101fec1671ee12b3e#_follow_@AngularClass_on_twitter), [Tests](https://angular.io/docs/js/latest/api/test/), [E2E](https://angular.github.io/protractor/#/faq#what-s-the-difference-between-karma-and-protractor-when-do-i-use-which-)), [Express](http://expressjs.com/), [MongoDB](https://www.mongodb.org/) (complete with [Mongoose](https://www.mongoosejs.org/)), [Node](https://www.nodejs.org/), [Redux](https://egghead.io/series/getting-started-with-redux), [@ngrx/store](https://github.com/ngrx/store) [PassportJS](https://www.passportjs.org/), [Socket.IO](https://www.socket.io/), [Karma](https://karma-runner.github.io/), [Protractor](https://angular.github.io/protractor/), [Jasmine](https://github.com/jasmine/jasmine), [Istanbul](https://github.com/gotwarlost/istanbul), [Configuration](#configuration), [TypeScript](http://www.typescriptlang.org/), [Typings](https://github.com/typings/typings), [Sass](https://sass-lang.com), [Docco](https://jashkenas.github.io/docco/), [TsLint](http://palantir.github.io/tslint/), [Codelyzer](https://github.com/mgechev/codelyzer), [Hot Module Replacement](https://webpack.github.io/docs/hot-module-replacement-with-webpack.html), [Material](https://github.com/angular/material2), and [Webpack](http://webpack.github.io/), as well as ES6/ES7 support for the back-end by [datatype_void](https://twitter.com/datatype_void).
+> A MEAN stack development kit featuring [Angular 2](https://angular.io) ([Router](https://angular.io/docs/js/latest/api/router/), [Forms](https://angular.io/docs/js/latest/api/forms/), [Http](https://angular.io/docs/js/latest/api/http/), [Services](https://gist.github.com/gdi2290/634101fec1671ee12b3e#_follow_@AngularClass_on_twitter), [Tests](https://angular.io/docs/js/latest/api/test/), [E2E](https://angular.github.io/protractor/#/faq#what-s-the-difference-between-karma-and-protractor-when-do-i-use-which-)), [Express](http://expressjs.com/), [MongoDB](https://www.mongodb.org/) (complete with [Mongoose](https://www.mongoosejs.org/)), [Node](https://www.nodejs.org/), [Redux](https://egghead.io/series/getting-started-with-redux), [@ngrx/store](https://github.com/ngrx/store) [PassportJS](https://www.passportjs.org/), [Socket.IO](https://www.socket.io/), [Karma](https://karma-runner.github.io/), [Protractor](https://angular.github.io/protractor/), [Jasmine](https://github.com/jasmine/jasmine), [Istanbul](https://github.com/gotwarlost/istanbul), [Configuration](#configuration), [TypeScript](http://www.typescriptlang.org/), [Typings](https://github.com/typings/typings), [Sass](https://sass-lang.com), [Docco](https://jashkenas.github.io/docco/), [TsLint](http://palantir.github.io/tslint/), [Codelyzer](https://github.com/mgechev/codelyzer), [Hot Module Replacement](https://webpack.github.io/docs/hot-module-replacement-with-webpack.html), [Material](https://github.com/angular/material2), and [Webpack](http://webpack.github.io/) by [datatype_void](https://twitter.com/datatype_void).
 
 > Walk through a complete tutorial that shows you how to build a simple todo app using this framework, check out [Building A Single Page Todo App with MEAN--Including Angular 2](http://www.davidniciforovic.com/2016/02/03/building-a-single-page-todo-app-with-mean-including-angular-2/)
 
@@ -18,28 +18,26 @@
 
 > And always keep the [Angular 2 docs](https://angular.io/docs/ts/latest/) at hand, because the times are always changing
 
-This seed repo serves as an MEAN starter for anyone looking to get a MEAN fullstack app up and running with Angular 2, TypeScript(on the front-end), and ES6/ES7 (on the back-end) fast. Using [Webpack](http://webpack.github.io/) for building our files and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.
+This seed repo serves as an MEAN starter for anyone looking to get a full stack single-page application up and running with `Angular 2`, `MongoDB`, `ExpressJS`, `Node`, `Socket.io` using TypeScript across the stack. [Webpack](http://webpack.github.io/) is used for automating our build process and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.
 
-- Best practices in file and application organization for Angular 2.
-- Ready to go build system using Webpack for working with TypeScript.
-- Hot module reloading for the front-end à la Webpack.
-- Server code transpiled via Babel and bundled with Webpack
-- Angular 2 examples that are ready to go when experimenting with Angular 2.
+- Best practices in file and application organization for `Angular 2`.
+- Ready-to-go full stack build system using `Webpack` for working with `TypeScript`.
+- Hot module reloading for the front-end à la `Webpack`.
+- Full-stack examples that are ready to go when experimenting with `Angular 2`.
 - A great MEAN seed repo for anyone who wants to start their project.
-- Testing Angular 2 code with Jasmine and Karma.
-- Coverage with Istanbul and Karma
-- End-to-end Angular 2 code using Protractor.
-- Type manager with Typings
+- Testing `Angular 2` code with `Jasmine` and `Karma`.
+- Coverage with `Istanbul` and `Karma`
+- End-to-end `Angular 2` code using `Protractor`.
+- Type management with `Typings`
 - Material Design with [angular/material2](https://github.com/angular/material2)
-- Sass preprocessor linting and compiling
-- Automatic documentation for all project related Sass, TypeScript, and JavaScript files with Docco; front-end and back-end
+- `Sass` preprocessor linting and compiling
+- Documentation generation across the stack using `Docco`/`TypeDoc`
 
 The rest of the stack features:
 
-- [Express](https://www.expressjs.com/) ready for ES6/ES7 code through transpiling with [Babel 6](https://babeljs.io/),
+- [Express](https://www.expressjs.com/) for creating robust `API`s,
 - [Socket.io](https://www.socket.io/) for real time event-based communication.
-- [Mongoose](https://www.mongoosejs.com/) for modeling [MongoDB](https://www.mongodb.org) objects within [NodeJS](https://nodejs.org).
-- Support for the [Sass](https://sass-lang.com) CSS preprocessor.
+- [Mongoose](https://www.mongoosejs.com/) for modeling [MongoDB](https://www.mongodb.org) objects within the [NodeJS](https://nodejs.org) environment.
 
 ## Quick start
 
@@ -62,7 +60,7 @@ $ vulgar init <nameOfApplication>
 $ cd <nameOfApplication>
 
 # add required global libraries
-$ npm install -g typings webpack webpack-dev-server concurrently
+$ npm install -g typings webpack webpack-dev-server concurrently rimraf
 
 # install the repo with npm
 # required only if you declined automated dependency installation
@@ -114,7 +112,7 @@ go to <http://0.0.0.0:8080> or <http://localhost:8080> in your browser
 
 ## File Structure
 
-We use the component approach in our starter. This is the new standard for developing Angular apps and a great way to ensure maintainable code by encapsulation of our behavior logic. A component is basically a self contained app usually in a single file or a folder with each concern as a file: style, template, specs, e2e, and component class. Here's how it looks:
+We use a modular component approach in our starter. This is the new standard for developing not only Angular apps, but modular components across the stack--and a great way to ensure maintainable code by encapsulation of our behavior logic. A component is basically a self contained app usually in a single file or a folder with each concern as a file: style, template, specs, e2e, and component class. Here's how it looks:
 
 ```
 vulgar/
@@ -264,7 +262,7 @@ vulgar/
 - _Node.js_ - [Download](http://nodejs.org/download/) and Install Node.js, nodeschool has free [node tutorials](http://nodeschool.io/#workshoppers) to get you started.
 - _MongoDB_ - [Download](https://www.mongodb.org/downloads) and Install mongodb - [Checkout their manual](https://docs.mongodb.org/manual/) if you're just starting.
 
-If you're using ubuntu, this is the preferred repository to use...
+If you're using `ubuntu`, this is the preferred repository to use...
 
 ```bash
 $ curl -sL https://deb.nodesource.com/setup | sudo bash -
@@ -319,9 +317,13 @@ The `server.conf.js` file is expecting certain `environment` `variables` to be s
 ```
 {
   "ENV" : "development",
+  # Whether or not to enable cluster forking
+  "MULTITHREADING": true,
   # MAKE SURE PORT IS NOT 8080 OR WHATEVER THE WEBPACK
   # DEV SERVER PORT IS SET TO
   "PORT" : 3000,
+  # Socket.io Port
+  "SOCKET_PORT" : 3001,
   "MONGO_URI" : {
     "DEVELOPMENT" : "mongodb://[username:password]@host[:port]",
     "PRODUCTION" : "mongodb://[username:password]@host[:port]",
@@ -343,7 +345,11 @@ This object is not absolutely required. You can pass these values in however you
 
 ## Running the app
 
-After you have installed all dependencies and modified your `config.json` file, you can now run the app. First, you must start up the back-end server in a separate terminal using the `gulp serve` command. This will use `Babel` to transpile our server code, bundle it, and recompile on any changes. This is all courtesy of `webpack`. In addition, `nodemon` is hooked into to restart the server whenever file changes are detected. Next use the `npm start` command in the original terminal which runs two `npm` scripts in parallel: `npm run server` to start `webpack-dev-server` for building our front-end in the computer's memory, enabling hot module reloading; `npm run watch` to watch all of the front-end files and build them upon changes. You can now fire up your favorite web browser and visit the running application at `localhost:8080`!
+After you have installed all dependencies and modified your `config.json` file, you can now run the app. First, you must start up the back-end server in a separate terminal using the `gulp serve` command. This will transpile our server `TypeScript` code, bundle it, and recompile on any changes. This is all courtesy of `webpack`. In addition, `nodemon` is hooked into to restart the server whenever file changes are detected. Next use the `npm start` command in the original terminal which runs two `npm` scripts in parallel: `npm run server` to start `webpack-dev-server` for building our front-end in the computer's memory, enabling hot module reloading; `npm run watch` to watch all of the front-end files and build them upon changes. You can now fire up your favorite web browser and visit the running application at `localhost:8080`!
+
+### A Quick Note About `webpack-dev-server`
+
+If you were paying attention you may have noticed that we set our `PORT` constant to `3000` in our `config.json` object, yet we connect to `8080` in the browser. This is because requests must be proxied between the client and server when using `webpack-dev-server`. If we run our server without `webpack-dev-server` for hot module reloading, we would connect to `localhost:3000` instead. This goes for `production` environments as well.
 
 ### server
 
@@ -355,9 +361,6 @@ $ npm start
 # use `Gulp` in a second terminal to run the Express
 # app responsible for our back-end
 $ gulp serve
-# optionally use `Gulp` in a third terminal to auto
-# generate documentation and lint `Sass`
-$ gulp
 
 # production
 $ npm run build:prod
@@ -366,7 +369,7 @@ $ npm run server:prod
 
 ## Other commands
 
-### transpile/bundle/recompile server code
+### transpile/bundle/recompile server code with `webpack`
 
 ### restart server on file change
 
@@ -528,7 +531,7 @@ You can include your type definitions in this file until you create one for the 
 
 # Frequently asked questions
 
-- What's the current browser support for Angular 2 Beta?
+- What's the current browser support for Angular 2 RC 1?
 
   - Please view the updated list of [browser support for Angular 2](https://github.com/angularclass/awesome-angular2#current-browser-support-for-angular-2)
 
@@ -546,7 +549,7 @@ You can include your type definitions in this file until you create one for the 
 
 - How do I start the app when I get `EACCES` and `EADDRINUSE` errors?
 
-  - The `EADDRINUSE` error means the port `8080` is currently being used and `EACCES` is lack of permission for webpack to build files to `./dist/`
+  - The `EADDRINUSE` error means one of the port configurations is currently being used and `EACCES` is lack of permission for webpack to build files to `./dist/`
 
 - How to use `sass` for css?
 
@@ -615,8 +618,7 @@ You can include your type definitions in this file until you create one for the 
 
 enjoy -- **Da5id**
 
-<br>
-<br>
+<br><br>
 
 > Looking for corporate Angular/MEAN training, want to host us, or Angular/MEAN consulting? david.r.niciforovic@gmail.com
 
