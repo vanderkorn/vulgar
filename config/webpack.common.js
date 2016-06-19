@@ -11,7 +11,7 @@ var helpers = require('./helpers');
 var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), CopyWebpackPlugin.default || CopyWebpackPlugin);
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
-const HtmlElementsPlugin = require('./html-elements.util.js');
+const HtmlElementsPlugin = require('./modules/html-elements.util.js');
 
 //# Webpack Constants
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
