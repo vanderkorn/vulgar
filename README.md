@@ -60,7 +60,7 @@ $ vulgar init <nameOfApplication>
 $ cd <nameOfApplication>
 
 # add required global libraries
-$ npm install -g typings gulp-cli webpack webpack-dev-server concurrently rimraf
+$ npm install -g typings gulp-cli webpack webpack-dev-server concurrently rimraf mocha typescript protractor karma
 
 # install the repo with npm
 # required only if you declined automated dependency installation
@@ -288,7 +288,7 @@ or use [Node Version Manager](https://github.com/creationix/nvm) to easily manag
 
 ## Dependencies
 
-Once you have those, you should install these globals with `npm install --global`:
+Once you have those, you should install these global dependencies with `npm install --global`:
 
 - `webpack` (`$ npm install --global webpack`)
 - `webpack-dev-server` (`$ npm install --global webpack-dev-server`)
@@ -303,8 +303,7 @@ Once you have those, you should install these globals with `npm install --global
 ## Installing
 
 - `$ npm install -g vulgar-cli generator-vulgar`
-- `$ vulgar init` to install a new instance of the v#!g@r `MEAN` stack framework
-- `$ npm install -g typings webpack webpack-dev-server concurrently rimraf` to install global dependencies
+- `$ vulgar init` to install a new instance of the v#!g@r seed
 - `$ npm install` to install all local dependencies
 - `$ typings install` to install necessary typings
 - `$ npm run build` to build necessary front-end code with Webpack
@@ -625,8 +624,7 @@ You can include your type definitions in this file until you create one for the 
 
 enjoy -- **Da5id**
 
-<br>
-<br>
+<br><br>
 
 > Looking for corporate Angular/MEAN training, want to host us, or Angular/MEAN consulting? david.r.niciforovic@gmail.com
 
