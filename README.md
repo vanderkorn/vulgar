@@ -72,6 +72,10 @@ $ npm run build
 
 # start up the stack
 
+# fire up MongoDB in a separate terminal
+# alternatively, consider a hosted solution such as https://modulus.io or https://mlab.com
+$ mongod
+
 # this command runs two commands in parallel via `concurrently`:
 # `npm run server` starts up `webpack-dev-server` allowing for
 # hot module reloading
@@ -306,6 +310,7 @@ Once you have those, you should install these global dependencies with `npm inst
 - `$ vulgar init` to install a new instance of the v#!g@r seed
 - `$ npm install` to install all local dependencies
 - `$ typings install` to install necessary typings
+- `$ mongod` in a separate terminal, to fire up MongoDB
 - `$ npm run build` to build necessary front-end code with Webpack
 - `$ npm start` to enable hot module reloading and build on file change
 - In a new terminal, `gulp serve` to transpile, bundle, and serve our backend on file change
