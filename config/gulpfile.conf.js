@@ -12,17 +12,21 @@ let helpers = require('./helpers');
 
 // Import gulp packages
 import gulp from 'gulp';
-import gutil from 'gulp-util';
-import rename from 'gulp-rename';
 import nodemon from 'nodemon';
 import docco from 'gulp-docco';
 import scsslint from 'gulp-scss-lint';
 import path from 'path';
 import fs from 'fs';
 import del from 'del';
-import globby from 'globby';
 import webpack from 'webpack';
 import DeepMerge from 'deep-merge';
+
+// Define file globs to generate documentation with
+let globs = {
+  js: ['src/server/**/*.js', 'config/**/*.js'],
+  ts: ['src/client/**/*.ts', 'config/**/*.ts'],
+  sass: ['src/client/**/*.scss']
+};
 
 // Create a deep merging function for recursively merging objects, which
 // allows us to override the default config.
@@ -169,23 +173,8 @@ let backendConfig = config({
   ]
 });
 
-// Define `JavaScript` files to watch/ignore
-let jsGlob = ['**/*.js', '!{node_modules,node_modules/**}', '!{docs,doc/**}',
-  '!{dist,dist/**}', '!{coverage,coverage/**}', '!src/{res,res/**}',
-  '!config/env.conf.js'];
-
-// Define `TypeScript` files to watch/ignore
-let tsGlob = ['**/*.ts', '!{node_modules,node_modules/**}', '!{docs,doc/**}',
-  '!{dist,dist/**}', '!{coverage,coverage/**}', '!src/{res,res/**}'];
-
-// Define `Sass` files to watch/ignore
-let scssGlob = ['**/*.scss', '!{node_modules,node_modules/**}',
-  '!{dist,dist/**}', '!{docs,doc/**}', '!{coverage,coverage/**}', '!src/{res,res/**}'];
-
-// Create the default task and watch all neccessary files for automatic
-// documentation generation as well as lint all `sass` styles.
-gulp.task('default', ['watch:docs',
-                      'watch:sass']);
+// Create the default task which is just a wrapper for the `serve` task
+gulp.task('default', ['serve']);
 
 // Webpack Tasks
 
@@ -239,45 +228,23 @@ gulp.task('serve', ['watch:server'], () => {
   });
 });
 
+// Lint `Sass` files
+gulp.task('lint:sass', () => {
+  return gulp.src(globs.sass)
+    .pipe(scsslint());
+});
+
 // Watch `Sass` files for changes and lint
 gulp.task('watch:sass', () => {
-
-  gulp.watch(scssGlob, function (event) {
+  gulp.watch(globs.sass, function (event) {
     return gulp.src(event.path)
       .pipe(scsslint());
   });
 });
 
+// Clean out `docs` directory, and generate documentation
+// for `.js` and `.scss` files using `docco`
 gulp.task('build:docs', ['clean:docs'], () => {
-
-  // Take a file `glob` pattern and a file extension matching
-  // the extension of the files you are trying to generate
-  // documentation for
-  function generateDocs(fileSrc, ext) {
-
-    console.log(ext);
-
-    if(ext == '') {
-
-      throw new Error('Extension must be passed in for documentation to be generated properly!')
-    }
-    return gulp.src(fileSrc)
-      .pipe(docco())
-      .pipe(gulp.dest(`docs/${ext}`));
-  }
-
-  generateDocs(jsGlob, '.js');
-
-  generateDocs(tsGlob, '.ts');
-
-  generateDocs(scssGlob, '.scss');
-
-});
-
-// Create documentation for Javascript, Typescript, and Sass files
-// on the fly
-gulp.task('watch:docs', ['clean:docs'], () => {
-
   // For `gulp-docco` if the need arises
   //  Default configuration options. All of these may be extended by user-specified options.
   //
@@ -299,7 +266,7 @@ gulp.task('watch:docs', ['clean:docs'], () => {
   //    .pipe(gulp.dest('./documentation-output'))
   //
   // Reference: https://www.npmjs.com/package/gulp-docco
-  //  Also see: https://jashkenas.github.io/docco/
+  // Also see: https://jashkenas.github.io/docco/
   //
   let options = {
     layout:     'parallel',
@@ -309,68 +276,38 @@ gulp.task('watch:docs', ['clean:docs'], () => {
     extension:   null,
     languages:   {},
     marked:      null
+  };
+
+  // Take a file `glob` pattern and a file extension matching
+  // the extension of the files you are trying to generate
+  // documentation for
+  function generateDocs(fileSrc, dest) {
+    if(!dest) {
+      throw new Error('Destination must be passed in for documentation to be ' +
+                      'generated properly!');
+    }
+
+    console.log('Generating documentation...');
+
+    return gulp.src(fileSrc)
+      .pipe(docco())
+      .pipe(gulp.dest(`docs/${dest}`));
   }
 
-  // Alert the user whenever changes have been detected and documentation
-  // generation is occurring
-  function generateUserAlert(ext) {
+  generateDocs(globs.sass, 'src/client');
 
-    switch(ext) {
-
-        case '.js':
-          console.log('A JavaScript file has changed; documentation will now be generated...');
-
-          break;
-
-        case '.scss':
-          console.log('A Sass file has changed; documentation will now be generated...');
-
-          break;
-
-        case '.ts':
-          console.log('A TypeScript file has changed; documentation will now be generated...');
-
-          break;
-
-        default:
-          console.log('Generating appropriate folders and styles...');
-
-          break;
-      }
-
-      return;
-  }
-
-  // Watch files specified and generate the documentation
-  // whenever changes are detected.
-  function generateDocs(fileSrc) {
-    gulp.watch(fileSrc, function (event, ext = path.extname(event.path)) {
-
-      generateUserAlert(ext);
-
-      // Ignore docs, bower_components and node_modules
-      return gulp.src(fileSrc)
-        .pipe(docco())
-        .pipe(gulp.dest(`docs/${ext}`))
-        .on('error', gutil.log);
-    });
-  }
-
-  // Generate documentation for files specified in `glob` vars at top
-  // of file
-  generateDocs(jsGlob);
-
-  generateDocs(tsGlob);
-
-  generateDocs(scssGlob);
+  console.log('Documentation generation complete!');
+  console.log('Generated documentation is stored in \'src/docs/\'.');
 });
 
 // Use the 'del' module to clear all traces of documentation
 // Useful before regenerating documentation
 gulp.task('clean:docs', (callback) => {
-  del(['./docs']).then(function (paths) {
+  console.log('Cleaning documentation...');
+  del(['./docs']).then((paths) => {
+    console.log('Documentation successfully deleted!');
     callback(); // ok
-  }, function (reason) {
-    callback('Failed to delete files: ' + reason); // fail
+  }, (reason) => {
+    callback(`Failed to delete files: ${reason}`); // fail
   });
 });

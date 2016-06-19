@@ -395,10 +395,16 @@ $ gulp watch:server
 $ gulp build:docs
 ```
 
-### watch and build documentation
+### clean documentation
 
 ```bash
-$ gulp watch:docs
+$ gulp clean:docs
+```
+
+### lint sass
+
+```bash
+$ gulp lint:sass
 ```
 
 ### watch and lint sass
