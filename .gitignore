@@ -51,8 +51,8 @@ npm-debug.log
 /coverage/
 
 # Typing #
-/src/typings/tsd/
-/src/typings/
+/typings/tsd/
+/typings/
 /tsd_typings/
 
 # Dist #
