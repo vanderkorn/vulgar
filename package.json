@@ -23,7 +23,7 @@
     "webdriver-manager": "webdriver-manager",
     "protractor": "protractor",
 
-    "clean": "npm cache clean && npm run rimraf -- node_modules doc typings coverage dist",
+    "clean": "npm cache clean && npm run rimraf -- node_modules docs typings coverage dist",
       "clean:dist": "npm run rimraf -- dist/client",
         "preclean:install": "npm run clean",
       "clean:install": "npm set progress=false && npm install",
