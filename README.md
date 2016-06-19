@@ -514,7 +514,7 @@ $ npm install --global typings
 When including 3rd party modules you also need to include the type definition for the module if they don't provide one within the module. You can try to install it with typings
 
 ```
-$ typings install node --save
+$ typings install dt~node --save --global
 ```
 
 If you can't find the type definition in the registry we can make an ambient definition in this file for now. For example
@@ -529,6 +529,8 @@ If you're prototyping and you will fix the types later you can also declare it a
 
 ```typescript
 declare var assert: any;
+declare var _: any;
+declare var $: any;
 ```
 
 If you're importing a module that uses Node.js modules which are CommonJS you need to import as
@@ -628,7 +630,8 @@ You can include your type definitions in this file until you create one for the 
 
 enjoy -- **Da5id**
 
-<br><br>
+<br>
+<br>
 
 > Looking for corporate Angular/MEAN training, want to host us, or Angular/MEAN consulting? david.r.niciforovic@gmail.com
 
