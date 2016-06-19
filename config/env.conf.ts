@@ -41,7 +41,7 @@ export function validateEnvVariables() {
     process.env.PORT = config.PORT;
 
   if(!process.env.SOCKET_PORT)
-    process.env.MULTITHREADING = config.SOCKET_PORT;
+    process.env.SOCKET_PORT = config.SOCKET_PORT;
 
   // Set the appropriate MongoDB URI
   validateMongoUri();
