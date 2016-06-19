@@ -9,7 +9,7 @@ var helpers = require('./helpers');
 
 //# Webpack Plugins
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('webpack-shell-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const HtmlElementsPlugin = require('./modules/html-elements.util.js');
 
@@ -64,7 +64,7 @@ module.exports = {
     // An array of extensions that should be used to resolve modules.
     //
     // See: http://webpack.github.io/docs/configuration.html#resolve-extensions
-    extensions: ['', '.ts', '.js', '.scss'],
+    extensions: ['', '.ts', '.js', '.json', '.scss'],
 
     // Ensure that root is `src`
     root: helpers.root('src/client'),
@@ -104,7 +104,8 @@ module.exports = {
           // these packages have problems with their sourcemaps
           helpers.root('node_modules/rxjs'),
           helpers.root('node_modules/@angular2-material'),
-          helpers.root('node_modules/@angular')
+          helpers.root('node_modules/@angular'),
+          helpers.root('node_modules/@ngrx')
         ]
       }
 
@@ -135,13 +136,14 @@ module.exports = {
         loader: 'json-loader'
       },
 
-      // Raw loader support for *.css files
+      // To string and CSS loader support for *.css files
       // Returns file content as string
       //
-      // See: https://github.com/webpack/raw-loader
+      // See: https://github.com/gajus/to-string-loader
+      // See: https://github.com/webpack/css-loader
       {
         test: /\.css$/,
-        loader: 'raw-loader'
+        loaders: ['to-string-loader', 'css-loader']
       },
 
       // Raw loader support for *.html

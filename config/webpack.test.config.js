@@ -96,14 +96,16 @@ module.exports = {
         test: /\.html$/,
         loader: 'raw-loader',
         exclude: [ helpers.root('src/index.html') ] },
+
       // Raw loader support for *.css files
       // Returns file content as string
       //
-      // See: https://github.com/webpack/raw-loader
+      // See: https://github.com/gajus/to-string-loader
+      // See: https://github.com/webpack/css-loader
       {
         test: /\.css$/,
-        loader: 'raw-loader',
-        exclude: [ helpers.root('src/index.html') ] },
+        loaders: ['to-string-loader', 'css-loader'],
+        exclude: [helpers.root('src/index.html')] },
       // Support for sass imports
       // Add CSS rules to your document:
       // `require("!style!css!sass!./file.scss");`
