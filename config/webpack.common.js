@@ -11,6 +11,7 @@ var helpers = require('./helpers');
 var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), CopyWebpackPlugin.default || CopyWebpackPlugin);
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const HtmlElementsPlugin = require('./html-elements.util.js');
 
 //# Webpack Constants
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
@@ -215,6 +216,32 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/client/index.html',
       chunksSortMode: 'dependency'
+    }),
+
+    //
+    // Plugin: HtmlHeadConfigPlugin
+    // Description: Generate html tags based on javascript maps.
+    //
+    // If a publicPath is set in the webpack output configuration, it will be automatically added to
+    // href attributes, you can disable that by adding a "=href": false property.
+    // You can also enable it to other attribute by settings "=attName": true.
+    //
+    // The configuration supplied is map between a location (key) and an element definition object (value)
+    // The location (key) is then exported to the template under then htmlElements property in webpack configuration.
+    //
+    // Example:
+    //  Adding this plugin configuration
+    //  new HtmlElementsPlugin({
+    //    headTags: { ... }
+    //  })
+    //
+    //  Means we can use it in the template like this:
+    //  <%= webpackConfig.htmlElements.headTags %>
+    //
+    // Dependencies: HtmlWebpackPlugin
+    //
+    new HtmlElementsPlugin({
+      headTags: require('./head.conf')
     })
 
   ],
