@@ -2,7 +2,9 @@
 import {enableProdMode} from '@angular/core';
 
 // Environment Providers
-var PROVIDERS = [];
+let PROVIDERS = [
+  // Common environment providers
+];
 
 if ('production' === ENV) {
   // Production
@@ -10,12 +12,14 @@ if ('production' === ENV) {
 
   PROVIDERS = [
     ...PROVIDERS
+    // Custom providers in `production`
   ];
 
 } else {
   // Development
   PROVIDERS = [
     ...PROVIDERS
+    // Custom providers in `development`
   ];
 
 }
