@@ -60,7 +60,7 @@ $ vulgar init <nameOfApplication>
 $ cd <nameOfApplication>
 
 # add required global libraries
-$ npm install -g typings webpack webpack-dev-server concurrently rimraf
+$ npm install -g typings gulp-cli webpack webpack-dev-server concurrently rimraf
 
 # install the repo with npm
 # required only if you declined automated dependency installation
@@ -292,6 +292,7 @@ Once you have those, you should install these globals with `npm install --global
 
 - `webpack` (`$ npm install --global webpack`)
 - `webpack-dev-server` (`$ npm install --global webpack-dev-server`)
+- `gulp-cli` (`$ npm install --global gulp-cli`)
 - `karma` (`$ npm install --global karma-cli`)
 - `protractor` (`$ npm install --global protractor`)
 - `typings` (`$ npm install --global typings`)
@@ -624,7 +625,8 @@ You can include your type definitions in this file until you create one for the 
 
 enjoy -- **Da5id**
 
-<br><br>
+<br>
+<br>
 
 > Looking for corporate Angular/MEAN training, want to host us, or Angular/MEAN consulting? david.r.niciforovic@gmail.com
 
