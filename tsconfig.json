@@ -8,19 +8,7 @@
     "noEmitHelpers": false
   },
   "exclude": [
-    "./node_modules",
-    "./typings/main.d.ts",
-    "./typings/main"
-  ],
-  "filesGlob": [
-    "./src/server/server.conf.ts",
-    "./src/server/sockets/**/*.ts",
-    "./config/**/*.ts",
-    "./src/server/**/*.*",
-    "./src/client/app/**/*.ts",
-    "./src/client/platform/**/*.ts",
-    "./src/client/custom-typings.d.ts",
-    "./src/typings/index.d.ts"
+    "node_modules"
   ],
   "awesomeTypescriptLoaderOptions": {
     "resolveGlobs": true,
