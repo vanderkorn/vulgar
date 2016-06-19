@@ -51,9 +51,9 @@
 
     "fix:line-endings": "find . \\( -type f -and -not -path '*/node_modules/*' \\) -exec dos2unix {} \\;",
 
-    "lint": "npm run tslint src/**/*.ts",
-    "lint:client": "npm run tslint src/client/**/*.ts",
-    "lint:server": "npm run tslint src/server/**/*.ts",
+    "lint": "npm run tslint \"src/**/*.ts\"",
+    "lint:client": "npm run tslint \"src/client/**/*.ts\"",
+    "lint:server": "npm run tslint \"src/server/**/*.ts\"",
 
       "pree2e": "npm run webdriver:update -- --standalone",
     "e2e": "npm run protractor",
