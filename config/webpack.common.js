@@ -48,8 +48,8 @@ module.exports = {
   // See: http://webpack.github.io/docs/configuration.html#entry
   entry: {
 
-    'polyfills': './src/client/polyfills.ts',
-    'vendor': './src/client/vendor.ts',
+    'polyfills': './src/client/polyfills.browser.ts',
+    'vendor': './src/client/vendor.browser.ts',
     // Our primary Angular 2 application
     'main': './src/client/main.browser.ts',
 
