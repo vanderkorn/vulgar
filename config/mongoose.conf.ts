@@ -10,23 +10,36 @@
 // Load Mongoose for MongoDB interactions
 import * as mongoose from 'mongoose';
 
-export default function mongooseConf() {
+import { IServerEvent, ServerEvent } from '../src/server/handlers/event.handler';
+
+export default function mongooseConf(ServerEventEmitter) {
 
   let gracefulExit = function() {
 
     mongoose.connection.close(() => {
 
-      console.log(`Mongoose connection ` +
-        `has disconnected through app termination`);
+      let event: IServerEvent = {
+        type: ServerEvent.MongoGracefulExit,
+        from: process.pid
+      };
 
-      process.exit(0);
+      ServerEventEmitter.emit(event.type, event, () => {
+        console.log(`(Process ${event.from}): Mongoose connection has disconnected through app termination`);
+        process.exit(0);
+      });
     });
   };
 
   mongoose.connection.on("connected", (ref) => {
 
-    console.log(`Successfully connected to ${process.env.NODE_ENV}` +
-      ` database on startup `);
+    let event: IServerEvent = {
+      type: ServerEvent.MongoConnection,
+      from: process.pid
+    };
+
+    ServerEventEmitter.emit(event.type, event, () => {
+      console.log(`Process ${event.from} successfully connected to ${process.env.NODE_ENV} database on startup`);
+    });
   });
 
   // If the connection throws an error
@@ -39,8 +52,14 @@ export default function mongooseConf() {
   // When the connection is disconnected
   mongoose.connection.on('disconnected', () => {
 
-    console.log(`Mongoose default connection to ${process.env.NODE_ENV}` +
-      ` database disconnected`);
+    let event: IServerEvent = {
+      type: ServerEvent.MongoDisconnect,
+      from: process.pid
+    };
+
+    ServerEventEmitter.emit(event.type, event, () => {
+      console.log(`(Process ${event.from}): Mongoose default connection to ${process.env.NODE_ENV} database disconnected`);
+    });
   });
 
   // If the Node process ends, close the Mongoose connection

@@ -12,6 +12,8 @@ import * as methodOverride from 'method-override';
 // PassportJS
 import * as passport from 'passport';
 
+import { ServerEvent, IServerEvent } from './handlers/event.handler';
+
 import passportConf from '../../config/passport.conf';
 import mongooseConf from '../../config/mongoose.conf';
 import routeConf from './routes';
@@ -22,13 +24,15 @@ import * as session from 'express-session';
 // # Node Env Variables
 
 /**
- * The server.
+ * Server
  *
  * @class Server
  */
 class Server {
 
   public app: express.Application;
+  public eventEmitter: ServerEvent.EventEmitter;
+  public eventHandlers: Array<ServerEvent.EventHandler>;
 
   /**
    * Bootstrap the application.
@@ -43,7 +47,7 @@ class Server {
   }
 
   /**
-   * Constructor.
+   * Constructor
    *
    * @class Server
    * @constructor
@@ -51,12 +55,18 @@ class Server {
   constructor() {
     // Create `Express` application
     this.app = express();
-    this.mongooseConf();
+    // Create an instance of the Server `EventEmitter`
+    this.eventEmitter = new ServerEvent.EventEmitter();
+    // Create an instance of the Server `EventHandler`
+    this.eventHandlers = [new ServerEvent.EventHandler(this.eventEmitter)];
+    // Configure `Mongoose`
+    this.mongooseConf(this.eventEmitter);
+    // Configure `PassportJS`
     this.passportConf(passport);
     // Configure application
     this.config();
-    // Configure routes
-    this.routes(this.app, passport);
+    // Configure `Express` routes
+    this.routes(this.app, passport, this.eventEmitter);
   }
 
   /**
@@ -111,16 +121,44 @@ class Server {
     this.app.use(passport.session());
   }
 
-  private mongooseConf() {
-    mongooseConf();
+  /**
+   * Configure `Mongoose` instance
+   *
+   * @class Server
+   * @method mongooseConf
+   * @private
+   * @param {ServerEvent.EventEmitter} eventEmitter - event emitter reference
+   */
+  private mongooseConf(eventEmitter: ServerEvent.EventEmitter) {
+    mongooseConf(eventEmitter);
   }
 
+  /**
+   * Configure `PassportJS` instance
+   *
+   * @class Server
+   * @method passportConf
+   * @private
+   * @param {any} passport - `PassportJS` reference
+   */
   private passportConf(passport: any) {
     passportConf(passport);
   }
 
-  private routes(app: express.Application, passport: any) {
-    routeConf(this.app, passport);
+  /**
+   * Configure `Exporess` routes
+   *
+   * @class Server
+   * @method routes
+   * @private
+   * @param {express.Application} app - `Express` application reference
+   * @param {any} passport - `PassportJS` reference
+   * @param {ServerEvent.EventEmitter} ServerEventEmitter - `EventEmitter` reference
+   */
+  private routes(app: express.Application,
+                 passport: any,
+                 ServerEventEmitter: ServerEvent.EventEmitter) {
+    routeConf(app, passport, ServerEventEmitter);
   }
 }
 
