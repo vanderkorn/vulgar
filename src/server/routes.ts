@@ -1,6 +1,6 @@
 // ```
 // routes.js
-// (c) 2015 David Newman
+// (c) 2016 David Newman
 // david.r.niciforovic@gmail.com
 // routes.js may be freely distributed under the MIT license
 // ```
@@ -16,7 +16,7 @@ import * as todoRouter from "./routes/_todo.router";
 // Load our `API` router for the `recipe` component
 import * as recipeRouter from './routes/_recipe.router';
 
-import { ServerEvent, IServerEvent } from './server.conf';
+import { ServerEvent, IServerEvent } from './handlers/event.handler';
 
 // */app/routes.js*
 
@@ -24,22 +24,31 @@ import { ServerEvent, IServerEvent } from './server.conf';
 
 // Define routes for the Node backend
 
-export default (app: express.Application, passport: any) => {
+export default (app: express.Application,
+                passport: any,
+                ServerEventEmitter: ServerEvent.EventEmitter) => {
 
   let router: express.Router;
   // Get an instance of the `express` `Router`
   router = express.Router();
+
+  // Keep track of `http` requests
+  let numReqs: number = 0;
 
   // ### Express Middlware to use for all requests
   router.use((req: express.Request,
               res: express.Response,
               next: express.NextFunction) => {
     if(process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
-      console.log('I sense a disturbance in the force...');
-      // Notify master `cluster` about the `request`
-      process.send({
+
+      let event: IServerEvent = {
         type: ServerEvent.NotifyRequest,
         from: process.pid
+      };
+      ServerEventEmitter.emit(event.type, event, () => {
+        numReqs++;
+        console.log('I sense a disturbance in the force...');
+        console.log(`{${event.from}} - requests served since last restart: ${numReqs}`);
       });
     }
     // Make sure we go to the next routes and don't stop here...
