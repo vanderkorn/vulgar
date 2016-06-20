@@ -39,7 +39,7 @@ export default class Handler implements IHandler {
    *
    * @class Handler
    * @method generateHandlerId
-   * @protected
+   * @private
    * @param {number} length [8] - the length of the generated id
    * @return {string} - Generated hexadecimal value
    */
