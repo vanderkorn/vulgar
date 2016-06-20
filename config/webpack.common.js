@@ -8,9 +8,10 @@ var webpack = require('webpack');
 var helpers = require('./helpers');
 
 //# Webpack Plugins
-var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), CopyWebpackPlugin.default || CopyWebpackPlugin);
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const HtmlElementsPlugin = require('./modules/html-elements.util.js');
 
 //# Webpack Constants
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
@@ -48,8 +49,8 @@ module.exports = {
   // See: http://webpack.github.io/docs/configuration.html#entry
   entry: {
 
-    'polyfills': './src/client/polyfills.ts',
-    'vendor': './src/client/vendor.ts',
+    'polyfills': './src/client/polyfills.browser.ts',
+    'vendor': './src/client/vendor.browser.ts',
     // Our primary Angular 2 application
     'main': './src/client/main.browser.ts',
 
@@ -63,7 +64,7 @@ module.exports = {
     // An array of extensions that should be used to resolve modules.
     //
     // See: http://webpack.github.io/docs/configuration.html#resolve-extensions
-    extensions: ['', '.ts', '.js', '.scss'],
+    extensions: ['', '.ts', '.js', '.json', '.scss'],
 
     // Ensure that root is `src`
     root: helpers.root('src/client'),
@@ -103,7 +104,8 @@ module.exports = {
           // these packages have problems with their sourcemaps
           helpers.root('node_modules/rxjs'),
           helpers.root('node_modules/@angular2-material'),
-          helpers.root('node_modules/@angular')
+          helpers.root('node_modules/@angular'),
+          helpers.root('node_modules/@ngrx')
         ]
       }
 
@@ -134,13 +136,14 @@ module.exports = {
         loader: 'json-loader'
       },
 
-      // Raw loader support for *.css files
+      // To string and CSS loader support for *.css files
       // Returns file content as string
       //
-      // See: https://github.com/webpack/raw-loader
+      // See: https://github.com/gajus/to-string-loader
+      // See: https://github.com/webpack/css-loader
       {
         test: /\.css$/,
-        loader: 'raw-loader'
+        loaders: ['to-string-loader', 'css-loader']
       },
 
       // Raw loader support for *.html
@@ -215,6 +218,32 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/client/index.html',
       chunksSortMode: 'dependency'
+    }),
+
+    //
+    // Plugin: HtmlHeadConfigPlugin
+    // Description: Generate html tags based on javascript maps.
+    //
+    // If a publicPath is set in the webpack output configuration, it will be automatically added to
+    // href attributes, you can disable that by adding a "=href": false property.
+    // You can also enable it to other attribute by settings "=attName": true.
+    //
+    // The configuration supplied is map between a location (key) and an element definition object (value)
+    // The location (key) is then exported to the template under then htmlElements property in webpack configuration.
+    //
+    // Example:
+    //  Adding this plugin configuration
+    //  new HtmlElementsPlugin({
+    //    headTags: { ... }
+    //  })
+    //
+    //  Means we can use it in the template like this:
+    //  <%= webpackConfig.htmlElements.headTags %>
+    //
+    // Dependencies: HtmlWebpackPlugin
+    //
+    new HtmlElementsPlugin({
+      headTags: require('./head.conf')
     })
 
   ],

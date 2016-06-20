@@ -9,13 +9,9 @@
  * all here! Crazy huh. So we need to do some setup
 */
 Error.stackTraceLimit = Infinity;
-//require('phantomjs-polyfill');
-//require('es6-promise');
-//require('es6-shim');
-//require('es7-reflect-metadata');
 
-// Prefer `CoreJS` over the polyfills commented out above
-require('core-js');
+require('core-js/es6');
+require('core-js/es7/reflect');
 
 // Typescript "emit helpers" polyfill
 require('ts-helpers');
@@ -38,8 +34,6 @@ testing.setBaseTestProviders(
   browser.TEST_BROWSER_DYNAMIC_PLATFORM_PROVIDERS,
   browser.TEST_BROWSER_DYNAMIC_APPLICATION_PROVIDERS
 );
-
-Object.assign(global, testing);
 
 /*
   Ok, this is kinda crazy. We can use the the context method on

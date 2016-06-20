@@ -15,8 +15,9 @@ var commonConfig = require('./webpack.common.js');
 var ProvidePlugin = require('webpack/lib/ProvidePlugin');
 var DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 var DefinePlugin = require('webpack/lib/DefinePlugin');
+var NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
+var IgnorePlugin = require('webpack/lib/IgnorePlugin');
 var UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
-var CompressionPlugin = require('compression-webpack-plugin');
 var WebpackMd5Hash = require('webpack-md5-hash');
 
 //# Webpack Constants
@@ -124,80 +125,44 @@ module.exports = webpackMerge(commonConfig, {
       // comments: true, //debug
 
       beautify: false, //prod
-
-      mangle: {
-        screw_ie8 : true,
-        keep_fnames: true
-      }, // Production
-      /*
-      mangle: {
-        screw_ie8: true,
-        except: [
-            'App',
-            'About',
-            'Contact',
-            'Home',
-            'Menu',
-            'Footer',
-            'XLarge',
-            'RouterActive',
-            'RouterLink',
-            'RouterOutlet',
-            'NgFor',
-            'NgIf',
-            'NgClass',
-            'NgSwitch',
-            'NgStyle',
-            'NgSwitchDefault',
-            'NgControl',
-            'NgControlName',
-            'NgControlGroup',
-            'NgFormControl',
-            'NgModel',
-            'NgFormModel',
-            'NgForm',
-            'NgSelectOption',
-            'DefaultValueAccessor',
-            'NumberValueAccessor',
-            'CheckboxControlValueAccessor',
-            'SelectControlValueAccessor',
-            'RadioControlValueAccessor',
-            'NgControlStatus',
-            'RequiredValidator',
-            'MinLengthValidator',
-            'MaxLengthValidator',
-            'PatternValidator',
-            'AsyncPipe',
-            'DatePipe',
-            'JsonPipe',
-            'NumberPipe',
-            'DecimalPipe',
-            'PercentPipe',
-            'CurrencyPipe',
-            'LowerCasePipe',
-            'UpperCasePipe',
-            'SlicePipe',
-            'ReplacePipe',
-            'I18nPluralPipe',
-            'I18nSelectPipe'
-          ] // Needed for uglify RouterLink problem
-      }, // prod
-      */
-      compress: {
-        screw_ie8: true
-      }, //prod
+      mangle: { screw_ie8 : true }, //prod
+      compress: { screw_ie8: true }, //prod
       comments: false //prod
     }),
+
+    //
+    //Plugin: NormalModuleReplacementPlugin
+    //Description: Replace resources that matches resourceRegExp with newResource
+    //
+    //See: http://webpack.github.io/docs/list-of-plugins.html#normalmodulereplacementplugin
+    //
+
+    new NormalModuleReplacementPlugin(
+      /angular2-hmr/,
+      helpers.root('node_modules/angular2-hmr/prod.js')
+    ),
+
+    //
+    // Plugin: IgnorePlugin
+    // Description: Don’t generate modules for requests matching the provided RegExp.
+    //
+    // See: http://webpack.github.io/docs/list-of-plugins.html#ignoreplugin
+    //
+
+    // new IgnorePlugin(/angular2-hmr/),
 
     // Plugin: CompressionPlugin
     // Description: Prepares compressed versions of assets to serve
     // them with Content-Encoding
     //
     // See: https://github.com/webpack/compression-webpack-plugin
-    new CompressionPlugin({
-      regExp: /\.css$|\.html$|\.js$|\.map$/,
-      threshold: 2 * 1024
-    })
+    //
+    //  install compression-webpack-plugin
+    // new CompressionPlugin({
+    //   regExp: /\.css$|\.html$|\.js$|\.map$/,
+    //   threshold: 2 * 1024
+    // })
+
   ],
 
   // Static analysis linter for TypeScript advanced options configuration
