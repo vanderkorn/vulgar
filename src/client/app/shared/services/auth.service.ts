@@ -51,9 +51,6 @@ export class AuthService {
                           HEADER)
                     .map((res) => {
                       this.appState.set('isAuthenticated', true);
-                      // DEBUG
-                      // TODO: Remove this DEBUG statement
-                      console.log(res);
                       return res.json();
                     })
   }

@@ -7,9 +7,7 @@ export class AppState {
   // `HmrState` is used by `HMR` to track the any `state` during reloading
   @HmrState() _state = {};
 
-  constructor() {
-
-  }
+  constructor() { }
 
   // Already return a `clone` of the current `state`
   get state() {
