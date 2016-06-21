@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
+import {AppState} from '../../app.service';
 
 const HEADER = {
   headers: new Headers({
@@ -15,6 +16,7 @@ const ROUTE_URI = '/api/auth/';
 // Reference : http://blog.thoughtram.io/angular/2015/09/17/resolve-service-dependencies-in-angular-2.html
 @Injectable()
 export class AuthService {
+  isAuthenticated: boolean;
   // The `public` keyword denotes that the constructor parameter will
   // be retained as a field.
   // Reference: https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md#336-members
@@ -24,8 +26,8 @@ export class AuthService {
   // Reference: https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md#3-types
   // Here we intend the constructor function to be called with the
   // `Http` parameter
-  constructor(public http:Http) {
-
+  constructor(public http: Http, private appState: AppState) {
+    this.isAuthenticated = this.appState.get('isAuthenticated');
   }
 
   // Get user session data object from server if user is logged in
@@ -47,7 +49,13 @@ export class AuthService {
     return this.http.post(`${ROUTE_URI}login`,
                           JSON.stringify(user),
                           HEADER)
-             .map(res => res.json());
+                    .map((res) => {
+                      this.appState.set('isAuthenticated', true);
+                      // DEBUG
+                      // TODO: Remove this DEBUG statement
+                      console.log(res);
+                      return res.json();
+                    })
   }
 
   register(user) {
