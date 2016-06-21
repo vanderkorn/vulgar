@@ -27,9 +27,6 @@ export function validateEnvVariables() {
   if(!process.env.NODE_ENV)
     process.env.NODE_ENV = config.ENV;
 
-  if(!process.env.MULTITHREADING)
-    process.env.MULTITHREADING = config.MULTITHREADING || false;
-
   // Check to see if `process.env.NODE_ENV` is valid
   validateNodeEnvironment();
 
