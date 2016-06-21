@@ -12,9 +12,6 @@ import {ENV_PROVIDERS} from './platform/environment';
 //** our top level component that holds all of our components **
 import {App, APP_PROVIDERS, APP_STORES} from './app';
 
-// Import storage function to hold a reference to application injector
-import { AppInjector } from './app/shared/app.injector';
-
 // Bootstrap our Angular app with a top level component `App` and inject
 // our Services and Providers into Angular's dependency injection
 export function main(initialHmrState?: any): Promise<any> {
@@ -26,12 +23,6 @@ export function main(initialHmrState?: any): Promise<any> {
     ...APP_PROVIDERS,
     ...APP_STORES
   ])
-  .then((appRef) => {
-    // Store a reference to the application injector
-    // This allows things like our `CanActivate` decorators
-    // to access our `AuthService`, et cetera
-    AppInjector(appRef.injector);
-  })
   .catch(err => console.error(err));
 }
 
