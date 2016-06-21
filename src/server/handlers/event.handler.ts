@@ -53,7 +53,7 @@ export namespace ServerEvent {
      */
     private handlerConf() {
       for(let event in ServerEvent) {
-        this.eventEmitter.addListener(ServerEvent[event], (e, cb) => this.onHandle(e, cb));
+        this.emitter.addListener(ServerEvent[event], (e, cb) => this.onHandle(e, cb));
       }
     }
   }
