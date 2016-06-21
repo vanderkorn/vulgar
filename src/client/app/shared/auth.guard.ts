@@ -11,8 +11,7 @@ export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(next:  ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    console.log(this.authService.isAuthenticated);
-    if (this.authService.isAuthenticated) { return true; }
+    if (this.authService.isAuthenticated === true) { return true; }
     /// DEBUG
     /// TODO: Remove this DEBUG statement
     console.log('User authentication failed! Redirecting user to login.');
