@@ -15,6 +15,7 @@ import { provideRouter } from '@angular/router';
 import { provideWebpack } from '@angularclass/webpack-toolkit';
 import { routes, asyncRoutes } from '../../app/app.routes';
 import { CanDeactivateGuard } from '../../app/shared/interfaces/can-deactivate.interface';
+import { AuthGuard } from '../../app/shared/auth.guard';
 
 // Angular 2 Material 2
 //
@@ -36,9 +37,10 @@ export const APPLICATION_PROVIDERS = [
   ...MATERIAL_PROVIDERS,
   provideRouter(routes),
   provideWebpack(asyncRoutes),
-  CanDeactivateGuard,
   {provide: LocationStrategy, useClass: PathLocationStrategy },
 //{provide: LocationStrategy, useClass: HashLocationStrategy },
+  CanDeactivateGuard,
+  AuthGuard,
   AuthService,
   ValidationService,
   UsernameValidator,
