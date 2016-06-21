@@ -118,7 +118,7 @@ export class RegisterComponent {
         // Toggle our `accepted` flag...
         this.accepted = true;
         // Proceed to the `Login` component
-        this.router.navigate(['Login']);
+        this.router.navigate(['/login']);
       }, (error) => {
         // DEBUG
         // TODO: Remove this DEBUG statement
