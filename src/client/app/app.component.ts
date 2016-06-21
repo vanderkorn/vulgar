@@ -38,26 +38,38 @@ import { ChatComponent } from './chat';
   template: `
     <md-content>
       <md-toolbar color="primary">
-          <span>{{ name }}</span>
-          <span class="fill"></span>
-          <button md-button [routerLink]=" ['./'] ">
+        <span>{{ name }}</span>
+        <span class="fill"></span>
+        <a [routerLink]=" ['./'] ">
+          <button md-button>
             Home
           </button>
-          <button md-button [routerLink]=" ['./todo'] ">
+        </a>
+        <a [routerLink]=" ['./todo'] ">
+          <button md-button>
             Todo
           </button>
-          <button md-button [routerLink]=" ['./recipes'] ">
+        </a>
+        <a [routerLink]=" ['./recipes'] ">
+          <button md-button>
             Recipes
           </button>
-          <button md-button [routerLink]=" ['./register'] ">
+        </a>
+        <a [routerLink]=" ['./register'] ">
+          <button md-button>
             Register
           </button>
-          <button md-button [routerLink]=" ['./login'] ">
+        </a>
+        <a [routerLink]=" ['./login'] ">
+          <button md-button>
             Login
           </button>
-          <button md-button [routerLink]=" ['./about'] ">
+        </a>
+        <a [routerLink]=" ['./about'] ">
+          <button md-button>
             About
           </button>
+        </a>
       </md-toolbar>
 
       <md-progress-bar mode="indeterminate" color="primary" *ngIf="loading">
