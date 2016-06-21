@@ -28,7 +28,7 @@ import { ChatComponent } from './chat';
  */
 @Component({
   selector: 'app',
-  providers: [  ],
+  providers: [ ],
   directives: [ NgFor,
                 ChatComponent ],
   encapsulation: ViewEncapsulation.None,
