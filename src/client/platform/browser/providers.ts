@@ -13,7 +13,7 @@ import {HTTP_PROVIDERS} from '@angular/http';
 // Angular 2 Router
 import { provideRouter } from '@angular/router';
 import { provideWebpack } from '@angularclass/webpack-toolkit';
-import { routes, asyncRoutes } from '../app/app.routes';
+import { routes, asyncRoutes } from '../../app/app.routes';
 
 // Angular 2 Material 2
 //
