@@ -11,8 +11,10 @@
 import * as mongoose from 'mongoose';
 
 import { IServerEvent, ServerEvent } from '../src/server/handlers/event.handler';
+import { IServerError, ServerError } from '../src/server/handlers/error.handler';
 
-export default function mongooseConf(ServerEventEmitter) {
+export default function mongooseConf(ServerEventEmitter: ServerEvent.EventEmitter,
+                                     ServerErrorEmitter: ServerError.ErrorEmitter) {
 
   let gracefulExit = function() {
 
@@ -32,6 +34,18 @@ export default function mongooseConf(ServerEventEmitter) {
 
   mongoose.connection.on("connected", (ref) => {
 
+    let error: IServerError = {
+      type: ServerError.MongoConnectionFailure,
+      from: process.pid
+    };
+
+    ServerErrorEmitter.emit(error.type, error, () => {
+      console.error(`(Process ${error.from}): Failed to connect to ${process.env.NODE_ENV} database on startup!`);
+      // Don't send `process.exit(1)` in this case since `Mongoose` will handle it
+      if(process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test')
+        console.error('Error test ');
+    });
+
     let event: IServerEvent = {
       type: ServerEvent.MongoConnection,
       from: process.pid
@@ -45,8 +59,17 @@ export default function mongooseConf(ServerEventEmitter) {
   // If the connection throws an error
   mongoose.connection.on("error", (err) => {
 
-    console.error(`Failed to connect to ${process.env.NODE_ENV} ` +
-      ` database on startup `, err);
+    let error: IServerError = {
+      type: ServerError.MongoConnectionFailure,
+      from: process.pid
+    };
+
+    ServerErrorEmitter.emit(error.type, error, () => {
+      console.error(`(Process ${error.from}): Failed to connect to ${process.env.NODE_ENV} database on startup!`);
+      // Don't send `process.exit(1)` in this case since `Mongoose` will handle it
+      if(process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test')
+        console.error('Error: ', err);
+    });
   });
 
   // When the connection is disconnected
