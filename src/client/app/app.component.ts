@@ -18,8 +18,6 @@ import {RouteConfig, Router} from '@angular/router-deprecated';
 
 import {AppState} from './app.service';
 
-import {RouterActive} from './shared/directives/router-active/router-active.directive';
-
 import {Home} from './home';
 
 // Import NgFor directive
@@ -46,7 +44,6 @@ import { ChatComponent } from './chat';
   providers: [  ],
   directives: [ Todo,
                 NgFor,
-                RouterActive,
                 ChatComponent ],
   encapsulation: ViewEncapsulation.None,
   pipes: [],
@@ -57,22 +54,22 @@ import { ChatComponent } from './chat';
       <md-toolbar color="primary">
           <span>{{ name }}</span>
           <span class="fill"></span>
-          <button md-button router-active [routerLink]=" ['Home'] ">
+          <button md-button [routerLink]=" ['Home'] ">
             Home
           </button>
-          <button md-button router-active [routerLink]=" ['Todo'] ">
+          <button md-button [routerLink]=" ['Todo'] ">
             Todo
           </button>
-          <button md-button router-active [routerLink]=" ['Recipes'] ">
+          <button md-button [routerLink]=" ['Recipes'] ">
             Recipes
           </button>
-          <button md-button router-active [routerLink]=" ['Register'] ">
+          <button md-button [routerLink]=" ['Register'] ">
             Register
           </button>
-          <button md-button router-active [routerLink]=" ['Login'] ">
+          <button md-button [routerLink]=" ['Login'] ">
             Login
           </button>
-          <button md-button router-active [routerLink]=" ['About'] ">
+          <button md-button [routerLink]=" ['About'] ">
             About
           </button>
       </md-toolbar>
