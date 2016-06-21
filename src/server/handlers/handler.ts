@@ -1,6 +1,8 @@
 const crypto = require('crypto');
 
 import { ServerEvent, IServerEvent } from './event.handler';
+import { IServerError, ServerError } from './error.handler';
+import Emitter  from './emitter';
 
 /**
  * Handler
@@ -9,7 +11,7 @@ import { ServerEvent, IServerEvent } from './event.handler';
  */
 interface IHandler {
   id: string;
-  eventEmitter: ServerEvent.EventEmitter;
+  emitter: Emitter;
 }
 
 /**
@@ -19,7 +21,7 @@ interface IHandler {
  */
 export default class Handler implements IHandler {
   id: string;
-  eventEmitter: ServerEvent.EventEmitter;
+  emitter: Emitter;
 
   /**
    * Constructor
@@ -27,11 +29,11 @@ export default class Handler implements IHandler {
    * @class Handler
    * @constructor
    */
-  constructor(eventEmitter: ServerEvent.EventEmitter) {
-    // Generate a unique id for this event handler
+  constructor(emitter: Emitter) {
+    // Generate a unique id for this handler
     this.id = this.generateHandlerId(7);
-    // Grab the passed in reference to the server `EventEmitter`
-    this.eventEmitter = eventEmitter;
+    // Grab the passed in reference to the server `Emitter`
+    this.emitter = emitter;
   }
 
   /**

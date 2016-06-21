@@ -13,6 +13,7 @@ import * as methodOverride from 'method-override';
 import * as passport from 'passport';
 
 import { ServerEvent, IServerEvent } from './handlers/event.handler';
+import { IServerError, ServerError } from './handlers/error.handler';
 
 import passportConf from '../../config/passport.conf';
 import mongooseConf from '../../config/mongoose.conf';
@@ -33,6 +34,8 @@ class Server {
   public app: express.Application;
   public eventEmitter: ServerEvent.EventEmitter;
   public eventHandlers: Array<ServerEvent.EventHandler>;
+  public errorEmitter: ServerError.ErrorEmitter;
+  public errorHandlers: Array<ServerError.ErrorHandler>;
 
   /**
    * Bootstrap the application.
@@ -59,8 +62,12 @@ class Server {
     this.eventEmitter = new ServerEvent.EventEmitter();
     // Create an instance of the Server `EventHandler`
     this.eventHandlers = [new ServerEvent.EventHandler(this.eventEmitter)];
+    // Create an instance of the Server `ErrorEmitter`
+    this.errorEmitter = new ServerError.ErrorEmitter();
+    // Create an instance of the Server `ErrorHandler`
+    this.errorHandlers = [new ServerError.ErrorHandler(this.errorEmitter)];
     // Configure `Mongoose`
-    this.mongooseConf(this.eventEmitter);
+    this.mongooseConf(this.eventEmitter, this.errorEmitter);
     // Configure `PassportJS`
     this.passportConf(passport);
     // Configure application
@@ -128,9 +135,11 @@ class Server {
    * @method mongooseConf
    * @private
    * @param {ServerEvent.EventEmitter} eventEmitter - event emitter reference
+   * @param {ServerError.ErrorEmitter} errorEmitter - error emitter reference
    */
-  private mongooseConf(eventEmitter: ServerEvent.EventEmitter) {
-    mongooseConf(eventEmitter);
+  private mongooseConf(eventEmitter: ServerEvent.EventEmitter,
+                       errorEmitter: ServerError.ErrorEmitter) {
+    mongooseConf(eventEmitter, errorEmitter);
   }
 
   /**

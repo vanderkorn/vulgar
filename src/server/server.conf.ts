@@ -7,24 +7,9 @@ import socketBase from './sockets/base.socket';
 let onError = require('./utils/on-error.util');
 import {normalizePort} from './utils/normalize-port.util';
 
-import { ServerEvent, IServerEvent } from './handlers/event.handler';
-
 // Node Env Variables
 // Load Node environment variable configuration file
 import {validateEnvVariables} from '../../config/env.conf';
-
-export enum Error {
-  BadEventCode = 0x1
-}
-
-export namespace Error {
-  export function getErrorMessage(error: Error) {
-    switch (error) {
-      case Error.BadEventCode:
-        return 'Unexpected server event code';
-    }
-  }
-}
 
 // Set up appropriate environment variables if necessary
 validateEnvVariables();
