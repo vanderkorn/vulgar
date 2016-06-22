@@ -11,7 +11,11 @@ import {FORM_PROVIDERS,
 // Angular 2 Http
 import {HTTP_PROVIDERS} from '@angular/http';
 // Angular 2 Router
-import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
+import { provideRouter } from '@angular/router';
+import { provideWebpack } from '@angularclass/webpack-toolkit';
+import { routes, asyncRoutes } from '../../app/app.routes';
+import { CanDeactivateGuard } from '../../app/shared/interfaces/can-deactivate.interface';
+import { AuthGuard } from '../../app/shared/auth.guard';
 
 // Angular 2 Material 2
 //
@@ -31,9 +35,12 @@ export const APPLICATION_PROVIDERS = [
   ...FORM_PROVIDERS,
   ...HTTP_PROVIDERS,
   ...MATERIAL_PROVIDERS,
-  ...ROUTER_PROVIDERS,
+  provideRouter(routes),
+  provideWebpack(asyncRoutes),
   {provide: LocationStrategy, useClass: PathLocationStrategy },
 //{provide: LocationStrategy, useClass: HashLocationStrategy },
+  CanDeactivateGuard,
+  AuthGuard,
   AuthService,
   ValidationService,
   UsernameValidator,

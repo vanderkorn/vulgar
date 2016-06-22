@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router-deprecated';
+import { Router } from '@angular/router';
 import { Control,
          ControlGroup,
          FormBuilder,
@@ -90,7 +90,7 @@ export class LoginComponent {
         // TODO: Remove this DEBUG statement
         console.log(res);
         this.newUser();
-        this.router.navigate(['Recipes']);
+        this.router.navigate(['/recipes']);
       }, (error) => {
         // DEBUG
         // TODO: Remove this DEBUG statement

@@ -34,7 +34,7 @@ export class ValidationService {
         // DEBUG
         // TODO: Remove this DEBUG statement
         console.log(res);
-        res.json();
+        return res.json();
       })
   }
 }

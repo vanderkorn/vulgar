@@ -8,7 +8,13 @@ export class AppState {
   @HmrState() _state = {};
 
   constructor() {
+    // Configure default application state if needed
+    this.configureDefaults();
+  }
 
+  private configureDefaults() {
+    // TODO: Default this value based on the result of calling `authService.authenticate()`
+    this.set('isAuthenticated', false);
   }
 
   // Already return a `clone` of the current `state`

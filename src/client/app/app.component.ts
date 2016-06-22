@@ -14,26 +14,11 @@
  * Angular 2 decorators and services
  */
 import {Component, ViewEncapsulation} from '@angular/core';
-import {RouteConfig, Router} from '@angular/router-deprecated';
 
 import {AppState} from './app.service';
 
-import {RouterActive} from './shared/directives/router-active/router-active.directive';
-
-import {Home} from './home';
-
 // Import NgFor directive
 import {NgFor} from '@angular/common';
-
-// Import Todo component
-import {Todo} from './todo/todo.component';
-
-// Import Recipes component
-import {Recipes} from './recipes/recipes.component';
-
-import { RegisterComponent } from './register/register.component';
-
-import { LoginComponent } from './login/login.component';
 
 import { ChatComponent } from './chat';
 
@@ -43,10 +28,8 @@ import { ChatComponent } from './chat';
  */
 @Component({
   selector: 'app',
-  providers: [  ],
-  directives: [ Todo,
-                NgFor,
-                RouterActive,
+  providers: [ ],
+  directives: [ NgFor,
                 ChatComponent ],
   encapsulation: ViewEncapsulation.None,
   pipes: [],
@@ -55,26 +38,38 @@ import { ChatComponent } from './chat';
   template: `
     <md-content>
       <md-toolbar color="primary">
-          <span>{{ name }}</span>
-          <span class="fill"></span>
-          <button md-button router-active [routerLink]=" ['Home'] ">
+        <span>{{ name }}</span>
+        <span class="fill"></span>
+        <a [routerLink]=" ['./'] ">
+          <button md-button>
             Home
           </button>
-          <button md-button router-active [routerLink]=" ['Todo'] ">
+        </a>
+        <a [routerLink]=" ['./todo'] ">
+          <button md-button>
             Todo
           </button>
-          <button md-button router-active [routerLink]=" ['Recipes'] ">
+        </a>
+        <a [routerLink]=" ['./recipes'] ">
+          <button md-button>
             Recipes
           </button>
-          <button md-button router-active [routerLink]=" ['Register'] ">
+        </a>
+        <a [routerLink]=" ['./register'] ">
+          <button md-button>
             Register
           </button>
-          <button md-button router-active [routerLink]=" ['Login'] ">
+        </a>
+        <a [routerLink]=" ['./login'] ">
+          <button md-button>
             Login
           </button>
-          <button md-button router-active [routerLink]=" ['About'] ">
+        </a>
+        <a [routerLink]=" ['./about'] ">
+          <button md-button>
             About
           </button>
+        </a>
       </md-toolbar>
 
       <md-progress-bar mode="indeterminate" color="primary" *ngIf="loading">
@@ -93,17 +88,6 @@ import { ChatComponent } from './chat';
     </md-content>
   `
 })
-@RouteConfig([
-  { path: '/', name: 'Index', component: Home, useAsDefault: true },
-  { path: '/home',  name: 'Home',  component: Home },
-  { path: '/todo', component: Todo, name: 'Todo' },
-  { path: '/redux', component: Recipes, name: 'Recipes' },
-  { path: '/register', component: RegisterComponent, name: 'Register' },
-  { path: '/login', component: LoginComponent, name: 'Login' },
-  // Async load a component using Webpack's require with
-  // es6-promise-loader and webpack `require`
-  { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
-])
 export class App {
   angularLogo = 'assets/img/angular-logo.png';
   name = 'Angular 2 MEAN Webpack Starter';

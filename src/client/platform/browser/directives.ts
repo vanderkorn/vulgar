@@ -2,10 +2,14 @@
 //
 //** These `directives` are available in any template **
 
+// Angular 2
 import {PLATFORM_DIRECTIVES} from '@angular/core';
 
 // Angular 2 Router
-import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES } from '@angular/router';
+
+// Angular 2 forms
+import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
 
 // Angular 2 Material 2
 //
@@ -18,7 +22,8 @@ import {MATERIAL_DIRECTIVES} from './angular2-material2';
 export const APPLICATION_DIRECTIVES = [
 
   ...ROUTER_DIRECTIVES,
-  ...MATERIAL_DIRECTIVES
+  ...MATERIAL_DIRECTIVES,
+  ...REACTIVE_FORM_DIRECTIVES
 ];
 
 export const DIRECTIVES = [

@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { Router,
-         RouteConfig,
-         RouteParams,
-         RouteData,
-         ComponentInstruction,
-         CanDeactivate } from '@angular/router-deprecated';
+         CanDeactivate } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { Control,
          ControlGroup,
          FormBuilder,
@@ -32,7 +29,7 @@ class RegistrationError {
   template: require('./register.component.html'),
   styleUrls: [require('!style!css!sass!./form.scss')]
 })
-export class RegisterComponent implements CanDeactivate {
+export class RegisterComponent {
 
   // The user registration form is of type `ControlGroup`
   userForm: ControlGroup;
@@ -121,7 +118,7 @@ export class RegisterComponent implements CanDeactivate {
         // Toggle our `accepted` flag...
         this.accepted = true;
         // Proceed to the `Login` component
-        this.router.navigate(['Login']);
+        this.router.navigate(['/login']);
       }, (error) => {
         // DEBUG
         // TODO: Remove this DEBUG statement
@@ -136,15 +133,23 @@ export class RegisterComponent implements CanDeactivate {
         this.submitted = false;
       });
   }
+
   // Function invoked by the `CanDeactivate` router lifecycle hook when
   // a user tries to leave this component view. If the form has been
   // interacted with, query the user as to whether they intended to
   // navigate away from the registration form before submission.
-  routerCanDeactivate(next: ComponentInstruction, prev: ComponentInstruction) {
+  canDeactivate(): Observable<boolean> | boolean {
+    // Ask the user with a confirmation dialog service
     if(!this.userForm.pristine && !this.accepted) {
       return confirm('You haven\'t submitted your registration. Are you sure '
                      + 'you want to navigate away from this page?'); }
+
+    // Otherwise allow the user to navigate away from this component freely
+    else {
+      return true;
+    }
   }
+
 
   // TODO: Remove this when we are done
   get diagnostic() { return JSON.stringify(this.model); }
