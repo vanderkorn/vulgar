@@ -9,8 +9,8 @@ import { CanDeactivateGuard } from './shared/interfaces/can-deactivate.interface
 export const routes: RouterConfig = [
   { path: '',         component: Home },
   { path: 'home',     component: Home },
-  // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
-  // make sure you match the component type string to the require in asyncRoutes
+  // Async Routes
+  // Make sure you match the component type string to the require in asyncRoutes
   { path: 'about',    component: 'About' },
   { path: 'login',    component: 'LoginComponent' },
   { path: 'recipes',  component: 'Recipes', canActivate: [AuthGuard] },
@@ -21,7 +21,9 @@ export const routes: RouterConfig = [
   { path: '**',       component: NoContent },
 ];
 
-// `asyncRoutes` is needed for our `webpack-toolkit` to allow us to resolve
+// Async load a component using `Webpack`'s `require` with `es6-promise-loader`
+// and webpack `require`
+// `asyncRoutes` is needed for w`ebpack-toolkit` that will allow us to resolve
 // the component correctly
 export const asyncRoutes: AsyncRoutes = {
   'About': require('es6-promise-loader!./about'),
