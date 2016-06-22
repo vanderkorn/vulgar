@@ -7,7 +7,15 @@ export class AppState {
   // `HmrState` is used by `HMR` to track the any `state` during reloading
   @HmrState() _state = {};
 
-  constructor() { }
+  constructor() {
+    // Configure default application state if needed
+    this.configureDefaults();
+  }
+
+  private configureDefaults() {
+    // TODO: Default this value based on the result of calling `authService.authenticate()`
+    this.set('isAuthenticated', false);
+  }
 
   // Already return a `clone` of the current `state`
   get state() {
