@@ -144,7 +144,7 @@ export class RegisterComponent {
       return confirm('You haven\'t submitted your registration. Are you sure '
                      + 'you want to navigate away from this page?'); }
 
-    // Otherwise allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
+    // Otherwise allow the user to navigate away from this component freely
     else {
       return true;
     }
