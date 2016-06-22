@@ -2,11 +2,13 @@
 
 - **_I am submitting a ..._**
 
+```
   [ ] bug report
 
   [ ] feature request
 
   [ ] question about the decisions made in the repository
+```
 
 - **Do you want to request a _feature_ or report a _bug_?**
 
