@@ -34,18 +34,6 @@ export default function mongooseConf(ServerEventEmitter: ServerEvent.EventEmitte
 
   mongoose.connection.on("connected", (ref) => {
 
-    let error: IServerError = {
-      type: ServerError.MongoConnectionFailure,
-      from: process.pid
-    };
-
-    ServerErrorEmitter.emit(error.type, error, () => {
-      console.error(`(Process ${error.from}): Failed to connect to ${process.env.NODE_ENV} database on startup!`);
-      // Don't send `process.exit(1)` in this case since `Mongoose` will handle it
-      if(process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test')
-        console.error('Error test ');
-    });
-
     let event: IServerEvent = {
       type: ServerEvent.MongoConnection,
       from: process.pid
