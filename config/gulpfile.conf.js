@@ -211,7 +211,7 @@ gulp.task('watch:server', () => {
 // automatically fired, which will allow `webpack` to recompile
 // the server code. After this is complete `nodemon` will restart
 // the server.
-gulp.task('serve', ['watch:server'], () => {
+gulp.task('serve', ['build:server', 'watch:server'], () => {
   nodemon({
     execMap: {
       js: 'node'
