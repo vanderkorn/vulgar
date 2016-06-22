@@ -41,7 +41,7 @@ The rest of the stack features:
 
 ## Quick start
 
-**Make sure you have Node version >= 4.0 and NPM >= 3**
+**Make sure you have Node version >= 5.0 and NPM >= 3**
 
 ### If you are located in China, use `cnpm`
 
@@ -630,8 +630,7 @@ You can include your type definitions in this file until you create one for the 
 
 enjoy -- **Da5id**
 
-<br>
-<br>
+<br><br>
 
 > Looking for corporate Angular/MEAN training, want to host us, or Angular/MEAN consulting? david.r.niciforovic@gmail.com
 
