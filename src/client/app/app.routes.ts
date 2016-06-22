@@ -2,6 +2,7 @@ import { RouterConfig } from '@angular/router';
 
 import { Home } from './home';
 import { LoginComponent } from './login/login.component';
+import { NoContent } from './no-content';
 import { Recipes } from './recipes/recipes.component';
 import { RegisterComponent } from './register/register.component';
 import { Todo } from './todo/todo.component';
@@ -18,7 +19,10 @@ export const routes: RouterConfig = [
   { path: 'todo',     component: Todo },
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
   // make sure you match the component type string to the require in asyncRoutes
-  { path: 'about', component: 'About' }
+  { path: 'about',    component: 'About' },
+
+  // Catch all other requests and redirect to app `404` view
+  { path: '**',       component: NoContent },
 ];
 
 export const asyncRoutes = {
