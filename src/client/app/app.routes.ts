@@ -23,7 +23,7 @@ export const routes: RouterConfig = [
 
 // Async load a component using `Webpack`'s `require` with `es6-promise-loader`
 // and webpack `require`
-// `asyncRoutes` is needed for w`ebpack-toolkit` that will allow us to resolve
+// `asyncRoutes` is needed for `webpack-toolkit` that will allow us to resolve
 // the component correctly
 export const asyncRoutes: AsyncRoutes = {
   'About': require('es6-promise-loader!./about'),
