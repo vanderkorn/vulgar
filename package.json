@@ -99,7 +99,7 @@
     "@angular2-material/tabs": "2.0.0-alpha.5-2",
     "@angular2-material/toolbar": "2.0.0-alpha.5-2",
     "@angularclass/webpack-toolkit": "^1.0.0",
-    "@angularclass/request-idle-callback": "^1.0.3",
+    "@angularclass/request-idle-callback": "^1.0.4",
     "@ngrx/store": "1.5.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.1",
