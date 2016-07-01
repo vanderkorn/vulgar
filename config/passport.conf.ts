@@ -162,7 +162,7 @@ export default function passportConf(passport) {
       return done(null,
         false,
         // Return info message object
-        { signupMessage : 'Invalid username length.' }
+        { message : 'Invalid username length.' }
       );
     }
     // If the length of the password string is too long/short,
@@ -174,7 +174,7 @@ export default function passportConf(passport) {
       return done(null,
         false,
         // Return info message object
-        { signupMessage : 'Invalid password length.' }
+        { message : 'Invalid password length.' }
       );
     }
     // If the length of the email string is too long/short,
@@ -185,7 +185,7 @@ export default function passportConf(passport) {
       return done(null,
         false,
         // Return info message object
-        { signupMessage : 'Invalid email length.' }
+        { message : 'Invalid email length.' }
       );
     }
     // If the string is not a valid email...
@@ -196,7 +196,7 @@ export default function passportConf(passport) {
       return done(null,
         false,
         // Return info message object
-        { signupMessage : 'Invalid email address.' }
+        { message : 'Invalid email address.' }
       );
     }
     // Asynchronous
@@ -224,7 +224,7 @@ export default function passportConf(passport) {
           return done(null,
             false,
             // Return info message object
-            { signupMessage : 'That username/email is already ' +
+            { message : 'That username/email is already ' +
             'taken.' }
           );
         } else {
@@ -269,7 +269,7 @@ export default function passportConf(passport) {
       return done(null,
         false,
         // Return info message object
-        { loginMessage : 'Invalid username/email length.' }
+        { message : 'Invalid username/email length.' }
       );
     }
     // If the length of the password string is too long/short,
@@ -281,7 +281,7 @@ export default function passportConf(passport) {
       return done(null,
         false,
         // Return info message object
-        { loginMessage : 'Invalid password length.' }
+        { message : 'Invalid password length.' }
       );
     }
     // Find a user whose email or username is the same as the passed
@@ -303,7 +303,7 @@ export default function passportConf(passport) {
       if (!user) {
         return done(null,
           false,
-          { loginMessage : 'That user was not found. '
+          { message : 'That user was not found. '
                          + 'Please enter valid user credentials.' }
         );
       }
@@ -311,7 +311,7 @@ export default function passportConf(passport) {
       if (!user.validPassword(password)) {
         return done(null,
           false,
-          { loginMessage : 'Invalid password entered.' });
+          { message : 'Invalid password entered.' });
       }
       // Otherwise all is well; return successful user
       return done(null, user);
