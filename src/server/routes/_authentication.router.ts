@@ -113,7 +113,7 @@ module Route {
           // Set HTTP status code `401 Unauthorized`
           res.status(401);
           // Return the info message
-          return next(info.loginMessage);
+          return next(info.message);
         }
         // Use login function exposed by Passport to establish a login
         // session
@@ -154,7 +154,7 @@ module Route {
           // Set HTTP status code `409 Conflict`
           res.status(409);
           // Return the info message
-          return next(info.signupMessage);
+          return next(info.message);
         }
         // Set HTTP status code `204 No Content`
         res.sendStatus(204);
