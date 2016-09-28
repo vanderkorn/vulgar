@@ -601,6 +601,10 @@ import * as _ from 'lodash';
 
   - install `Python x86` version between `2.5` and `3.0` on Windows machines
 
+- `Error:Error: Parse tsconfig error [{"messageText":"Unknown compiler option 'lib'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'strictNullChecks'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'baseUrl'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'paths'.","category":1,"code":5023},{"messageText":"Unknown compiler option 'types'.","category":1,"code":5023}]`
+
+  - remove `node_modules/typescript` and run `npm install typescript@beta`. This repo now uses ts 2.0
+
 ## Acknowledgements
 
 > [AngularClass](https://github.com/AngularClass) for their Angular 2 Webpack repo which served as a starting point for the front-end
