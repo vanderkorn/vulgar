@@ -159,6 +159,12 @@ module.exports = {
         test: /\.scss$/,
         loader: 'style!css!autoprefixer-loader?browsers=last 2 versions!sass',
         exclude: [ helpers.root('node_modules') ]
+      },
+
+      // File loader for supporting images, for example, in CSS files.
+      {
+        test: /\.(jpg|png|gif)$/,
+        loader: 'file'
       }
 
     ]
