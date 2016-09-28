@@ -6,7 +6,7 @@
 
 ## MEAN Stack Development Starter
 
-> A MEAN stack development kit featuring [Angular 2](https://angular.io) ([Router](https://angular.io/docs/js/latest/api/router/), [Forms](https://angular.io/docs/js/latest/api/forms/), [Http](https://angular.io/docs/js/latest/api/http/), [Services](https://gist.github.com/gdi2290/634101fec1671ee12b3e#_follow_@AngularClass_on_twitter), [Tests](https://angular.io/docs/js/latest/api/test/), [E2E](https://angular.github.io/protractor/#/faq#what-s-the-difference-between-karma-and-protractor-when-do-i-use-which-)), [Express](http://expressjs.com/), [MongoDB](https://www.mongodb.org/) (complete with [Mongoose](https://www.mongoosejs.org/)), [Node](https://www.nodejs.org/), [Redux](https://egghead.io/series/getting-started-with-redux), [@ngrx/store](https://github.com/ngrx/store) [PassportJS](https://www.passportjs.org/), [Socket.IO](https://www.socket.io/), [Karma](https://karma-runner.github.io/), [Protractor](https://angular.github.io/protractor/), [Jasmine](https://github.com/jasmine/jasmine), [Istanbul](https://github.com/gotwarlost/istanbul), [Configuration](#configuration), [TypeScript](http://www.typescriptlang.org/), [Typings](https://github.com/typings/typings), [Sass](https://sass-lang.com), [Docco](https://jashkenas.github.io/docco/), [TsLint](http://palantir.github.io/tslint/), [Codelyzer](https://github.com/mgechev/codelyzer), [Hot Module Replacement](https://webpack.github.io/docs/hot-module-replacement-with-webpack.html), [Material](https://github.com/angular/material2), and [Webpack](http://webpack.github.io/) by [datatype_void](https://twitter.com/datatype_void).
+> A MEAN stack development kit featuring [Angular 2](https://angular.io) ([Router](https://angular.io/docs/js/latest/api/router/), [Forms](https://angular.io/docs/js/latest/api/forms/), [Http](https://angular.io/docs/js/latest/api/http/), [Services](https://gist.github.com/gdi2290/634101fec1671ee12b3e#_follow_@AngularClass_on_twitter), [Tests](https://angular.io/docs/js/latest/api/test/), [E2E](https://angular.github.io/protractor/#/faq#what-s-the-difference-between-karma-and-protractor-when-do-i-use-which-)), [Express](http://expressjs.com/), [MongoDB](https://www.mongodb.org/) (complete with [Mongoose](https://www.mongoosejs.org/)), [Node](https://www.nodejs.org/), [Redux](https://egghead.io/series/getting-started-with-redux), [@ngrx/store](https://github.com/ngrx/store) [PassportJS](https://www.passportjs.org/), [Socket.IO](https://www.socket.io/), [Karma](https://karma-runner.github.io/), [Protractor](https://angular.github.io/protractor/), [Jasmine](https://github.com/jasmine/jasmine), [Istanbul](https://github.com/gotwarlost/istanbul), [Configuration](#configuration), [TypeScript](http://www.typescriptlang.org/), [@types](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=0ahUKEwjgjdrR7u_NAhUQ7GMKHXgpC4EQFggnMAI&url=https%3A%2F%2Fwww.npmjs.com%2F~types&usg=AFQjCNG2PFhwEo88JKo12mrw_4d0w1oNiA&sig2=N69zbO0yN8ET7v4KVCUOKA), [Sass](https://sass-lang.com), [Docco](https://jashkenas.github.io/docco/), [TsLint](http://palantir.github.io/tslint/), [Codelyzer](https://github.com/mgechev/codelyzer), [Hot Module Replacement](https://webpack.github.io/docs/hot-module-replacement-with-webpack.html), [Material](https://github.com/angular/material2), and [Webpack](http://webpack.github.io/) by [datatype_void](https://twitter.com/datatype_void).
 
 > Walk through a complete tutorial that shows you how to build a simple todo app using this framework, check out [Building A Single Page Todo App with MEAN--Including Angular 2](http://www.davidniciforovic.com/2016/02/03/building-a-single-page-todo-app-with-mean-including-angular-2/)
 
@@ -18,7 +18,7 @@
 
 > And always keep the [Angular 2 docs](https://angular.io/docs/ts/latest/) at hand, because the times are always changing
 
-This seed repo serves as an MEAN starter for anyone looking to get a full stack single-page application up and running with `Angular 2`, `MongoDB`, `ExpressJS`, `Node`, `Socket.io` using TypeScript across the stack. [Webpack](http://webpack.github.io/) is used for automating our build process and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.
+This seed repo serves as an MEAN starter for anyone looking to get a full stack single-page application up and running with `Angular 2`, `MongoDB`, `ExpressJS`, `Node`, `Socket.io` using `TypeScript` across the stack. [Webpack](http://webpack.github.io/) is used for automating our build process and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.
 
 - Best practices in file and application organization for `Angular 2`.
 - Ready-to-go full stack build system using `Webpack` for working with `TypeScript`.
@@ -28,7 +28,7 @@ This seed repo serves as an MEAN starter for anyone looking to get a full stack 
 - Testing `Angular 2` code with `Jasmine` and `Karma`.
 - Coverage with `Istanbul` and `Karma`
 - End-to-end `Angular 2` code using `Protractor`.
-- Type management with `Typings`
+- Type management with `@types`
 - Material Design with [angular/material2](https://github.com/angular/material2)
 - `Sass` preprocessor linting and compiling
 - Documentation generation across the stack using `Docco`/`TypeDoc`
@@ -60,7 +60,7 @@ $ vulgar init <nameOfApplication>
 $ cd <nameOfApplication>
 
 # add required global libraries
-$ npm install -g typings gulp-cli webpack webpack-dev-server concurrently rimraf mocha typescript protractor karma
+$ npm install -g gulp-cli webpack webpack-dev-server concurrently rimraf mocha typescript protractor karma
 
 # install the repo with npm
 # required only if you declined automated dependency installation
@@ -106,7 +106,7 @@ go to <http://0.0.0.0:8080> or <http://localhost:8080> in your browser
 
 - [TypeScript](#typescript)
 
-- [Typings](#typings)
+- [@Types](#types)
 
 - [Frequently asked questions](#frequently-asked-questions)
 
@@ -251,7 +251,6 @@ vulgar/
  ├──typedoc.json                    * typescript documentation generator
  │
  ├──tsconfig.json                   * config that webpack uses for typescript
- ├──typings.json                    * our typings manager
  └──package.json                    * what npm uses to manage it's dependencies
 ```
 
@@ -299,7 +298,6 @@ Once you have those, you should install these global dependencies with `npm inst
 - `gulp-cli` (`$ npm install --global gulp-cli`)
 - `karma` (`$ npm install --global karma-cli`)
 - `protractor` (`$ npm install --global protractor`)
-- `typings` (`$ npm install --global typings`)
 - `typescript` (`$ npm install --global typescript`)
 - `concurrently` (`$ npm install --global concurrently`)
 - `mocha` (`$ npm install --global mocha`)
@@ -309,7 +307,6 @@ Once you have those, you should install these global dependencies with `npm inst
 - `$ npm install -g vulgar-cli generator-vulgar`
 - `$ vulgar init` to install a new instance of the v#!g@r seed
 - `$ npm install` to install all local dependencies
-- `$ typings install` to install necessary typings
 - `$ mongod` in a separate terminal, to fire up MongoDB
 - `$ npm run build` to build necessary front-end code with Webpack
 - `$ npm start` to enable hot module reloading and build on file change
@@ -499,22 +496,16 @@ We have good experience using these editors:
 - [Atom](https://atom.io/) with [TypeScript plugin](https://atom.io/packages/atom-typescript)
 - [Sublime Text](http://www.sublimetext.com/3) with [Typescript-Sublime-Plugin](https://github.com/Microsoft/Typescript-Sublime-plugin#installation)
 
-# Typings
-
-> When you include a module that doesn't include Type Definitions inside of the module you need to include external Type Definitions with Typings
-
-## Use latest Typings module
-
-```
-$ npm install --global typings
-```
+# Types
+> When you include a module that doesn't include Type Definitions inside of the module you can include external Type Definitions with @types
 
 ## Custom Type Definitions
 
-When including 3rd party modules you also need to include the type definition for the module if they don't provide one within the module. You can try to install it with typings
+When including 3rd party modules you also need to include the type definition for the module if they don't provide one within the module. You can try to install it with @types
 
 ```
-$ typings install dt~node --save --global
+$ npm install @types/node
+$ npm install @types/lodash
 ```
 
 If you can't find the type definition in the registry we can make an ambient definition in this file for now. For example
@@ -538,8 +529,6 @@ If you're importing a module that uses Node.js modules which are CommonJS you ne
 ```typescript
 import * as _ from 'lodash';
 ```
-
-You can include your type definitions in this file until you create one for the typings registry see [typings/registry](https://github.com/typings/registry)
 
 # Frequently asked questions
 
@@ -586,10 +575,6 @@ You can include your type definitions in this file until you create one for the 
 - How do I include bootstrap or jQuery?
 
   - please see issue [#215](https://github.com/AngularClass/angular2-webpack-starter/issues/215) and [#214](https://github.com/AngularClass/angular2-webpack-starter/issues/214#event-511768416) from the [Angular 2 Webpack Starter Kit](https://github.com/AngularClass/angular2-webpack-starter)
-
-- I'm getting an error about not finding my module that I installed?
-
-  - please see [How to include or create custom type definitions](https://github.com/AngularClass/angular2-webpack-starter/wiki/How-to-include-or-create-custom-type-definitions) and [custom-typings.d.ts](https://github.com/AngularClass/angular2-webpack-starter/blob/master/src/custom-typings.d.ts) from the [Angular 2 Webpack Starter Kit](https://github.com/AngularClass/angular2-webpack-starter)
 
 - How do I async load a component?
 
