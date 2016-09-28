@@ -10,5 +10,11 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 })
 
 export class Index {
+  constuctor() {
 
+  }
+
+  ngOnInit() {
+    console.log('hello `Index` component');
+  }
 }

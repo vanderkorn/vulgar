@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
 })
 
 export class Detail {
-  
+  constructor() {
+
+  }
+
+  ngOnInit() {
+    console.log('hello `Detail` component');
+  }
 }
