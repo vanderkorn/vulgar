@@ -14,7 +14,11 @@ export const routes: RouterConfig = [
   // Make sure you match the component type string to the require in asyncRoutes
   { path: 'about',    component: 'About' },
   // Async components with children routes must use WebpackAsync
-  { path: 'detail',   component: 'Detail', canActivate: [ WebpackAsyncRoute ]},
+  { path: 'detail',
+    component: 'Detail',
+    canActivate: [ WebpackAsyncRoute ],
+    children: [ { path: '', component: 'Index' } ]
+  },
   { path: 'login',    component: 'LoginComponent' },
   { path: 'recipes',  component: 'Recipes', canActivate: [AuthGuard] },
   { path: 'register', component: 'RegisterComponent', canDeactivate: [CanDeactivateGuard] },
@@ -31,6 +35,7 @@ export const routes: RouterConfig = [
 export const asyncRoutes: AsyncRoutes = {
   'About': require('es6-promise-loader!./about'),
   'Detail': require('es6-promise-loader!./+detail'),
+  'Index': require('es6-promise-loader!./+detail'),
   'LoginComponent': require('es6-promise-loader!./login/login.component'),
   'Recipes': require('es6-promise-loader!./recipes/recipes.component'),
   'RegisterComponent': require('es6-promise-loader!./register/register.component'),
