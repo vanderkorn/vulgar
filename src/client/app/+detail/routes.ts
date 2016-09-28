@@ -1,4 +1,4 @@
-import { Detail } from ',/detail.component';
+import { Detail } from './detail.component';
 import { Index } from './index.component';
 
 // Async copmonents must be named routes for WebpackAsyncRoute

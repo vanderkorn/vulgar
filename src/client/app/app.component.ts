@@ -65,6 +65,11 @@ import { ChatComponent } from './chat';
             Login
           </button>
         </a>
+        <a [routerLink]=" ['./detail'] ">
+          <button md-button>
+            Detail
+          </button>
+        </a>
         <a [routerLink]=" ['./about'] ">
           <button md-button>
             About

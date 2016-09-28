@@ -1,3 +1,4 @@
+import { WebpackAsyncRoute } from '@angularclass/webpack-toolkit';
 import { RouterConfig } from '@angular/router';
 
 import { Home } from './home';
@@ -12,6 +13,8 @@ export const routes: RouterConfig = [
   // Async Routes
   // Make sure you match the component type string to the require in asyncRoutes
   { path: 'about',    component: 'About' },
+  // Async components with children routes must use WebpackAsync
+  { path: 'detail',   component: 'Detail', canActivate: [ WebpackAsyncRoute ]},
   { path: 'login',    component: 'LoginComponent' },
   { path: 'recipes',  component: 'Recipes', canActivate: [AuthGuard] },
   { path: 'register', component: 'RegisterComponent', canDeactivate: [CanDeactivateGuard] },
@@ -27,6 +30,7 @@ export const routes: RouterConfig = [
 // the component correctly
 export const asyncRoutes: AsyncRoutes = {
   'About': require('es6-promise-loader!./about'),
+  'Detail': require('es6-promise-loader!./+detail'),
   'LoginComponent': require('es6-promise-loader!./login/login.component'),
   'Recipes': require('es6-promise-loader!./recipes/recipes.component'),
   'RegisterComponent': require('es6-promise-loader!./register/register.component'),
@@ -35,11 +39,13 @@ export const asyncRoutes: AsyncRoutes = {
 
 // An array of callbacks to be invoked after bootstrap to prefetch async routes
 export const prefetchRouteCallbacks: Array<Es6PromiseLoader | Function> = [
-  asyncRoutes[ 'About',
-               'LoginComponent',
-               'Recipes',
-               'RegisterComponent',
-               'Todo' ] // es6-promise-loader returns a function
+  asyncRoutes[ 'About' ],
+  asyncRoutes[ 'Detail' ],
+  asyncRoutes[ 'LoginComponent' ],
+  asyncRoutes[ 'Recipes' ],
+  asyncRoutes[ 'RegisterComponent' ],
+  asyncRoutes[ 'Todo' ]
+  // es6-promise-loader returns a function
 ];
 
 // Es6PromiseLoader and AsyncRoutes interfaces are defined in custom-typings
