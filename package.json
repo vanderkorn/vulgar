@@ -120,7 +120,7 @@
   },
   "devDependencies": {
     "angular2-hmr": "~0.8.0",
-    "awesome-typescript-loader": "^0.17.0",
+    "awesome-typescript-loader": "1.1.1",
     "babel-cli": "^6.9.0",
     "babel-core": "^6.9.1",
     "babel-loader": "^6.2.4",
