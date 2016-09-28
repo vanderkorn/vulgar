@@ -17,6 +17,7 @@
       "es6"
     ],
     "types": [
+      "corejs",
       "hammerjs",
       "jasmine",
       "node",
