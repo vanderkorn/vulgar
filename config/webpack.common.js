@@ -119,7 +119,8 @@ module.exports = {
       // See: https://github.com/s-panferov/awesome-typescript-loader
       {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader',
+        loaders: [ 'awesome-typescript-loader',
+                   '@angularclass/conventions-loader' ],
         exclude: [/\.(spec|e2e)\.ts$/]
       },
 
