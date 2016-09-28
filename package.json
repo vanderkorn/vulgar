@@ -22,6 +22,8 @@
     "webpack-dev-server": "webpack-dev-server",
     "webdriver-manager": "webdriver-manager",
     "protractor": "protractor",
+    
+    "typings-install": "npm run typings -- install",
 
     "clean": "npm cache clean && npm run rimraf -- node_modules docs typings coverage dist",
       "clean:dist": "npm run rimraf -- dist/client",
@@ -67,7 +69,7 @@
 
     "start": "concurrently --kill-others --raw \"npm run server:dev\" \"npm run watch\"",
 
-    "postinstall": "npm run typings -- install",
+    "postinstall": "npm run typings-install",
 
       "preversion": "npm test",
     "version": "npm run build",
