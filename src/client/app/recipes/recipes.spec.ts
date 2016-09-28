@@ -3,9 +3,8 @@ import {recipes} from './recipes.reducer';
 import {selectedRecipe} from './selected-recipe.reducer';
 
 import {
-  it,
-  describe,
-  expect
+  addProviders,
+  inject
 } from '@angular/core/testing';
 
 describe('Recipes', () => {

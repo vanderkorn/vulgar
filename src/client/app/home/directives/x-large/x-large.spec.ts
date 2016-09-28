@@ -1,10 +1,7 @@
 import {
-  it,
-  inject,
   async,
-  describe,
-  beforeEachProviders,
-  TestComponentBuilder
+  addProviders,
+  inject
 } from '@angular/core/testing';
 
 import {Component, provide} from '@angular/core';

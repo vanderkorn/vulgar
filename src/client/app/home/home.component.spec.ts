@@ -1,9 +1,6 @@
 import {
-  it,
-  inject,
-  describe,
-  beforeEachProviders,
-  TestComponentBuilder
+  addProviders,
+  inject
 } from '@angular/core/testing';
 
 import {Component, provide} from '@angular/core';
@@ -17,7 +14,7 @@ import {AppState} from '../app.service';
 
 describe('Home', () => {
   // provide our implementations or mocks to the dependency injector
-  beforeEachProviders(() => [
+  beforeEach(() => addProviders([
     BaseRequestOptions,
     MockBackend,
     provide(Http, {
@@ -30,7 +27,7 @@ describe('Home', () => {
     AppState,
     Title,
     Home
-  ]);
+  ]));
 
   it('should have default data', inject([ Home ], (home) => {
     expect(home.localState).toEqual({ value: '' });
