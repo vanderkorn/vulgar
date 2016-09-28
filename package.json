@@ -98,7 +98,7 @@
     "@angular2-material/slide-toggle": "2.0.0-alpha.5-2",
     "@angular2-material/tabs": "2.0.0-alpha.5-2",
     "@angular2-material/toolbar": "2.0.0-alpha.5-2",
-    "@angularclass/webpack-toolkit": "^1.0.0",
+    "@angularclass/webpack-toolkit": "^1.0.1",
     "@angularclass/request-idle-callback": "^1.0.6",
     "@ngrx/store": "1.5.0",
     "bcrypt-nodejs": "0.0.3",
