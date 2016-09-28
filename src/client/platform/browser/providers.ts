@@ -15,6 +15,7 @@ import { provideRouter } from '@angular/router';
 import { provideWebpack } from '@angularclass/webpack-toolkit';
 import { providePrefetchIdleCallbacks } from '@angularclass/request-idle-callback';
 import { routes, asyncRoutes, prefetchRouteCallbacks } from '../../app/app.routes';
+import { APP_RESOLVER_PROVIDERS } from '../app/app.resolver';
 import { CanDeactivateGuard } from '../../app/shared/interfaces/can-deactivate.interface';
 import { AuthGuard } from '../../app/shared/auth.guard';
 
@@ -36,6 +37,7 @@ export const APPLICATION_PROVIDERS = [
   ...FORM_PROVIDERS,
   ...HTTP_PROVIDERS,
   ...MATERIAL_PROVIDERS,
+  ...APP_RESOLVER_PROVIDERS,
   provideRouter(routes),
   provideWebpack(asyncRoutes),
   providePrefetchIdleCallbacks(prefetchRouteCallbacks),

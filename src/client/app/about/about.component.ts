@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 /*
  * We're loading this component asynchronously
@@ -16,14 +17,22 @@ console.log('`About` component loaded asynchronously');
         david.r.niciforovic@gmail.com
       </h3>
     </md-card>
+    <pre>this.localState = {{ localState | json }}</pre>
   `,
 })
 export class About {
-  constructor() {
+  localState;
+  constructor(public route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
+    this.route
+      .data
+      .subscribe((data: any) => {
+        // Resolved route data
+        this.localState = data.yourData;
+      });
     console.log('hello `About` component');
     // static data that is bundled
     //var mockData = require('assets/mock-data/mock-data.json');
