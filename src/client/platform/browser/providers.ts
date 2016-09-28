@@ -3,20 +3,15 @@
 //** These `providers` are available in any template **
 
 // Angular 2
-import {FORM_PROVIDERS,
-        LocationStrategy,
-        HashLocationStrategy,
-        PathLocationStrategy} from '@angular/common';
+import { FORM_PROVIDERS
+         LocationStrategy,
+         HashLocationStrategy,
+         PathLocationStrategy } from '@angular/common';
 
 // Angular 2 Http
-import {HTTP_PROVIDERS} from '@angular/http';
-// Angular 2 Router
-import { provideRouter } from '@angular/router';
-import { provideWebpack } from '@angularclass/webpack-toolkit';
-import { providePrefetchIdleCallbacks } from '@angularclass/request-idle-callback';
-import { routes, asyncRoutes, prefetchRouteCallbacks } from '../../app/app.routes';
-import { APP_RESOLVER_PROVIDERS } from '../app/app.resolver';
+import { HTTP_PROVIDERS } from '@angular/http';
 import { CanDeactivateGuard } from '../../app/shared/interfaces/can-deactivate.interface';
+
 import { AuthGuard } from '../../app/shared/auth.guard';
 
 // Angular 2 Material 2
@@ -37,10 +32,6 @@ export const APPLICATION_PROVIDERS = [
   ...FORM_PROVIDERS,
   ...HTTP_PROVIDERS,
   ...MATERIAL_PROVIDERS,
-  ...APP_RESOLVER_PROVIDERS,
-  provideRouter(routes),
-  provideWebpack(asyncRoutes),
-  providePrefetchIdleCallbacks(prefetchRouteCallbacks),
   { provide: LocationStrategy, useClass: PathLocationStrategy },
 //{ provide: LocationStrategy, useClass: HashLocationStrategy },
   CanDeactivateGuard,
