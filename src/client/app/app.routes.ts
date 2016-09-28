@@ -38,13 +38,13 @@ export const routes: RouterConfig = [
 // `asyncRoutes` is needed for `webpack-toolkit` that will allow us to resolve
 // the component correctly
 export const asyncRoutes: AsyncRoutes = {
-  'About': require('es6-promise-loader?,about!./about'),
-  'Detail': require('es6-promise-loader?,detail!./+detail'),
-  'Index': require('es6-promise-loader?,detail!./+detail'),
-  'LoginComponent': require('es6-promise-loader?,login!./login/login.component'),
-  'Recipes': require('es6-promise-loader,recipes!./recipes/recipes.component'),
-  'RegisterComponent': require('es6-promise-loader,register!./register/register.component'),
-  'Todo': require('es6-promise-loader,todo!./todo/todo.component'),
+  'About': require('es6-promise-loader!./about'),
+  'Detail': require('es6-promise-loader!./+detail'),
+  'Index': require('es6-promise-loader!./+detail'),
+  'LoginComponent': require('es6-promise-loader!./login/login.component'),
+  'Recipes': require('es6-promise-loader!./recipes/recipes.component'),
+  'RegisterComponent': require('es6-promise-loader!./register/register.component'),
+  'Todo': require('es6-promise-loader!./todo/todo.component'),
 };
 
 // An array of callbacks to be invoked after bootstrap to prefetch async routes
