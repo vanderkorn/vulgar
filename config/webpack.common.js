@@ -120,7 +120,7 @@ module.exports = {
       {
         test: /\.ts$/,
         loaders: [ 'awesome-typescript-loader',
-                   '@angularclass/conventions-loader' ],
+                   'angular2-template-loader' ],
         exclude: [/\.(spec|e2e)\.ts$/]
       },
 
