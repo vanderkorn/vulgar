@@ -18,10 +18,12 @@ var NoErrorsPlugin = require('webpack/lib/NoErrorsPlugin');
 
 //# Webpack Constants
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
+const HOST = process.env.HOST || '0.0.0.0';
+const PORT = process.env.PORT || 8080;
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = {
-  host: process.env.HOST || '0.0.0.0',
-  port: process.env.PORT || 8080,
+  host: HOST,
+  port: PORT,
   ENV: ENV,
   HMR: HMR
 };
