@@ -4,8 +4,7 @@ import {HmrState} from 'angular2-hmr';
 @Injectable()
 export class AppState {
 
-  // `HmrState` is used by `HMR` to track the any `state` during reloading
-  @HmrState() _state = {};
+  _state = { };
 
   constructor() {
     // Configure default application state if needed

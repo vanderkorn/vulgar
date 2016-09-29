@@ -1,7 +1,7 @@
 // Angular 2
 // rc2 workaround
 import { enableDebugTools, disableDebugTools } from '@angular/platform-browser';
-import { enableProdMode } from '@angular/core';
+import { enableProdMode, ApplicationRef } from '@angular/core';
 
 import { PLATFORM_DIRECTIVES, PLATFORM_PIPES } from '@angular/core';
 
@@ -12,7 +12,7 @@ let PROVIDERS = [
 
 // Angular `debug` tools in the `dev` console
 // See: https://github.com/angular/angular/blob/86405345b781a9dc2438c0fbe3e9409245647019/TOOLS_JS.md
-let _decorateComponentRef = function identity(value) { return value; };
+let _decorateModuleRef = function identity(value) { return value; };
 
 if ('production' === ENV) {
   // Production
@@ -26,12 +26,15 @@ if ('production' === ENV) {
 
 } else {
 
-  _decorateComponentRef = (cmpRef) => {
+  _decorateModuleRef = (modRef: any) => {
+    var appRef = modRef.injector.get(ApplicationRef);
+    var cmpRef = appRef.components[0];
+
     let _ng = (<any>window).ng;
     enableDebugTools(cmpRef);
     (<any>window).ng.probe = _ng.probe;
     (<any>window).ng.coreTokens = _ng.coreTokens;
-    return cmpRef;
+    return modRef;
   };
 
   // Development
@@ -42,7 +45,7 @@ if ('production' === ENV) {
 
 }
 
-export const decorateComponentRef = _decorateComponentRef;
+export const decorateModuleRef = _decorateModuleRef;
 
 export const ENV_PROVIDERS = [
   ...PROVIDERS

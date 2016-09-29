@@ -11,8 +11,7 @@ import '@angular/common';
 import '@angular/forms';
 import '@angular/http';
 import '@angular/router';
-import '@angularclass/webpack-toolkit';
-import '@angularclass/request-idle-callback';
+import '@angularclass/hmr';
 
 // RxJS
 import 'rxjs/add/operator/map';
@@ -36,9 +35,6 @@ import '@angular2-material/toolbar';
 
 if ('production' === ENV) {
   // Production
-
-
 } else {
   // Development
-
 }
