@@ -27,6 +27,3 @@ export const routes = [
 export default class AboutMoudle {
   static routes = routes;
 }
-
-// Must be exported for `WebpackAsyncRoute`
-export * from './routes';

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ClientSocket } from '../shared/client-socket.ts';
 
 declare var require;
-const styles: string = require('!style!css!sass!./chat.component.scss');
+const styles: string = require('!style!css!sass!./chat.component.scss').toString();
 const template: string = require('./chat.component.html');
 
 @Component({

@@ -34,7 +34,7 @@ import { ChatComponent } from './chat';
   encapsulation: ViewEncapsulation.None,
   pipes: [],
   // Load our main `Sass` file into our `app` `component`
-  styleUrls: [require('!style!css!sass!../sass/main.scss')],
+  styleUrls: [require('!style!css!sass!../sass/main.scss').toString()],
   template: `
     <md-content>
       <md-toolbar color="primary">

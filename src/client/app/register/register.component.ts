@@ -27,7 +27,7 @@ class RegistrationError {
   selector: 'register-form',
   providers: [AuthService, EmailValidator],
   template: require('./register.component.html'),
-  styleUrls: [require('!style!css!sass!./form.scss')]
+  styleUrls: [require('!style!css!sass!./form.scss').toString()]
 })
 export class RegisterComponent {
 

@@ -38,7 +38,7 @@ function debounce(func, wait, immediate = false) {
   selector: 'login-form',
   providers: [ AuthService, EmailValidator ],
   template: require('./login.component.html'),
-  styleUrls: [require('!style!css!sass!./form.scss')]
+  styleUrls: [require('!style!css!sass!./form.scss').toString()]
 })
 
 export class LoginComponent {
