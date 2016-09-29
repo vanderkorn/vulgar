@@ -240,7 +240,16 @@ module.exports = {
     //
     new HtmlElementsPlugin({
       headTags: require('./head.conf')
-    })
+    }),
+
+    //
+    // Plugin: ContextReplacementPlugin
+    //
+    // See: https://github.com/AngularClass/angular2-webpack-starter/issues/993
+    new webpack.ContextReplacementPlugin(
+      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      __dirname
+    )
 
   ],
 
