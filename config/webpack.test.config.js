@@ -5,9 +5,11 @@
 // ```
 
 var helpers = require('./helpers');
+
 //# Webpack Plugins
 var ProvidePlugin = require('webpack/lib/ProvidePlugin');
 var DefinePlugin  = require('webpack/lib/DefinePlugin');
+
 //# Webpack Constants
 const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 
@@ -111,7 +113,7 @@ module.exports = {
       // `require("!style!css!sass!./file.scss");`
       {
         test: /\.scss$/,
-        loader: 'style!css!autoprefixer-loader?browsers=last 2 versions!sass',
+        loader: 'style!css!postcss-loader!sass',
         exclude: [ helpers.root('src/index.html') ] },
     ],
     // An array of applied pre and post loaders.

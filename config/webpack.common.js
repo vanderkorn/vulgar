@@ -13,6 +13,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const HtmlElementsPlugin = require('./modules/html-elements.util.js');
 
+//# PostCSS
+const precss       = require('precss');
+const autoprefixer = require('autoprefixer');
+
 //# Webpack Constants
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HMR = helpers.hasProcessFlag('hot');
@@ -138,7 +142,7 @@ module.exports = {
       // `require("!style!css!sass!./file.scss");`
       {
         test: /\.scss$/,
-        loader: 'style!css!autoprefixer-loader?browsers=last 2 versions!sass',
+        loader: 'style!css!postcss-loader!sass',
         exclude: [ helpers.root('node_modules') ]
       },
 
@@ -150,6 +154,15 @@ module.exports = {
 
     ]
 
+  },
+
+  // PostCSS
+  //
+  // CSS Postprocessor
+  //
+  // See: https://github.com/postcss/postcss-loader
+  postcss: function () {
+    return [precss, autoprefixer];
   },
 
   // Add additional plugins to the compiler.
