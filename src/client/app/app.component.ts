@@ -13,12 +13,12 @@
 /*
  * Angular 2 decorators and services
  */
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
-import {AppState} from './app.service';
+import { AppState } from './app.service';
 
 // Import NgFor directive
-import {NgFor} from '@angular/common';
+import { NgFor } from '@angular/common';
 
 import { ChatComponent } from './chat';
 
