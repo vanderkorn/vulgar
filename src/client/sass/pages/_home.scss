@@ -2,37 +2,11 @@
 // This file contains styles that are specific to the home page.
 // -----------------------------------------------------------------------------
 
-.fill{
-  flex: 1 1 auto;
-}
-
-.app-state{
-  margin: 15px;
-  flex: 1;
-  max-height: 9.969rem;
-}
-
-.home{
-  flex: 1;
-}
-
-md-content{
-  display: flex;
-  flex-direction: column;
+html, body{
   height: 100%;
+  font-family: Arial, Helvetica, sans-serif
 }
 
-.card-container{
-    display: flex;
-    flex-direction: column;
-    margin: 15px;
-    border: 2px dashed #FBC02D;
-}
-
-.sample-content{
-    flex: 1;
-}
-
-.card-container md-card{
-    margin: 5px;
+span.active {
+  background-color: gray;
 }

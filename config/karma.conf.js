@@ -2,7 +2,7 @@
 
 module.exports = function(config) {
 
-  var testWebpackConfig = require('./config/webpack.test.config.js');
+  var testWebpackConfig = require('./config/webpack/client.test.js');
 
   var configuration = {
 
@@ -28,21 +28,22 @@ module.exports = function(config) {
     webpack: testWebpackConfig,
 
     coverageReporter: {
-      dir : 'coverage/',
-      reporters: [
-        { type: 'text-summary'},
-        { type: 'json' },
-        { type: 'html' }
-      ]
+      type: 'in-memory'
+    },
+
+    remapCoverageReporter: {
+      'text-summary': null,
+      json: './coverage/coverage.json',
+      html: './coverage/html'
     },
 
     // Webpack please don't spam the console when running in karma!
-    webpackServer: { noInfo: true },
+    webpackMiddleware: { stats: 'errors-only'},
 
     // test results reporter to use
     // possible values: 'dots', 'progress', 'mocha'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: [ 'mocha', 'coverage' ],
+    reporters: [ 'mocha', 'coverage', 'remap-coverage' ],
 
     // web server port
     port: 9876,
@@ -60,12 +61,12 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: [
-      // 'Chrome',
-      'PhantomJS'
+      //'PhantomJS',
+      'Chrome'
     ],
 
     customLaunchers: {
-      Chrome_travis_ci: {
+      ChromeTravisCi: {
         base: 'Chrome',
         flags: ['--no-sandbox']
       }
@@ -76,8 +77,10 @@ module.exports = function(config) {
     singleRun: true
   };
 
-  if(process.env.TRAVIS){
-    configuration.browsers = ['Chrome_travis_ci'];
+  if (process.env.TRAVIS) {
+    configuration.browsers = [
+      'ChromeTravisCi'
+    ];
   }
 
   config.set(configuration);

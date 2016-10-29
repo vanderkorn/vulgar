@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 
 @Injectable()
 export class Title {
@@ -13,7 +13,7 @@ export class Title {
     // return this.http.get('/assets/data.json')
     // .map(res => res.json());
     return {
-      value: 'Angular 2 MEAN Webpack Starter'
+      value: 'AngularClass'
     };
   }
 

@@ -119,7 +119,7 @@ let defaultConfig = {
     //
     // See: https://webpack.github.io/docs/list-of-plugins.html#occurrenceorderplugin
     // See: https://github.com/webpack/docs/wiki/optimization#minimize
-    new webpack.optimize.OccurenceOrderPlugin(true)
+    //new webpack.optimize.OccurenceOrderPlugin(true)
   ],
 };
 
@@ -168,8 +168,11 @@ let backendConfig = config({
   externals: nodeModules,
   plugins: [
     new webpack.IgnorePlugin(/\.(css|scss|less)$/),
-    new webpack.BannerPlugin('require("source-map-support").install();',
-                             { raw: true, entryOnly: false })
+    new webpack.BannerPlugin({
+      banner: 'require("source-map-support").install();',
+      raw: true,
+      entryOnly: false
+    })
   ]
 });
 

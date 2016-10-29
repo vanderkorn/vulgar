@@ -7,11 +7,10 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "noEmitHelpers": true,
+    "noEmitHelpers": false,
     "strictNullChecks": false,
     "baseUrl": "./src",
-    "paths": [
-    ],
+    "paths": { },
     "lib": [
       "dom",
       "es6"
@@ -20,7 +19,6 @@
       "bcrypt-nodejs",
       "body-parser",
       "cookie-parser",
-      "core-js",
       "express",
       "express-serve-static-core",
       "express-session",

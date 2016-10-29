@@ -1,30 +1,33 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
-import {TodoService} from './todo.service';
+import { TodoService } from './todo.service';
 
 // We `import` `http` into our `TodoService` but we can only
 // specify providers within our component
-import {HTTP_PROVIDERS} from '@angular/http';
+import { Http } from '@angular/http';
 
 // Import NgFor directive
-import {NgFor} from '@angular/common';
+import { NgFor } from '@angular/common';
 
 // Create metadata with the `@Component` decorator
 @Component({
-    // HTML tag for specifying this component
-    selector: 'todo',
-    // Let Angular 2 know about `Http` and `TodoService`
-    providers: [...HTTP_PROVIDERS, TodoService],
-    template: require('./todo.html')
+  // HTML tag for specifying this component
+  selector: 'todo',
+  // Let Angular 2 know about `Http` and `TodoService`
+  providers: [
+    TodoService
+  ],
+  // Every Angular template is first compiled by the browser before Angular runs it's compiler
+  templateUrl: './todo.template.html'
 })
-export class Todo {
+export class TodoComponent {
 
   // Initialize our `todoData.text` to an empty `string`
   todoData = {
     text: ''
   };
 
-  private todos: Array<Todo> = [];
+  private todos: Array<TodoComponent> = [];
 
   constructor(public todoService: TodoService) {
       // Initialize our `todos` by pinging the `api`

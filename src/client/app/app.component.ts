@@ -1,15 +1,3 @@
-// ```
-// app.ts
-// (c) 2016 David Newman
-// blackshuriken@hotmail.com
-// app.ts may be freely distributed under the MIT license
-// ```
-
-// *src/app/app.ts*
-
-// This file contains the main class as well as the necessary
-// decorators for creating the primary `app` `component`
-
 /*
  * Angular 2 decorators and services
  */
@@ -17,99 +5,79 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 import { AppState } from './app.service';
 
-// Import NgFor directive
-import { NgFor } from '@angular/common';
-
-import { ChatComponent } from './chat';
-
 /*
  * App Component
  * Top Level Component
  */
 @Component({
   selector: 'app',
-  providers: [ ],
-  directives: [ NgFor,
-                ChatComponent ],
   encapsulation: ViewEncapsulation.None,
-  pipes: [],
-  // Load our main `Sass` file into our `app` `component`
-  styleUrls: [require('!style!css!sass!../sass/main.scss').toString()],
+  styleUrls: [
+    '../sass/main.scss'
+  ],
   template: `
-    <md-content>
-      <md-toolbar color="primary">
-        <span>{{ name }}</span>
-        <span class="fill"></span>
+    <nav>
+      <span>
         <a [routerLink]=" ['./'] ">
-          <button md-button>
-            Home
-          </button>
+          Index
         </a>
-        <a [routerLink]=" ['./todo'] ">
-          <button md-button>
-            Todo
-          </button>
+      </span>
+      |
+      <span>
+        <a [routerLink]=" ['./home'] ">
+          Home
         </a>
-        <a [routerLink]=" ['./recipes'] ">
-          <button md-button>
-            Recipes
-          </button>
-        </a>
-        <a [routerLink]=" ['./register'] ">
-          <button md-button>
-            Register
-          </button>
-        </a>
-        <a [routerLink]=" ['./login'] ">
-          <button md-button>
-            Login
-          </button>
-        </a>
+      </span>
+      |
+      <span>
         <a [routerLink]=" ['./detail'] ">
-          <button md-button>
-            Detail
-          </button>
+          Detail
         </a>
+      </span>
+      |
+      <span>
+        <a [routerLink]=" ['./todo'] ">
+          Todo
+        </a>
+      </span>
+      |
+      <span>
         <a [routerLink]=" ['./about'] ">
-          <button md-button>
-            About
-          </button>
+          About
         </a>
-      </md-toolbar>
+      </span>
+    </nav>
 
-      <md-progress-bar mode="indeterminate" color="primary" *ngIf="loading">
-      </md-progress-bar>
-
+    <main>
       <router-outlet></router-outlet>
+    </main>
 
-      <vu-chat></vu-chat>
+    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
 
-      <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-
-      <footer>
-        <img [src]="angularLogo" width="7%">
-        <span>Angular 2 MEAN Webpack Starter by <a [href]="url">@datatype_void</a></span>
-      </footer>
-    </md-content>
+    <footer>
+      <span>Angular 2 MEAN Webpack Starter by <a [href]="url">@datatype_void</a></span>
+      <div>
+        <a [href]="url">
+          <img [src]="angularLogo" width="25%">
+        </a>
+      </div>
+    </footer>
   `
 })
-export class App {
+export class AppComponent {
   angularLogo = 'assets/img/angular-logo.png';
   name = 'Angular 2 MEAN Webpack Starter';
   url = 'https://twitter.com/datatype_void';
 
-  // Pass in our application `state`
-  // Alternative to using `redux`
-  constructor(public appState: AppState) {}
+  constructor(public appState: AppState) { }
 
-  // Fire off upon initialization
   ngOnInit() {
-
     console.log('Initial App State', this.appState.state);
   }
+
 }
 
 /*
- * For help or questions please contact us at @datatype_void on twitter
+ * For help or questions please contact me at @datatype_void on twitter
  * or our chat on Slack at http://www.davidniciforovic.com/wp-login.php?action=slack-invitation
  */

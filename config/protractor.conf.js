@@ -1,13 +1,15 @@
 // @datatype_void
 require('ts-node/register');
 
+var helpers = require('./helpers');
+
 exports.config = {
   baseUrl: 'http://localhost:3000/',
 
   // use `npm run e2e`
   specs: [
-    'src/client/**/**.e2e.ts',
-    'src/client/**/*.e2e.ts'
+    helpers.root('src/client/**/**.e2e.ts'),
+    helpers.root('src/client/**/*.e2e.ts')
   ],
   exclude: [],
 
