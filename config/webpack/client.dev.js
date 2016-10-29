@@ -1,15 +1,11 @@
 /**
- *  @author: @datatypevoid
- */
-
-/**
- * Webpack Development Configuration
+ * Client Webpack Development Configuration
  */
 
 /**
  * Helpers
  */
-const helpers = require('./helpers');
+const helpers = require('../helpers');
 
 /**
  * Webpack Merge
@@ -19,12 +15,13 @@ const webpackMerge = require('webpack-merge');
 /**
  * Common webpack configuration for development and production
  */
-const commonConfig = require('./webpack.common.js');
+const commonConfig = require('./client.common.js');
 
 /**
  * Webpack Plugins
  */
 const DefinePlugin = require('webpack/lib/DefinePlugin');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 
 /**
@@ -32,7 +29,7 @@ const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
  *
  * TODO: Ensure that environment settings are optimized between server/client
  */
-var envConfig = require('./config.json');
+var envConfig = require('../config.json');
 
 /**
  * Webpack Constants
@@ -49,14 +46,8 @@ const METADATA = webpackMerge(commonConfig({ env: ENV }).metadata, {
 });
 
 module.exports = function(options) {
-  return webpackMerge(commonConfig({ env: ENV }), {
 
-    /**
-     * Merged metatdata from webpack.common.js for index.html
-     *
-     * @see: (custom attribute)
-     */
-    metadata: METADATA,
+  return webpackMerge(commonConfig({ env: ENV }), {
 
     /**
      * Developer tool to enhance debugging
@@ -65,13 +56,6 @@ module.exports = function(options) {
      * @see: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
      */
     devtool: 'cheap-module-source-map',
-
-    /**
-     * Switch loaders to debug mode
-     *
-     * @see: http://webpack.github.io/docs/configuration.html#debug
-     */
-    debug: true,
 
     /**
      * Options affecting the output of the compilation process
@@ -115,10 +99,12 @@ module.exports = function(options) {
        * TODO: Add documentation
        */
       library: 'ac_[name]',
+
       /**
        * TODO: Add documentation
        */
       libraryTarget: 'var'
+
     },
 
     /**
@@ -153,25 +139,36 @@ module.exports = function(options) {
        *
        * @see: https://github.com/webpack/webpack/commit/a04ffb928365b19feb75087c63f13cadfc08e1eb
        */
-      new NamedModulesPlugin()
+      new NamedModulesPlugin(),
+
+      /**
+        * Plugin LoaderOptionsPlugin (experimental)
+        *
+        * See: https://gist.github.com/sokra/27b24881210b56bbaff7
+        */
+       new LoaderOptionsPlugin({
+         debug: true,
+         options: {
+
+           /**
+            * Static analysis linter for TypeScript advanced options configuration
+            * Description: An extensible linter for the TypeScript language.
+            *
+            * @see: https://github.com/wbuchwalter/tslint-loader
+            */
+           tslint: {
+             emitErrors: false,
+             failOnHint: false,
+             resourcePath: 'src/client'
+           }
+         }
+       })
+
     ],
 
     /**
      * Other module loader configuration
      */
-
-    /**
-     * Static analysis linter for TypeScript advanced options configuration
-     *
-     * Description: An extensible linter for the TypeScript language
-     *
-     * @see: https://github.com/wbuchwalter/tslint-loader
-     */
-    tslint: {
-      emitErrors: false,
-      failOnHint: false,
-      resourcePath: 'src/client',
-    },
 
     /**
      * Webpack-Dev-Server Configuration
@@ -209,12 +206,14 @@ module.exports = function(options) {
      * @see https://webpack.github.io/docs/configuration.html#node
      */
     node: {
-      global: 'window',
+      global: true,
       crypto: 'empty',
       process: true,
       module: false,
       clearImmediate: false,
       setImmediate: false
     }
+
   });
+
 }

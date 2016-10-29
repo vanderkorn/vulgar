@@ -1,9 +1,5 @@
 /**
- *  @author: @datatypevoid
- */
-
-/**
- * Webpack Development Configuration
+ * Client Webpack Development Configuration
  */
 
 /**
@@ -14,24 +10,27 @@ const webpack = require('webpack');
 /**
  * Helpers
  */
-const helpers = require('./helpers');
+const helpers = require('../helpers');
+const path = require('path');
 
 /**
  * Webpack Plugins
  */
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
-const HtmlElementsPlugin = require('./modules/html-elements.util.js');
 const AssetsPlugin = require('assets-webpack-plugin');
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
-const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const HtmlElementsPlugin = require('../modules/html-elements.util.js');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 /**
  * postcss-loader
  */
-const precss       = require('precss');
 const autoprefixer = require('autoprefixer');
+const precss       = require('precss');
 
 /**
  * Webpack Constants
@@ -58,13 +57,6 @@ module.exports = function(options) {
   return {
 
     /**
-     * Merged metatdata from webpack.common.js for index.html
-     *
-     * @see: (custom attribute)
-     */
-    metadata: METADATA,
-
-    /**
      * Cache generated modules and chunks to improve performance for multiple
      * incremental builds
      * This is enabled by default in watch mode
@@ -80,12 +72,12 @@ module.exports = function(options) {
      * @see: http://webpack.github.io/docs/configuration.html#entry
      */
     entry: {
-      'polyfills': './src/client/polyfills.browser.ts',
-      'vendor': './src/client/vendor.browser.ts',
       /**
        * Our primary Angular 2 application
        */
       'main': './src/client/main.browser.ts',
+      'polyfills': './src/client/polyfills.browser.ts',
+      'vendor': './src/client/vendor.browser.ts',
     },
 
     /**
@@ -100,12 +92,7 @@ module.exports = function(options) {
        *
        * @see: http://webpack.github.io/docs/configuration.html#resolve-extensions
        */
-      extensions: ['', '.ts', '.js', '.json', '.scss'],
-
-      /**
-       * Ensure that root is our client source directory
-       */
-      root: helpers.root('src/client'),
+      extensions: ['.js', '.json', '.scss', '.ts'],
 
       /**
        * An array of directory names to be resolved to the current directory
@@ -120,34 +107,7 @@ module.exports = function(options) {
      */
     module: {
 
-      /**
-       * An array of applied pre loaders
-       *
-       * @see: http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
-       */
-      preLoaders: [
-        {
-          test: /\.ts$/,
-          loader: 'string-replace-loader',
-          query: {
-            search: '(System|SystemJS)(.*[\\n\\r]\\s*\\.|\\.)import\\((.+)\\)',
-            replace: '$1.import($3).then(mod => (mod.__esModule && mod.default) ? mod.default : mod)',
-            flags: 'g'
-          },
-          include: [helpers.root('src')]
-        }
-      ],
-
-      /**
-       * An array of automatically applied loaders
-       *
-       * IMPORTANT: The loaders have resolved relative to the resource which
-       * they are applied to. This means they are not resolved relative to the
-       * configuration file
-       *
-       * @see: http://webpack.github.io/docs/configuration.html#module-loaders
-       */
-      loaders: [
+      rules: [
 
         /**
          * TypeScript loaders support for .ts and Angular 2 async routes via .async.ts
@@ -217,35 +177,7 @@ module.exports = function(options) {
           test: /\.(jpg|png|gif)$/,
           loader: 'file'
         }
-      ],
-
-      /**
-       * An array of applied post loaders
-       *
-       * @see: http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
-       */
-      postLoaders: [
-        {
-          test: /\.js$/,
-          loader: 'string-replace-loader',
-          query: {
-            search: 'var sourceMappingUrl = extractSourceMappingUrl\\(cssText\\);',
-            replace: 'var sourceMappingUrl = "";',
-            flags: 'g'
-          }
-        }
       ]
-    },
-
-    /**
-     * postcss-loader
-     *
-     * CSS postprocessor
-     *
-     * @see: https://github.com/postcss/postcss-loader
-     */
-    postcss: function () {
-      return [precss, autoprefixer];
     },
 
     /**
@@ -257,11 +189,12 @@ module.exports = function(options) {
 
       /**
        * Plugin: AssetsPlugin
+       * Description: Emits a json file with assets paths.
        *
-       * @todo Add documentation
+       * @see https://github.com/kossnocorp/assets-webpack-plugin
        */
       new AssetsPlugin({
-        path: helpers.root('dist'),
+        path: helpers.root('dist/client'),
         filename: 'webpack-assets.json',
         prettyPrint: true
       }),
@@ -283,7 +216,7 @@ module.exports = function(options) {
        * @see https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
        * @see https://github.com/webpack/docs/wiki/optimization#multi-page-app
        */
-      new webpack.optimize.CommonsChunkPlugin({
+      new CommonsChunkPlugin({
         name: ['polyfills', 'vendor'].reverse()
       }),
 
@@ -310,10 +243,12 @@ module.exports = function(options) {
       new CopyWebpackPlugin([{
         from: 'src/client/assets',
         to: 'assets'
+      },{
+        from: 'src/client/meta'
       }]),
 
       /**
-       * Plugin: HtmlHeadConfigPlugin
+       * Plugin: HtmlElementsPlugin
        * Description: Generate html tags based on javascript maps.
        *
        * If a publicPath is set in the webpack output configuration, it will be automatically added to
@@ -335,7 +270,7 @@ module.exports = function(options) {
        * Dependencies: HtmlWebpackPlugin
        */
       new HtmlElementsPlugin({
-        headTags: require('./head.conf')
+        headTags: require('../head.conf')
       }),
 
       /**
@@ -347,8 +282,42 @@ module.exports = function(options) {
        * @see https://github.com/ampedandwired/html-webpack-plugin
        */
       new HtmlWebpackPlugin({
+        chunksSortMode: 'dependency',
+        inject: 'head',
+        metadata: METADATA,
         template: 'src/client/index.html',
-        chunksSortMode: 'dependency'
+        title: METADATA.title,
+      }),
+
+      /*
+       * Plugin: ScriptExtHtmlWebpackPlugin
+       * Description: Enhances html-webpack-plugin functionality
+       * with different deployment options for your scripts including:
+       *
+       * See: https://github.com/numical/script-ext-html-webpack-plugin
+       */
+      new ScriptExtHtmlWebpackPlugin({
+        defaultAttribute: 'defer'
+      }),
+
+      /**
+       * Plugin LoaderOptionsPlugin (experimental)
+       *
+       * @see: https://gist.github.com/sokra/27b24881210b56bbaff7
+       */
+      new LoaderOptionsPlugin({
+
+        /**
+         * postcss-loader
+         *
+         * CSS postprocessor
+         *
+         * @see: https://github.com/postcss/postcss-loader
+         */
+        postcss: function () {
+          return [precss, autoprefixer];
+        }
+
       })
     ],
 
@@ -359,12 +328,14 @@ module.exports = function(options) {
      * @see https://webpack.github.io/docs/configuration.html#node
      */
     node: {
-      global: 'window',
+      global: true,
       crypto: 'empty',
       process: true,
       module: false,
       clearImmediate: false,
       setImmediate: false
     }
+
   }
+
 };
