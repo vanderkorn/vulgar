@@ -8,14 +8,13 @@ export type InternalStateType = {
 export class AppState {
   _state: InternalStateType = { };
 
-  constructor() {
-
-  }
+  constructor() { }
 
   // already return a clone of the current state
   get state() {
     return this._state = this._clone(this._state);
   }
+
   // never allow mutation
   set state(value) {
     throw new Error('do not mutate the `.state` directly');

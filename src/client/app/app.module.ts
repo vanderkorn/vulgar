@@ -1,34 +1,46 @@
-import { NgModule, ApplicationRef } from '@angular/core';
+import { ApplicationRef, NgModule } from '@angular/core';
+import { AuthConnectionBackend } from './auth-connection.backend';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { createInputTransfer,
+         createNewHosts,
+         removeNgStyles } from '@angularclass/hmr';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule, XHRBackend } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
 /*
  * Platform and Environment providers/directives/pipes
  */
-import { ENV_PROVIDERS } from './environment';
-import { ROUTES } from './app.routes';
+import { AboutComponent } from './about';
+import { AdminModule } from './admin';
+import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 // App is our top level component
 import { AppComponent } from './app.component';
-import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
+import { ChatModule } from './chat';
+import { ENV_PROVIDERS } from './environment';
 import { HomeComponent } from './home';
-import { AboutComponent } from './about';
+import { LoginModule } from './login';
 import { NoContentComponent } from './no-content';
+import { RegisterComponent, RegisterRoutingModule } from './register';
+import { ROUTES } from './app.routes';
 import { XLarge } from './home/x-large';
+
+import { SHARED_APP_DIRECTIVES } from './shared/directives';
+import { SHARED_APP_SERVICES } from './shared/services';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
+  ...SHARED_APP_SERVICES,
+  { provide: XHRBackend, useClass: AuthConnectionBackend },
   AppState
 ];
 
 type StoreType = {
-  state: InternalStateType,
+  disposeOldHosts: () => void,
   restoreInputValues: () => void,
-  disposeOldHosts: () => void
+  state: InternalStateType
 };
 
 /**
@@ -37,21 +49,28 @@ type StoreType = {
 @NgModule({
   bootstrap: [ AppComponent ],
   declarations: [
-    AppComponent,
+    ...SHARED_APP_DIRECTIVES,
     AboutComponent,
+    AppComponent,
     HomeComponent,
     NoContentComponent,
+    RegisterComponent,
     XLarge
   ],
   imports: [ // import Angular's modules
+    AdminModule,
     BrowserModule,
+    ChatModule,
     FormsModule,
     HttpModule,
+    LoginModule,
+    ReactiveFormsModule,
+    RegisterRoutingModule,
     RouterModule.forRoot(ROUTES, { useHash: true })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
+    APP_PROVIDERS,
     ENV_PROVIDERS,
-    APP_PROVIDERS
   ]
 })
 export class AppModule {

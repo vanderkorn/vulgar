@@ -1,4 +1,3 @@
-/// <reference path="_all.d.ts" />
 'use strict';
 
 import * as express from 'express';

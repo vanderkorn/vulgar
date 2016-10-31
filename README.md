@@ -1,14 +1,14 @@
-[![Dependency Status](https://david-dm.org/datatypevoid/vulgar.svg)](https://david-dm.org/datatypevoid/vulgar) [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://travis-ci.org/datatypevoid/vulgar) [![GitHub tag](https://img.shields.io/github/tag/datatypevoid/vulgar.svg?maxAge=2592000)](https://github.com/datatypevoid/vulgar) [![Issue Stats](http://issuestats.com/github/datatypevoid/vulgar/badge/pr?style=flat)](http://issuestats.com/github/datatypevoid/vulgar) [![Issue Stats](http://issuestats.com/github/datatypevoid/vulgar/badge/issue?style=flat)](http://issuestats.com/github/datatypevoid/vulgar) [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](stackshare.io/datatypevoid/vulgar) [![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://github.com/mgechev/angular2-style-guide)
+[![Dependency Status](https://david-dm.org/datatypevoid/vulgar.svg)](https://david-dm.org/datatypevoid/vulgar) [![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://travis-ci.org/datatypevoid/vulgar) [![GitHub tag](https://img.shields.io/github/tag/datatypevoid/vulgar.svg?maxAge=2592000)](https://github.com/datatypevoid/vulgar) [![StackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/datatypevoid/vulgar-stack) [![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide) [![Maintenance](https://img.shields.io/maintenance/yes/2016.svg)](https://github.com/datatypevoid/vulgar/commits/development) [![license](https://img.shields.io/github/license/datatypevoid/vulgar.svg)](https://github.com/datatypevoid/vulgar/blob/master/LICENSE)
 
 [![MEAN with NG2 and Webpack](https://cloud.githubusercontent.com/assets/10481547/13732046/5ba42ab0-e94f-11e5-9962-ab04cbd6779f.png)](http://www.davidniciforovic.com)
 
-v#!g@r [![Join Slack](https://img.shields.io/badge/slack-join-brightgreen.svg)](http://www.davidniciforovic.com/wp-login.php?action=slack-invitation) [![Join the chat at https://gitter.im/datatypevoid/vulgar](https://badges.gitter.im/datatypevoid/vulgar.svg)](https://gitter.im/datatypevoid/vulgar?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-====================================================================================================================================================================================================================================================================================================================================================================================
+v#!g@r [![Join Slack](https://img.shields.io/badge/slack-join-brightgreen.svg)](http://www.davidniciforovic.com/wp-login.php?action=slack-invitation) [![Join the chat at https://gitter.im/datatypevoid/vulgar](https://badges.gitter.im/datatypevoid/vulgar.svg)](https://gitter.im/datatypevoid/vulgar?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/datatype_void)
+=============================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
 
 MEAN Stack Development Starter
 ------------------------------
 
-> A MEAN stack development kit featuring [Angular 2](https://angular.io) ([Router](https://angular.io/docs/js/latest/api/router/), [Forms](https://angular.io/docs/js/latest/api/forms/), [Http](https://angular.io/docs/js/latest/api/http/), [Services](https://github.com/datatypevoid/vulgar/blob/development/src/client/app/+todo/todo.service.ts), [Tests](https://angular.io/docs/js/latest/api/test/), [E2E](https://angular.github.io/protractor/#/faq#what-s-the-difference-between-karma-and-protractor-when-do-i-use-which-)), [Express](http://expressjs.com/), [MongoDB](https://www.mongodb.org/) (complete with [Mongoose](https://www.mongoosejs.org/)), [Node](https://www.nodejs.org/), [Redux](https://egghead.io/series/getting-started-with-redux), [@ngrx/store](https://github.com/ngrx/store) [PassportJS](https://www.passportjs.org/), [Socket.IO](https://www.socket.io/), [Karma](https://karma-runner.github.io/), [Protractor](https://angular.github.io/protractor/), [Jasmine](https://github.com/jasmine/jasmine), [Istanbul](https://github.com/gotwarlost/istanbul), [Configuration](#configuration), [TypeScript](http://www.typescriptlang.org/), [@types](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=0ahUKEwjgjdrR7u_NAhUQ7GMKHXgpC4EQFggnMAI&url=https%3A%2F%2Fwww.npmjs.com%2F~types&usg=AFQjCNG2PFhwEo88JKo12mrw_4d0w1oNiA&sig2=N69zbO0yN8ET7v4KVCUOKA), [Sass](https://sass-lang.com), [Docco](https://jashkenas.github.io/docco/), [TsLint](http://palantir.github.io/tslint/), [Codelyzer](https://github.com/mgechev/codelyzer), [Hot Module Replacement](https://webpack.github.io/docs/hot-module-replacement-with-webpack.html), [Material](https://github.com/angular/material2), and [Webpack](http://webpack.github.io/) by [datatype_void](https://twitter.com/datatype_void).
+> A MEAN stack development kit featuring [Angular 2](https://angular.io) ([Router](https://angular.io/docs/js/latest/api/router/), [Forms](https://angular.io/docs/js/latest/api/forms/), [Http](https://angular.io/docs/js/latest/api/http/), [Services](https://github.com/datatypevoid/vulgar/blob/development/src/client/app/+todo/todo.service.ts), [Tests](https://angular.io/docs/js/latest/api/test/), [E2E](https://angular.github.io/protractor/#/faq#what-s-the-difference-between-karma-and-protractor-when-do-i-use-which-)), [Express](http://expressjs.com/), [MongoDB](https://www.mongodb.org/) (complete with [Mongoose](https://www.mongoosejs.org/)), [Node](https://www.nodejs.org/), [Redux](https://egghead.io/series/getting-started-with-redux), [@ngrx/store](https://github.com/ngrx/store) [PassportJS](https://www.passportjs.org/), [Socket.IO](https://www.socket.io/), [Karma](https://karma-runner.github.io/), [Protractor](https://angular.github.io/protractor/), [Jasmine](https://github.com/jasmine/jasmine), [Istanbul](https://github.com/gotwarlost/istanbul), [Configuration](#configuration), [TypeScript](http://www.typescriptlang.org/), [@types](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=0ahUKEwjgjdrR7u_NAhUQ7GMKHXgpC4EQFggnMAI&url=https%3A%2F%2Fwww.npmjs.com%2F~types&usg=AFQjCNG2PFhwEo88JKo12mrw_4d0w1oNiA&sig2=N69zbO0yN8ET7v4KVCUOKA), [Sass](https://sass-lang.com), [Docco](https://jashkenas.github.io/docco/), [TsLint](http://palantir.github.io/tslint/), [Codelyzer](https://github.com/mgechev/codelyzer), [Hot Module Replacement](https://webpack.github.io/docs/hot-module-replacement-with-webpack.html), and [Webpack](http://webpack.github.io/) by [datatype_void](https://twitter.com/datatype_void).
 >
 > Walk through a complete tutorial that shows you how to build a simple todo app using this framework, check out [Building A Single Page Todo App with MEAN--Including Angular 2](http://www.davidniciforovic.com/2016/02/03/building-a-single-page-todo-app-with-mean-including-angular-2/)
 >
@@ -31,7 +31,6 @@ This seed repo serves as an MEAN starter for anyone looking to get a full stack 
 -	Coverage with `Istanbul` and `Karma`
 -	End-to-end `Angular 2` code using `Protractor`.
 -	Type management with `@types`
--	Material Design with [angular/material2](https://github.com/angular/material2)
 -	`Sass` preprocessor linting and compiling
 -	Documentation generation across the stack using `Docco`/`TypeDoc`
 
@@ -39,7 +38,9 @@ The rest of the stack features:
 
 -	[Express](https://www.expressjs.com/) for creating robust `API`s,
 -	[Socket.io](https://www.socket.io/) for real time event-based communication.
--	[Mongoose](https://www.mongoosejs.com/) for modeling [MongoDB](https://www.mongodb.org) objects within the [NodeJS](https://nodejs.org) environment.
+-	[Mongoose](https://www.mongoosejs.com/) for modeling
+-	[MongoDB](https://www.mongodb.org) objects within the
+-	[NodeJS](https://nodejs.org) environment.
 
 Quick start
 -----------
@@ -124,139 +125,149 @@ File Structure
 We use a modular component approach in our starter. This is the new standard for developing not only Angular apps, but modular components across the stack--and a great way to ensure maintainable code by encapsulation of our behavior logic. A component is basically a self contained app usually in a single file or a folder with each concern as a file: style, template, specs, e2e, and component class. Here's how it looks:
 
 ```
-vulgar/
- │
- ├──app/                            * back-end routing and MongoDB object models
- │   ├──models/                     * model definitions for Mongoose
- │   │   ├──user.model.js           * a user model for use with PassportJS
- │   ├──routes/                     * store modular REST API routes for Express here
- │   │   └──authentication          * an Express route for use with PassportJS
- │   │        .router.js
- │   └──routes.js                   * import Express routes and middleware here
- │
- ├──config/                         * configuration files
- |   ├──helpers.js                  * helper functions for our configuration files
- |   ├──spec-bundle.js              * magic that sets up the NG2 testing environment
- |   ├──karma.conf.js               * karma config for our unit tests
- |   ├──protractor.conf.js          * protractor config for our end-to-end tests
- │   ├──webpack.dev.js              * our development webpack config
- │   ├──webpack.prod.js             * our production webpack config
- │   ├──webpack.test.js             * our test webpack config
- │   ├──config.json/                * allows definition of environment variables
- │   ├──env.conf.js/                * utility functions for setting up env vars
- │   ├──mongoose.conf.js/           * configuration file for Mongoose
- │   ├──gulpfile.conf.js            * contains all of the workflow management delegated
- │   │                                to `gulp`: auto documentation generation; `sass`
- │   │                                linting; `nodemon`, et cetera
- │   └──passport.conf.js/           * configuration file for PassportJS
- │
- ├──sockets/                        * directory for socket.io functionality
- │   └──base.js/                    * a basic socket.io server function
- │
- ├──src/                            * source that will be compiled to javascript
- │   ├──main.ts                     * our entry file for our browser environment
- │   │
- │   ├──index.html                  * Index.html: where we generate our index page
- │   │
- │   ├──polyfills.ts                * our polyfills file
- │   │
- |   ├──vendor.ts                   * our vendor file
- │   │
- │   ├──app/                        * WebApp: folder
- │   │   ├──todo/                   * an example component directory
- │   │   │   ├──todo.component.ts   * a simple Angular 2 component
- │   │   │   ├──todo.e2e.ts         * simple test of components in todo.component.ts
- │   │   │   ├──todo.spec.ts        * a simple end-to-end test for /todo
- │   │   │   ├──todo.html           * template for our component
- │   │   │   └──todo.service.ts     * Angular 2 service linking to our API
- │   │   ├──app.spec.ts             * a simple test of components in app.ts
- │   │   ├──app.e2e.ts              * a simple end-to-end test for /
- │   │   └──app.ts                  * App.ts: primary application component
- │   │
- │   ├──assets/                     * static assets are served here
- │   │   ├──icon/                   * our list of icons from www.favicon-generator.org
- │   │   ├──service-worker.js       * ignore this. Web App service worker that's not
- │   │   │                            complete yet
- │   │   ├──robots.txt              * for search engines to crawl your website
- │   │   └──human.txt               * for humans to know who the developers are
- │   │
- │   └──sass/                       * folder for Sass stylesheets
- │       |
- │       ├──base/
- │       │   ├──_animations.scss    * Animation keyframe definitions
- │       │   ├──_reset.scss         * Reset/normalize
- │       │   ├──_typography.scss    * Typography rules
- │       │   ├──_module.scss        * Load all partials into a single partial
- │       │   └── …                  * Etc.
- │       │
- │       ├──components/
- │       │   ├──_buttons.scss       * Buttons
- │       │   ├──_carousel.scss      * Carousel
- │       │   ├──_cover.scss         * Cover
- │       │   ├──_dropdown.scss      * Dropdown
- │       │   ├──_module.scss        * Load all partials into a single partial
- │       │   └── …                  * Etc.
- │       │
- │       ├─ layout/
- │       │   ├──_navigation.scss    * Navigation
- │       │   ├──_grid.scss          * Grid system
- │       │   ├──_header.scss        * Header
- │       │   ├──_footer.scss        * Footer
- │       │   ├──_sidebar.scss       * Sidebar
- │       │   ├──_forms.scss         * Forms
- │       │   ├──_module.scss        * Load all partials into a single partial
- │       │   └── …                  * Etc.
- │       │
- │       ├─ pages/
- │       │   ├──_home.scss          * Home specific styles
- │       │   ├──_contact.scss       * Contact specific styles
- │       │   ├──_module.scss        * Load all partials into a single partial
- │       │   └── …                  * Etc.
- │       │
- │       ├─ themes/
- │       │   ├──_theme.scss         * Default theme
- │       │   ├──_admin.scss         * Admin theme
- │       │   ├──_module.scss        * Load all partials into a single partial
- │       │   └── …                  * Etc.
- │       │
- │       ├─ utils/
- │       │   ├──_variables.scss     * Sass Variables
- │       │   ├──_functions.scss     * Sass Functions
- │       │   ├──_mixins.scss        * Sass Mixins
- │       │   ├──_helpers.scss       * Class & placeholders helpers
- │       │   ├──_module.scss        * Load all partials into a single partial
- │       │   └── …                  * Etc.
- │       ├──vendors/
- │       │   ├──_bootstrap.scss     * Bootstrap
- │       │   ├──_jquery-ui.scss     * jQuery UI
- │       │   ├──_module.scss        * Load all partials into a single partial
- │       │   └── …                  * Etc.
- │       │
- │       │
- │       └──main.scss               * Main sass file importing all partials
- │
- ├──.babelrc                        * configure Babel 6 plugins and ES6/ES7 presets
- │
- ├──server.js                       * ES5 `.js` importing the server code along with a
- │                                    Babel 6 hook to transpile server ES6/ES7 code
- │                                    on the fly
- ├──server.conf.js                  * configure Express application, connect to
- │                                    database, instantiate Mongoose models, define API
- │                                    and front-end Angular routes, et cetera
- │
- ├──gulpfile.js                     * ES5 `gulpfile` importing the `gulp` workflow code
- │                                    along with a Babel 6 hook to transpile the ES6
- │                                    code on the fly
- │
- ├──protractor.conf.js              * Exposes `protractor.conf` from `config/`
- │
- ├──karma.conf.js                   * Exposes `karma.conf` from `config/`
- │
- ├──tslint.json                     * typescript lint config
- ├──typedoc.json                    * typescript documentation generator
- │
- ├──tsconfig.json                   * config that webpack uses for typescript
- └──package.json                    * what npm uses to manage it's dependencies
+vulgar
+.
+├── .atom-build.json                       * Build your current project,
+│                                            directly from the Atom code editor
+├── .babelrc                               * Configure Babel plugins and ES6/ES7
+│                                            presets
+├── .editorconfig                          * Defines coding styles to be read by
+│                                            enabled editors
+├── .gitignore                             * File and directory patterns for git
+│                                            to intentionally not track
+├── .nvmrc                                 * NVM Node version management
+├── .travis.yml                            * Travis CI build environment config
+├── Dockerfile                             * Contains all commands a user could
+│                                            call on the CLI to assemble an
+│                                            image
+├── config                                 * Project config files
+│   ├── config.example.json                * Example config.json file
+│   ├── config.json                        * Untracked by git by default.
+│   │                                        Required for stack to fire up.
+│   ├── env.conf.ts                        * Development environment config
+│   ├── gulpfile.conf.js                   * Gulp config and task definitions
+│   ├── head.conf.js                       * Configuration for head elements
+│   │                                        added during the creation of
+│   │                                        index.html
+│   ├── karma.conf.js                      * Karma environment config for unit  
+│   │                                        testing
+│   ├── modules                            * Configuration modules
+│   │   └── . . .
+│   ├── mongoose.conf.ts                   * Mongoose connection config
+│   ├── passport.conf.ts                   * PassportJS config for managing user
+│   │                                        authentication
+│   ├── protractor.conf.js                 * Protractor config for E2E testing
+│   ├── spec-bundle.js                     * Angular 2 test environment setup
+│   ├── utils
+│   │   └── helpers.js                     * Helper utilities that assist with
+│   │                                        the bundling process
+│   └── webpack
+│       ├── client.common.js               * Common Webpack config for client
+│       ├── client.dev.js                  * Development Webpack config for
+│       │                                    client
+│       ├── client.prod.js                 * Production Webpack config for
+│       │                                    client
+│       ├── client.test.js                 * Testing Webpack config for client
+│       ├── server.common.js               * Common Webpack config for server
+│       ├── server.dev.js                  * Development Webpack config for
+│       │                                    server
+│       ├── server.prod.js                 * Production Webpack config for
+│       │                                    server
+│       └── server.test.js                 * Testing Webpack config for server
+├── gulpfile.js                            * Points to config/gulpfile.conf.js
+├── karma.conf.js                          * Points to config/karma.conf.js
+├── package.json                           * NPM dependency management
+├── protractor.conf.js                     * Points to config/protractor.conf.js
+├── src                                    * Project source files to be compiled
+│   │                                      to JavaScript
+│   ├── client                             * Source files for client web app
+│   │   ├── app                            * Client app source files
+│   │   │   ├── +todo                      * Asynchronous Todo module
+│   │   │   │   └── . . .
+│   │   │   ├── admin                      * Admin module
+│   │   │   │   └── . . .
+│   │   │   ├── app.component.e2e.ts       * E2E test file for top-level app
+│   │   │   │                                component
+│   │   │   ├── app.component.spec.ts      * Unit test file for top-level app
+│   │   │   │                                component
+│   │   │   ├── app.component.ts           * Top-level app component
+│   │   │   ├── app.module.ts              * Module definition for Angular app
+│   │   │   ├── app.resolver.ts            * Helper for resolving routes with
+│   │   │   │                                data
+│   │   │   ├── app.routes.ts              * App module route definitions
+│   │   │   ├── app.service.ts             * Service for managing immutable
+│   │   │   │                                app state
+│   │   │   ├── auth-connection.backend.ts * Intercepts certain auth errors
+│   │   │   ├── environment.ts             * Front-end environment config
+│   │   │   ├── home                       * Home module
+│   │   │   │   └── . . .
+│   │   │   ├── login                      * Login module
+│   │   │   │   └── . . .
+│   │   │   ├── no-content                 * 404: no content module
+│   │   │   │   └── . . .
+│   │   │   ├── register                   * registration module
+│   │   │   │   └── . . .
+│   │   │   └── shared                     * Shared directives, services,
+│   │   │       │                            interfaces, et cetera
+│   │   │       ├── client-socket.ts       * Base class for socket functionality
+│   │   │       ├── directives             * Shared Angular directives
+│   │   │       │   └── . . .
+│   │   │       ├── interfaces             * Shared TypeScript interfaces
+│   │   │       │   └── . . .
+│   │   │       └── services               * Shared Angular services
+│   │   │           └── . . .
+│   │   ├── assets                         * Static assets are served here
+│   │   │   ├── icon                       * Icons generated with
+│   │   │   │   │                            www.favicon-generator.org
+│   │   │   │   └── . . .
+│   │   │   ├── img                        * Front-end image assets
+│   │   │   │   └── . . .
+│   │   │   └── service-worker.js          * Web app service worker that's not
+│   │   │                                    complete yet
+│   │   ├── custom-typings.d.ts            * Custom type definitions for 3rd
+│   │   │                                    party modules go here
+│   │   ├── index.html                     * Index.html: where we generate our
+│   │   │                                    index page
+│   │   ├── main.browser.ts                * Entry file for the browser
+│   │   │                                    environment
+│   │   ├── meta
+│   │   │   ├── humans.txt                 * For fellow humans to know who the
+│   │   │   │                                developers are
+│   │   │   └── robots.txt                 * For search engines to crawl your
+│   │   │                                    website
+│   │   ├── polyfills.browser.ts           * Polyfill files go here
+│   │   ├── sass                           * Sass stylesheets( follows 7-in-1
+│	  │   │                                    architecture )
+│   │   │   └── . . .
+│   │   └── vendor.browser.ts              * For vendor imports ( e.g. JQuery,
+│	  │                                        lodash, etc. )
+│   └── server                             * Source files for Node app
+│       ├── app.ts                         * Server bootstrap and configuration
+│       ├── handlers                       * Common error and event handlers
+│       │   └── . . .
+│       ├── models                         * MongoDB models
+│       │   └── . . .
+│       ├── routes                         * Route definitions for server API
+│       │   ├── _authentication.router.ts  * User auth routes
+│       │   ├── . . .
+│       │   └── router.ts                  * Base router class
+│       ├── routes.ts                      * Import routers and confiure  API
+│       ├── server.conf.ts                 * Fire up server app
+│       ├── sockets                        * Houses Socket.io functionality
+│       │   └── base.socket.ts             * Base socket class
+│       └── utils                          * Server utility functions
+│           ├── normalize-port.util.ts     * Port normalization utility
+│           └── on-error.util.js           * Error utility
+├── test/                                  * Server unit tests
+│   ├── mocha.opts                         * Mocha config options
+│   ├── . . .
+│   └── utils.js                           * Server unit testing utilities
+├── tsconfig.json                          * TypeScript config for Webpack
+├── tslint.json                            * TypeScript lint config
+├── typedoc.json                           * TypeScript doc generator config
+├── vulgar.json                            * Ignore. Unused for now
+└── yarn.lock                              * Yarn dependency management
+
 ```
 
 Getting Started
@@ -270,7 +281,7 @@ Prerequisite Technologies
 ### Linux
 
 -	*Node.js* - [Download](http://nodejs.org/download/) and Install Node.js, nodeschool has free [node tutorials](http://nodeschool.io/#workshoppers) to get you started.
--	*MongoDB* - [Download](https://www.mongodb.org/downloads) and Install mongodb - [Checkout their manual](https://docs.mongodb.org/manual/) if you're just starting.
+-	*MongoDB* - [Download](https://www.mongodb.org/downloads) and Install MongoDB - [Check out their manual](https://docs.mongodb.org/manual/) if you're just starting.
 
 If you're using `ubuntu`, this is the preferred repository to use...
 
@@ -280,7 +291,7 @@ $ sudo apt-get update
 $ sudo apt-get install nodejs
 ```
 
-or use [Node Version Manager](https://github.com/creationix/nvm) to easily manage and update your `node` installations and global dependencies
+> If you have `nvm` installed, which is highly recommended (`brew install nvm`) you can do a `nvm install --lts && nvm use` in `$` to run with the latest Node LTS. You can also have this `zsh` done for you [automatically](https://github.com/creationix/nvm#calling-nvm-use-automatically-in-a-directory-with-a-nvmrc-file)
 
 ### Windows
 
@@ -288,11 +299,13 @@ or use [Node Version Manager](https://github.com/creationix/nvm) to easily manag
 -	*MongoDB* - Follow the great tutorial from the mongodb site - ["Install Mongodb On Windows"](https://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows/)
 -	*Git* - The easiest way to install git and then run the rest of the commands through the *git bash* application (via command prompt) is by downloading and installing [Git for Windows](http://git-scm.com/download/win)
 
-### OSX
+### OS X
 
 -	*Node.js* - [Download](http://nodejs.org/download/) and Install Node.js or use the packages within brew or macports.
 -	*MongoDB* - Follow the tutorial here - [Install mongodb on OSX](https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/)
 -	*git* - Get git [from here](http://git-scm.com/download/mac).
+
+> `nvm` also works on OS X, which again is highly recommended (`brew install nvm`). With it you can do a `nvm install --lts && nvm use` in `$` to run with the latest Node LTS. You can also have this `zsh` done for you [automatically](https://github.com/creationix/nvm#calling-nvm-use-automatically-in-a-directory-with-a-nvmrc-file)
 
 ### *Ensure you are running the latest versions Node `v4.x.x`+ and NPM `3.x.x`\+*
 
@@ -301,21 +314,25 @@ Dependencies
 
 Once you have those, you should install these global dependencies with `npm install --global`:
 
--	`webpack` (`$ npm install --global webpack`\)
--	`webpack-dev-server` (`$ npm install --global webpack-dev-server`\)
+-	`concurrently` (`$ npm install --global concurrently`\)
+-	`generator-vulgar` (`$ npm install --global generator-vulgar`\)
 -	`gulp-cli` (`$ npm install --global gulp-cli`\)
 -	`karma` (`$ npm install --global karma-cli`\)
+-	`mocha` (`$ npm install --global mocha`\)
 -	`protractor` (`$ npm install --global protractor`\)
 -	`typescript` (`$ npm install --global typescript`\)
--	`concurrently` (`$ npm install --global concurrently`\)
--	`mocha` (`$ npm install --global mocha`\)
+-	`webpack-dev-server` (`$ npm install --global webpack-dev-server`\)
+-	`webpack` (`$ npm install --global webpack`\)
+-	`vulgar-cli` (`$ npm install --global vulgar-cli`\)
 
 Installing
 ----------
 
--	`$ npm install -g vulgar-cli generator-vulgar`
--	`$ vulgar init` to install a new instance of the v#!g@r seed
--	`$ npm install` to install all local dependencies or `yarn`
+-	`$ vulgar init` to install a new instance of the vulgar seed
+-	`$ npm install` to install all local dependencies, or `$ yarn`
+
+> `Yarn` is a fast, reliable and more secure JavaScript package manager. It utilizes the same `package.json` file as `npm`, but offers a better workflow overall than `npm.` Learn more at https://yarnpkg.com/
+
 -	`$ mongod` in a separate terminal, to fire up MongoDB
 -	`$ npm run build` to build necessary front-end code with Webpack
 -	`$ npm start` to enable hot module reloading and build on file change
@@ -357,7 +374,7 @@ This object is not absolutely required. You can pass these values in however you
 Running the app
 ---------------
 
-After you have installed all dependencies and modified your `config.json` file, you can now run the app. First, you must start up the back-end server in a separate terminal using the `gulp serve` command. This will transpile our server `TypeScript` code, bundle it, and recompile on any changes. This is all courtesy of `webpack`. In addition, `nodemon` is hooked into to restart the server whenever file changes are detected. Next use the `npm start` command in the original terminal which runs two `npm` scripts in parallel: `npm run server` to start `webpack-dev-server` for building our front-end in the computer's memory, enabling hot module reloading; `npm run watch` to watch all of the front-end files and build them upon changes. You can now fire up your favorite web browser and visit the running application at `localhost:8080`!
+After you have installed all dependencies and modified your `config.json` file, you can now run the app. First, you must start up the back-end server in a separate terminal using the `gulp serve` command. This will transpile our server `TypeScript` code, bundle it, and recompile on any changes. This is all courtesy of `webpack`. In addition, `nodemon` is utilized to restart the server whenever file changes are detected. Next use the `npm start` command in the original terminal which runs two `npm` scripts in parallel: `npm run server` to start `webpack-dev-server` for building our front-end in the computer's memory, enabling hot module reloading; `npm run watch` to watch all of the front-end files and build them upon changes. You can now fire up your favorite web browser and visit the running application at `localhost:8080`!
 
 ### A Quick Note About `webpack-dev-server`
 
@@ -498,7 +515,7 @@ TypeScript
 Use latest TypeScript compiler
 ------------------------------
 
-TypeScript 1.7.x includes everything you need. Make sure to upgrade, even if you installed TypeScript previously.
+TypeScript 2.0.x includes everything you need. Make sure to upgrade, even if you installed TypeScript previously.
 
 ```
 $ npm install --global typescript
@@ -509,15 +526,29 @@ Use a TypeScript-aware editor
 
 We have good experience using these editors:
 
--	[Visual Studio Code](https://code.visualstudio.com/)
--	[Webstorm 10](https://www.jetbrains.com/webstorm/download/)
 -	[Atom](https://atom.io/) with [TypeScript plugin](https://atom.io/packages/atom-typescript)
 -	[Sublime Text](http://www.sublimetext.com/3) with [Typescript-Sublime-Plugin](https://github.com/Microsoft/Typescript-Sublime-plugin#installation)
+-	[Visual Studio Code](https://code.visualstudio.com/)
+-	[Webstorm 10](https://www.jetbrains.com/webstorm/download/)
 
 Types
 =====
 
 > When you include a module that doesn't include Type Definitions inside of the module you can include external Type Definitions with @types
+
+i.e, to have youtube api support, run this command in terminal:
+
+```shell
+npm i @types/youtube @types/gapi @types/gapi.youtube
+```
+
+In some cases where your code editor doesn't support Typescript 2 yet or these types weren't listed in `tsconfig.json`, add these to **"src/custom-typings.d.ts"** to make peace with the compile check:
+
+```es6
+import '@types/gapi.youtube';
+import '@types/gapi';
+import '@types/youtube';
+```
 
 Custom Type Definitions
 -----------------------
@@ -554,7 +585,7 @@ import * as _ from 'lodash';
 Frequently asked questions
 ==========================
 
--	What's the current browser support for Angular 2 RC 1?
+-	What's the current browser support for Angular 2?
 
 	-	Please view the updated list of [browser support for Angular 2](https://github.com/angularclass/awesome-angular2#current-browser-support-for-angular-2)
 
@@ -637,7 +668,9 @@ Support, Questions, or Feedback
 
 > Contact us anytime for anything about this repo, Angular 2, or MEAN stack development in general.
 
+-	[Slack: vulgardisplayofpower.slack](http://www.davidniciforovic.com/wp-login.php?action=slack-invitation)
 -	[Twitter: @datatype_void](https://twitter.com/datatype_void)
+-	[Gitter: datatypevoid/vulgar](https://gitter.im/datatypevoid/vulgar?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ---
 

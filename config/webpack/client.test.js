@@ -5,7 +5,7 @@
 /**
  * Common Configuration and Helpers
  */
-const helpers = require('../helpers');
+const helpers = require('../helpers.utils');
 const path = require('path');
 
 /**

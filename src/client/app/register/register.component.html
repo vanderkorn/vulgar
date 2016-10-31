@@ -1,0 +1,93 @@
+<div *ngIf="!submitted && !appState.get('isAuthenticated')">
+  <h1>Register</h1>
+  <form *ngIf="active" [formGroup]="registerForm" novalidate (ngSubmit)="processUserData()">
+    <div>
+      <div>
+        <label for="">Username</label>
+        <input type="text" validateUsername="username" formControlName="username">
+        <small [hidden]="registerForm.controls.username.valid || (registerForm.controls.username.pristine && !submitted)" *ngIf="registerForm.controls.username.errors !== null && registerForm.controls.username.errors.minlength">
+          Username is required (minimum 3 characters).
+        </small>
+        <small [hidden]="registerForm.controls.username.valid || (registerForm.controls.username.pristine && !submitted)" *ngIf="registerForm.controls.username.errors !== null && registerForm.controls.username.errors.usernameTaken === true">
+          Username already taken.
+        </small>
+      </div>
+
+      <div>
+        <label for="">Email</label>
+        <input type="email" formControlName="email">
+        <small [hidden]="registerForm.controls.email.valid || (registerForm.controls.email.pristine && !submitted)" *ngIf="registerForm.controls.email.errors !== null && registerForm.controls.email.errors.minlength">
+          Email is required (minimum 5 characters).
+        </small>
+        <small [hidden]="registerForm.controls.email.valid || (registerForm.controls.email.pristine && !submitted)" *ngIf="registerForm.controls.email.errors !== null && registerForm.controls.email.errors.pattern">
+          Email not of valid form.
+        </small>
+      </div>
+
+      <div>
+        <label for="">Password</label>
+        <input type="password" validateEqual="confirmPassword" reverse="true" formControlName="password">
+        <small [hidden]="registerForm.controls.password.valid || (registerForm.controls.password.pristine && !submitted)" *ngIf="registerForm.controls.password.errors !== null && registerForm.controls.password.errors.minlength">
+          Password is required (minimum 8 characters).
+        </small>
+      </div>
+
+      <div>
+        <label for="">Confirm Password</label>
+        <input type="password" validateEqual="password" formControlName="confirm">
+        <small [hidden]="registerForm.controls.confirm.valid || (registerForm.controls.confirm.pristine && !submitted)" *ngIf="registerForm.controls.confirm.errors !== null && registerForm.controls.confirm.errors.minlength">
+          Password is required (minimum 8 characters).
+        </small>
+        <small [hidden]="registerForm.controls.confirm.valid || (registerForm.controls.confirm.pristine && !submitted)" *ngIf="registerForm.controls.confirm.errors !== null && registerForm.controls.confirm.errors.validateEqual === false">
+          Passwords must match.
+        </small>
+      </div>
+    </div>
+    <div [hidden]="!error.state">
+      <p>
+        Registration failure! {{ error.message }}
+      </p>
+    </div>
+    <div>
+      <button type="button" (click)="newUser()">
+        Clear
+      </button>
+      <button type="submit">
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+<div *ngIf="submitted && !appState.get('isAuthenticated')">
+  <p [hidden]="accepted">
+    Waiting on a response from the server...
+  </p>
+  <div [hidden]="!accepted">
+    <p>
+      Registration Successful!
+    </p>
+  </div>
+</div>
+<div *ngIf="appState.get('isAuthenticated')">
+  <h1>Hello, user</h1>
+  <p>
+    You are currently logged in. To create a new account please log out first.
+  </p>
+  <div>
+    <button (click)="logout()">Log Out</button>
+  </div>
+</div>
+<div *ngIf="!appState.get('isAuthenticated')">
+  <div>
+    <div>registerForm details:</div>
+    <pre>Is registerForm valid?: <br>{{registerForm.valid | json}}</pre>
+    <pre>Is registerForm submitted?: <br>{{submitted | json}}</pre>
+    <pre>registerForm value: <br>{{registerForm.value | json}}</pre>
+  </div>
+  <div>
+    Form changes:
+  </div>
+  <div *ngFor="let event of events">
+    <pre> {{ event | json }} </pre>
+  </div>
+</div>

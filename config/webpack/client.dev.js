@@ -5,7 +5,7 @@
 /**
  * Helpers
  */
-const helpers = require('../helpers');
+const helpers = require('../helpers.utils');
 
 /**
  * Webpack Merge

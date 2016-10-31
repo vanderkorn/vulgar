@@ -1,7 +1,7 @@
 // @datatype_void
 require('ts-node/register');
 
-var helpers = require('./helpers');
+var helpers = require('./helpers.utils');
 
 exports.config = {
   baseUrl: 'http://localhost:3000/',

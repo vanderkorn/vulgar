@@ -4,7 +4,9 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 import { AppState } from './app.service';
+import { AuthService } from './shared/services/auth.service';
 
+import { ChatModule } from './chat';
 /*
  * App Component
  * Top Level Component
@@ -42,6 +44,24 @@ import { AppState } from './app.service';
       </span>
       |
       <span>
+        <a [routerLink]=" ['./admin'] ">
+          Admin
+        </a>
+      </span>
+      |
+      <span>
+        <a [routerLink]=" ['./login'] ">
+          Login
+        </a>
+      </span>
+      |
+      <span>
+        <a [routerLink]=" ['./register'] ">
+          Register
+        </a>
+      </span>
+      |
+      <span>
         <a [routerLink]=" ['./about'] ">
           About
         </a>
@@ -52,24 +72,29 @@ import { AppState } from './app.service';
       <router-outlet></router-outlet>
     </main>
 
+    <vu-chat></vu-chat>
+
     <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
 
     <footer>
-      <span>Angular 2 MEAN Webpack Starter by <a [href]="url">@datatype_void</a></span>
+      <span>{{ name }} by <a [href]="url">{{ author }}</a></span>
       <div>
         <a [href]="url">
-          <img [src]="angularLogo" width="25%">
+          <img [src]="appLogo" width="25%">
         </a>
       </div>
     </footer>
   `
 })
 export class AppComponent {
-  angularLogo = 'assets/img/angular-logo.png';
-  name = 'Angular 2 MEAN Webpack Starter';
-  url = 'https://twitter.com/datatype_void';
+  public appLogo = 'assets/img/author-logo.gif';
+  public author = '@datatype_void'
+  public name = 'Angular 2 MEAN Webpack Starter';
+  public url = 'https://twitter.com/datatype_void';
 
-  constructor(public appState: AppState) { }
+  constructor(private appState: AppState, private authService: AuthService) {
+
+  }
 
   ngOnInit() {
     console.log('Initial App State', this.appState.state);

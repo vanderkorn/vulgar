@@ -1,7 +1,7 @@
 /**
  * Helpers
  */
-import helpers from './helpers';
+import helpers from './helpers.utils';
 
 /**
  * Gulp packages
