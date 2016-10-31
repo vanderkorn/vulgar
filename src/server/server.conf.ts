@@ -21,7 +21,7 @@ const debug = require('debug')('express:server');
 const http = require('http');
 
 // Set `PORT` based on environment and store in `Express`
-const PORT = normalizePort(process.env.PORT) !== 'undefined' ?
+const PORT = normalizePort(process.env.PORT) !== undefined ?
                       normalizePort(process.env.PORT) : 3000;
 app.set('port', PORT);
 
@@ -29,7 +29,7 @@ app.set('port', PORT);
 let server = http.createServer(app);
 
 // Integrate Socket.io
-const SOCKET_PORT = normalizePort(process.env.SOCKET_PORT) !== 'undefined' ?
+const SOCKET_PORT = normalizePort(process.env.SOCKET_PORT) !== undefined ?
                       normalizePort(process.env.SOCKET_PORT) : 3001;
 let io = socketio.listen(SOCKET_PORT);
 
