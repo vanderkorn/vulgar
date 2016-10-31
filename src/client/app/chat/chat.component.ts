@@ -1,23 +1,41 @@
+import { AuthService } from '../shared/services';
 import { Component } from '@angular/core';
 import { ClientSocket } from '../shared/client-socket.ts';
 
-declare var require;
-const styles: string = require('!style!css!sass!./chat.component.scss');
-const template: string = require('./chat.component.html');
-
 @Component({
   selector: 'vu-chat',
-  styleUrls: [styles],
-  template
+  templateUrl: './chat.component.html'
 })
 export class ChatComponent extends ClientSocket {
 
-  handle: string = 'user-' + Math.floor((Math.random() * 10000) + 1);
+  handle: string = '';
   message: string = '';
   items: string[] = [];
 
-  constructor() {
+  constructor(private authService: AuthService) {
     super();
+  }
+
+  ngOnInit() {
+    this.authService.authenticate()
+      .subscribe((user) => {
+        /**
+         * If the user is not logged in, generate a random handle for them to use
+         * with the chat system.
+         */
+        if(user === 0)
+          this.handle = 'user-' + Math.floor((Math.random() * 10000) + 1)
+        /**
+         * Otherwise set the user's handle to the username retrieved from the
+         * session data.
+         */
+        else
+          this.handle = user.username;
+      }, (err) => {
+        // DEBUG
+        // TODO: Remove this DEBUG statement
+        console.error('Session data failure: ', err);
+      });
   }
 
   connect() {

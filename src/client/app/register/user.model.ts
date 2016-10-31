@@ -1,3 +1,4 @@
+
 export class User {
 
   constructor (
@@ -5,4 +6,5 @@ export class User {
     public password: string,
     public email: string
   ) {}
+  
 }

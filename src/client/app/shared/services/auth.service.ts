@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {Http, Headers} from '@angular/http';
-import {AppState} from '../../app.service';
+import { AppState } from '../../app.service';
+import { Headers, Http } from '@angular/http';
+import { Injectable } from '@angular/core';
 
 const HEADER = {
   headers: new Headers({
@@ -16,7 +16,9 @@ const ROUTE_URI = '/api/auth/';
 // Reference : http://blog.thoughtram.io/angular/2015/09/17/resolve-service-dependencies-in-angular-2.html
 @Injectable()
 export class AuthService {
-  isAuthenticated: boolean;
+
+  redirectUrl: string;
+
   // The `public` keyword denotes that the constructor parameter will
   // be retained as a field.
   // Reference: https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md#336-members
@@ -27,19 +29,22 @@ export class AuthService {
   // Here we intend the constructor function to be called with the
   // `Http` parameter
   constructor(public http: Http, private appState: AppState) {
-    this.isAuthenticated = this.appState.get('isAuthenticated');
-  }
-
-  // Get user session data object from server if user is logged in
-  getSessionData() {
-    return this.http.get(`${ROUTE_URI}session`,
-                          HEADER)
-             .map(res => res.json());
+    this.authenticate().subscribe((res) => {
+      (res === 0) ? this.appState.set('isAuthenticated', 0)
+                  : this.appState.set('isAuthenticated', 1);
+    });
   }
 
   // Check whether a user is logged in or not
   authenticate() {
     return this.http.get(`${ROUTE_URI}authenticate`,
+                          HEADER)
+             .map(res => res.json());
+  }
+
+  // Get user session data object from server if user is logged in
+  getSessionData() {
+    return this.http.get(`${ROUTE_URI}session`,
                           HEADER)
              .map(res => res.json());
   }
@@ -50,9 +55,17 @@ export class AuthService {
                           JSON.stringify(user),
                           HEADER)
                     .map((res) => {
-                      this.appState.set('isAuthenticated', true);
+                      this.appState.set('isAuthenticated', 1);
                       return res.json();
                     })
+  }
+
+  logout() {
+
+    this.appState.set('isAuthenticated', false);
+
+    return this.http.post(`${ROUTE_URI}logout`,
+                          HEADER);
   }
 
   register(user) {

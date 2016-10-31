@@ -2,17 +2,52 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "noEmitHelpers": false
+    "noEmitHelpers": false,
+    "strictNullChecks": false,
+    "baseUrl": "./src",
+    "paths": { },
+    "lib": [
+      "dom",
+      "es6"
+    ],
+    "types": [
+      "bcrypt-nodejs",
+      "body-parser",
+      "cookie-parser",
+      "express",
+      "express-serve-static-core",
+      "express-session",
+      "hammerjs",
+      "jasmine",
+      "method-override",
+      "mime",
+      "mongoose",
+      "morgan",
+      "node",
+      "passport",
+      "passport-local",
+      "protractor",
+      "selenium-webdriver",
+      "serve-static",
+      "socket.io",
+      "socket.io-client",
+      "source-map",
+      "uglify-js",
+      "webpack"
+    ]
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ],
   "awesomeTypescriptLoaderOptions": {
-    "resolveGlobs": true,
-    "forkChecker": true
+    "forkChecker": true,
+    "useWebpackText": true
   },
   "compileOnSave": false,
   "buildOnSave": false,

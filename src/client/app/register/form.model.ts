@@ -6,4 +6,5 @@ export class FormModel {
     public confirm: string,
     public email: string
   ) {}
+  
 }

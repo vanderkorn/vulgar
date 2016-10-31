@@ -1,102 +1,111 @@
 import { Component } from '@angular/core';
-import { Router,
-         CanDeactivate } from '@angular/router';
+import { NgIf } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
-import { Control,
-         ControlGroup,
-         FormBuilder,
-         NgForm,
-         NgIf,
-         Validators } from '@angular/common';
-import { User } from './user.model';
-import { FormModel } from './form.model';
+import { Router } from '@angular/router';
+
+import { FormBuilder,
+         FormControl,
+         FormGroup,
+         Validators } from '@angular/forms';
+
+import { AppState } from '../app.service';
 import { AuthService } from '../shared/services/auth.service';
-import { EmailValidator } from '../shared/validators/email.validator';
-import { UsernameValidator, DebouncingUsernameValidator } from '../shared/validators/username.validator';
-import { matchingPasswords } from '../shared/validators/password.validator';
+import { EqualValidator, UsernameValidator } from '../shared/directives';
+import { FormModel } from './form.model';
+import { User } from './user.model';
+
+const re = {
+  email: {
+    complex: {
+      // Complex Javascript Regex (ASCII Only)
+      // https://regex101.com/r/dZ6zE6/1#
+      ascii: '(?=[A-Za-z0-9][A-Za-z0-9@._%+-]{5,253}$)[A-Za-z0-9._%+-]{1,64}@(?:(?=[A-Za-z0-9-]{1,63}\.)[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*\.){1,8}[A-Za-z]{2,63}',
+      // Complex Javascript Regex (With Non ASCII Support)
+      // https://regex101.com/r/sF6jE4/1
+      nonascii: '(?=([A-Za-z0-9]|[^\x00-\x7F])([A-Za-z0-9@._%+-]|[^\x00-\x7F]){5,253}$)([A-Za-z0-9._%+-]|[^\x00-\x7F]){1,64}@(?:(?=([A-Za-z0-9-]|[^\x00-\x7F]){1,63}\.)([A-Za-z0-9]|[^\x00-\x7F])+(?:-([A-Za-z0-9]|[^\x00-\x7F])+)*\.){1,8}([A-Za-z]|[^\x00-\x7F]){2,63}',
+    },
+    simple: {
+      // Simple 'Good Enough' Javascript Regex (ASCII Only)
+      // https://regex101.com/r/aI9yY6/1
+      ascii: '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}',
+      // Simple 'Good Enough' Javascript Regex (With Non ASCII Support)
+      // https://regex101.com/r/hM7lN3/1
+      nonascii: '([a-zA-Z0-9._%+-]|[^\x00-\x7F])+?@([a-zA-Z0-9.-]|[^\x00-\x7F])+\.([a-zA-Z]|[^\x00-\x7F]){2,63}'
+    }
+  }
+};
 
 class RegistrationError {
 
   constructor (
     public state: boolean,
     public message?: string
-  ) {}
+  ) { }
 }
 
 @Component({
   selector: 'register-form',
-  providers: [AuthService, EmailValidator],
-  template: require('./register.component.html'),
-  styleUrls: [require('!style!css!sass!./form.scss')]
+  templateUrl: './register.component.html',
+  styleUrls: [ './form.scss' ]
 })
 export class RegisterComponent {
 
-  // The user registration form is of type `ControlGroup`
-  userForm: ControlGroup;
+  // The user registration form is of type `FormGroup`
+  public registerForm: FormGroup;
 
-  // Define form controls
-  username: Control;
-  password: Control;
-  confirm: Control;
-  email: Control;
-
-  constructor(private authService: AuthService,
-              private formBuilder: FormBuilder,
-              private router: Router,
-              private usernameValidator: DebouncingUsernameValidator) {
-    // Setup each of our controls using the `Control` `API`
-    this.username = new Control('', Validators.compose([
-      Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(16),
-    ]), usernameValidator.usernameTaken)
-    this.password = new Control('', Validators.compose([
-      Validators.required,
-      Validators.minLength(8),
-      Validators.maxLength(128)
-    ]))
-    this.confirm = new Control('', Validators.compose([
-      Validators.required,
-      Validators.minLength(8),
-      Validators.maxLength(128)
-    ]))
-    this.email = new Control('', Validators.compose([
-      Validators.required,
-      Validators.minLength(5),
-      Validators.maxLength(254),
-      EmailValidator.isValidFormat
-    ]))
-    // Use Angular 2's `FormBuilder` `API` to build the
-    // user registration form
-    this.userForm = this.formBuilder.group({
-      username: this.username,
-      password: this.password,
-      confirm: this.confirm,
-      email: this.email
-    }, { validator: matchingPasswords('password', 'confirm')});
-  }
-
-  // Initialize our form data based on our model
-  model:FormModel = new FormModel('', '', '', '');
   // Initialize registration error based on model
   error:RegistrationError = new RegistrationError(false);
 
-  submitted:boolean = false;
-  accepted:boolean = false;
-  active:boolean = true;
+  public submitted:boolean = false;
+  public accepted:boolean = false;
+  public active:boolean = true;
+
+  public events: any[] = [];
+
+  constructor(private appState: AppState,
+              private authService: AuthService,
+              private formBuilder: FormBuilder,
+              private router: Router) { }
 
   newUser() {
-    this.model = new FormModel('', '', '', '');
+
+    let user = new FormModel('', '', '', '');
+
+    (<FormGroup>this.registerForm).setValue(user, { onlySelf: true });
+
     this.active = false;
+
     setTimeout(() => this.active = true, 0);
+
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+    let user = new FormModel('', '', '', '');
+
+    this.registerForm = this.formBuilder.group({
+      username: [user.username, [<any>Validators.required, <any>Validators.minLength(3)]],
+      email: [user.email, [<any>Validators.required, <any>Validators.minLength(3), <any>Validators.pattern(re.email.complex.ascii.toString())]],
+      password: [user.password, [<any>Validators.required, <any>Validators.minLength(8)]],
+      confirm: [user.confirm, [<any>Validators.required, <any>Validators.minLength(8)]]
+    });
+  }
+
+  logout() {
+
+    this.authService.logout().map(res => res.json)
+      .subscribe((res) => {
+        console.log(res);
+      }, (err) => {
+        console.error(err);
+      });
+
+  }
 
   processUserData() {
-    let userData = new User(this.model.username.toLowerCase(),
-                            this.model.password,
-                            this.model.email);
+    let userData = new User(this.registerForm.controls['username'].value.toLowerCase(),
+                            this.registerForm.controls['password'].value,
+                            this.registerForm.controls['email'].value.toLowerCase());
     this.register(userData);
   }
 
@@ -122,7 +131,7 @@ export class RegisterComponent {
       }, (error) => {
         // DEBUG
         // TODO: Remove this DEBUG statement
-        console.log(error);
+        console.error(error);
         // If registration fails...
         // Toggle our error state...
         this.error.state = true;
@@ -138,7 +147,7 @@ export class RegisterComponent {
   // a user tries to leave this component view. If the form has been
   // interacted with, query the user as to whether they intended to
   // navigate away from the registration form before submission.
-  canDeactivate(): Observable<boolean> | boolean {
+  /*canDeactivate(): Observable<boolean> | boolean {
     // Ask the user with a confirmation dialog service
     if(!this.userForm.pristine && !this.accepted) {
       return confirm('You haven\'t submitted your registration. Are you sure '
@@ -148,9 +157,9 @@ export class RegisterComponent {
     else {
       return true;
     }
-  }
+  }*/
 
 
   // TODO: Remove this when we are done
-  get diagnostic() { return JSON.stringify(this.model); }
+  get diagnostic() { return JSON.stringify(this.registerForm.value); }
 }
